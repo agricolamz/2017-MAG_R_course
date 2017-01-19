@@ -653,11 +653,11 @@ d &lt;- mtcars</code></pre>
 <pre class="r"><code>#install.packages(&quot;lingtypology&quot;)
 library(lingtypology)
 map.feature(c(&quot;Russian&quot;, &quot;Abaza&quot;, &quot;Adyghe&quot;))</code></pre>
-<div id="htmlwidget-6edb05cb31f04b5072a7" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6edb05cb31f04b5072a7">{"x":{"calls":[{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[56,41.12144,44],[38,42.72732,39.33],5,null,["Russian","Abaza","Adyghe"],{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":false,"color":"blue","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":1,"dashArray":null},null,null,["<a href='http://glottolog.org/resource/languoid/iso/abq' target='_blank'>Russian\u003c/a><br>","<a href='http://glottolog.org/resource/languoid/iso/ady' target='_blank'>Abaza\u003c/a><br>","<a href='http://glottolog.org/resource/languoid/iso/rus' target='_blank'>Adyghe\u003c/a><br>"]]},{"method":"addLayersControl","args":[[],["Russian","Abaza","Adyghe"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}],"limits":{"lat":[41.12144,56],"lng":[38,42.72732]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9e0f7e6e3cf06cdf351f" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9e0f7e6e3cf06cdf351f">{"x":{"calls":[{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[56,41.12144,44],[38,42.72732,39.33],5,null,["Russian","Abaza","Adyghe"],{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":false,"color":"blue","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":1,"dashArray":null},null,null,["<a href='http://glottolog.org/resource/languoid/iso/abq' target='_blank'>Russian\u003c/a><br>","<a href='http://glottolog.org/resource/languoid/iso/ady' target='_blank'>Abaza\u003c/a><br>","<a href='http://glottolog.org/resource/languoid/iso/rus' target='_blank'>Adyghe\u003c/a><br>"]]},{"method":"addLayersControl","args":[[],["Russian","Abaza","Adyghe"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}],"limits":{"lat":[41.12144,56],"lng":[38,42.72732]}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="functions" class="section level3">
-<h3>Functions</h3>
+<div id="loops" class="section level3">
+<h3>Loops</h3>
 <pre class="r"><code>a &lt;- 2
 if(a &gt; 3){
   print(&quot;hello&quot;)
@@ -791,6 +791,17 @@ while(i &lt; 10){
 ## [1] 7
 ## [1] 8
 ## [1] 9</code></pre>
+</div>
+<div id="functions" class="section level3">
+<h3>Functions</h3>
+<pre class="r"><code>micatron &lt;- function(zh, b, c){
+  sum(zh, b)/c
+}
+
+micatron(11, 10, 10)</code></pre>
+<pre><code>## [1] 2.1</code></pre>
+<pre class="r"><code>micatron(b = 10, 10, zh = 11)</code></pre>
+<pre><code>## [1] 2.1</code></pre>
 </div>
 
 

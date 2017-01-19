@@ -175,7 +175,7 @@ library(lingtypology)
 map.feature(c("Russian", "Abaza", "Adyghe"))
 ```
 
-### Functions
+### Loops
 ```{r}
 a <- 2
 if(a > 3){
@@ -199,6 +199,18 @@ while(i < 10){
   print(i)
   i <- i+1
 }
+
+```
+
+### Functions
+```{r}
+micatron <- function(zh, b, c){
+  sum(zh, b)/c
+}
+
+micatron(11, 10, 10)
+micatron(b = 10, 10, zh = 11)
+
 
 ```
 
