@@ -154,6 +154,9 @@ TRUE & c(FALSE, TRUE)
 a <- 1:100
 a[45]
 
+1:100 -> q
+q
+
 a <- c(masha = 1:100)
 a["masha43"]
 
