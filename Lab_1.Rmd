@@ -77,8 +77,15 @@ a+1
 a
 a <- a + 1
 a
+b <- a
+b <- b + 100
+a
 
 a = 1:19 # not cool
-  
+
+length(a)
+
+length("1234567890")
+nchar("1234567890")
 ```
 

@@ -323,7 +323,18 @@ a</code></pre>
 <pre class="r"><code>a &lt;- a + 1
 a</code></pre>
 <pre><code>##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
-<pre class="r"><code>a = 1:19 # not cool</code></pre>
+<pre class="r"><code>b &lt;- a
+b &lt;- b + 100
+a</code></pre>
+<pre><code>##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre class="r"><code>a = 1:19 # not cool
+
+length(a)</code></pre>
+<pre><code>## [1] 19</code></pre>
+<pre class="r"><code>length(&quot;1234567890&quot;)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>nchar(&quot;1234567890&quot;)</code></pre>
+<pre><code>## [1] 10</code></pre>
 </div>
 
 
