@@ -88,6 +88,13 @@ length(a)
 
 length("1234567890")
 nchar("1234567890")
+
+a <- c(Masha = 5, Vanya = 7, Anya = 4, Masha = 3)
+a
+a <- c('Masha' = 5, 'Vanya' = 7, 'Anya' = 4, 'Masha' = 3)
+a
+a["Vanya"]
+a["Masha"]
 ```
 
 ### Matrix
@@ -102,3 +109,10 @@ m
 ```
 
 ### Lists
+```{r}
+a <- list(a = letters,
+     b = 1:20,
+     c = c(T, T, F, F, F))
+a
+```
+
