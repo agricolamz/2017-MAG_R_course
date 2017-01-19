@@ -11,4 +11,6 @@ title: Intro to R and RStudio. Vectors. Dataframes. Packages.
 3**(9+1)
 sum(1, 2, 5,29, 43)
 prod(1, 2, 5,29, 43)
+50 %% 3
+
 ```
