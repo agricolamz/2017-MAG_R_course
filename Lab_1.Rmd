@@ -124,7 +124,7 @@ df <- data.frame(length = c(1.78, 74, 89, 23),
 df
 
 mtcars
-?cars
+#? cars
 apropos("date")
 ```
 
