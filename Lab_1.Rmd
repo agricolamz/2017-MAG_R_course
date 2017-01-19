@@ -123,6 +123,9 @@ df <- data.frame(length = c(1.78, 74, 89, 23),
                  get.up.early = c(T, T, F, F))
 df
 
+mtcars
+?cars
+apropos("date")
 ```
 
 
