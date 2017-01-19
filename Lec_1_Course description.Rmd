@@ -39,3 +39,6 @@ Teaching Assistant:
 * Exploratory visualization
 * Cleaning and transform Data
 * Modeling and Model Validation
+* Communicate visualization
+
+It is Data Science.
