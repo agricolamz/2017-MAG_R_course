@@ -1,43 +1,33 @@
 ---
-title: "About course"
-author: "O. Lyashevskaya
-olyashevskaya@hse.ru,
-G. Moroz
-agricolamz@hse.ru,
-I. Schurov 
-ischurov@hse.ru"
+title: "Linguistic data: quantitative analysis and visualisation"
+subtitle: "About course"
 date: 19.01.2017
+font-family: 'Brill'
+transition: none
 output:
   slidy_presentation:
-    footer: "[asdas](dddd.com)"
     df_print: paged
+    footer: "Presentation link: https://goo.gl/gNqTPM"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Who?
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Lectures and laboratory:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+* [Olya Lyashevskaya](mailto:olesar@yandex.ru)
+* [George Moroz](mailto:agricolamz@gmail.com)
+* [Ilya Schurov](mailto:ilya@schurov.com)
 
-## Slide with Bullets
+Teaching Assistant:
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+* [Sasha Kozhukhar](mailto:dunnowhatsthis@gmail.com)
 
-## Slide with R Output
+## How?
 
-```{r cars, echo = TRUE}
-cars
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
-
+* [Here](https://www.hse.ru/data/2016/09/19/1117082144/program-1549532002-kSLnTng0SN.pdf) is a link to a course programme.
+* 12 lectures and 20 laboratories
+* Final Score = 0.12 × ([Online course](https://www.edx.org/course/introduction-r-data-science-microsoft-dat204x-3)) + 0.48 × (Written Assignments) + 0.4 × (Project)
