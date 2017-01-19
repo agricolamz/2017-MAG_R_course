@@ -91,7 +91,7 @@ nchar("1234567890")
 
 a <- c(Masha = 5, Vanya = 7, Anya = 4, Masha = 3)
 a
-a <- c('Masha' = 5, 'Vanya' = 7, 'Anya' = 4, 'Masha' = 3)
+a <- c('Masha' = 1:5, 'Vanya' = 7, 'Anya' = 4, 'Masha' = 3)
 a
 a["Vanya"]
 a["Masha"]
@@ -115,4 +115,14 @@ a <- list(a = letters,
      c = c(T, T, F, F, F))
 a
 ```
+### Dataframe
+```{r}
+df <- data.frame(length = c(1.78, 74, 89, 23),
+                 weight = c(40, 50, 20, 90), 
+                 names = c("Dyumovochka", "Masha", "Tanya", "Stepa"),
+                 get.up.early = c(T, T, F, F))
+df
+
+```
+
 

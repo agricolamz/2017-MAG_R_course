@@ -342,16 +342,16 @@ length(a)</code></pre>
 a</code></pre>
 <pre><code>## Masha Vanya  Anya Masha 
 ##     5     7     4     3</code></pre>
-<pre class="r"><code>a &lt;- c(&#39;Masha&#39; = 5, &#39;Vanya&#39; = 7, &#39;Anya&#39; = 4, &#39;Masha&#39; = 3)
+<pre class="r"><code>a &lt;- c(&#39;Masha&#39; = 1:5, &#39;Vanya&#39; = 7, &#39;Anya&#39; = 4, &#39;Masha&#39; = 3)
 a</code></pre>
-<pre><code>## Masha Vanya  Anya Masha 
-##     5     7     4     3</code></pre>
+<pre><code>## Masha1 Masha2 Masha3 Masha4 Masha5  Vanya   Anya  Masha 
+##      1      2      3      4      5      7      4      3</code></pre>
 <pre class="r"><code>a[&quot;Vanya&quot;]</code></pre>
 <pre><code>## Vanya 
 ##     7</code></pre>
 <pre class="r"><code>a[&quot;Masha&quot;]</code></pre>
 <pre><code>## Masha 
-##     5</code></pre>
+##     3</code></pre>
 </div>
 <div id="matrix" class="section level3">
 <h3>Matrix</h3>
@@ -402,6 +402,19 @@ a</code></pre>
 ## 
 ## $c
 ## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+</div>
+<div id="dataframe" class="section level3">
+<h3>Dataframe</h3>
+<pre class="r"><code>df &lt;- data.frame(length = c(1.78, 74, 89, 23),
+                 weight = c(40, 50, 20, 90), 
+                 names = c(&quot;Dyumovochka&quot;, &quot;Masha&quot;, &quot;Tanya&quot;, &quot;Stepa&quot;),
+                 get.up.early = c(T, T, F, F))
+df</code></pre>
+<pre><code>##   length weight       names get.up.early
+## 1   1.78     40 Dyumovochka         TRUE
+## 2  74.00     50       Masha         TRUE
+## 3  89.00     20       Tanya        FALSE
+## 4  23.00     90       Stepa        FALSE</code></pre>
 </div>
 
 
