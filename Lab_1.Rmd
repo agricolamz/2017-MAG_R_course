@@ -2,5 +2,10 @@
 title: Intro to R and RStudio. Vectors. Dataframes. Packages.
 ---
 ```{r}
+# calculator
 2+2
+27/3
+3^9
+3**9
+
 ```
