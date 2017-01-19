@@ -222,3 +222,15 @@ my_sum(11, 12)
 
 ```
 
+### Apply, sapply
+```{r}
+mtcars
+str(mtcars)
+summary(mtcars)
+apply(mtcars, 1, mean)
+apply(mtcars, 2, mean)
+apply(mtcars, 2, function(x){mean(x)+ min(x)})
+nchar(month.name)^2
+sapply(month.name, function(x){nchar(x)^2})
+```
+
