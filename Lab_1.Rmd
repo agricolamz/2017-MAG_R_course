@@ -59,5 +59,8 @@ letters
 LETTERS
 month.abb
 month.name
+
+sample(1:6, size = 2)
+sample(1:6, size = 2, replace = T)
 ```
 
