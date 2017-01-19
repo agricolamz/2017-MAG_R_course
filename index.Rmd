@@ -7,4 +7,5 @@ title: "Linguistic data: quantitative analysis and visualisation"
 
 ### 1. Intro to R and RStudio. Vectors. Dataframes. Packages.
 
+* [Lec 1: Course description](https://agricolamz.github.io/2017-MAG_R_course/Lec_1_Course_description.html)
 * [Lab 1](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
