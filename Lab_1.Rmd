@@ -184,7 +184,21 @@ if(a > 3){
   print("bye")
 }
 
+for(i in 1:100){
+  print(i %% 2)
+}
 
+x <- c()
+for(i in 1:100){
+  x[i]  <-  i %% 2
+}
+x
+
+i <- 0
+while(i < 10){
+  print(i)
+  i <- i+1
+}
 
 ```
 
