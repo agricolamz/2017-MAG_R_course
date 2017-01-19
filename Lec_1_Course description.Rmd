@@ -6,6 +6,7 @@ G. Moroz
 agricolamz@hse.ru,
 I. Schurov 
 ischurov@hse.ru"
+date: 19.01.2017
 output:
   slidy_presentation:
     footer: "[asdas](dddd.com)"
