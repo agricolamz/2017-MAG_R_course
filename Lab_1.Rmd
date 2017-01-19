@@ -70,3 +70,15 @@ sample(1:6, size = 2, replace = T)
 runif(10, min = 20, max = 50)
 ```
 
+```{r}
+a <- 1:19
+a
+a+1
+a
+a <- a + 1
+a
+
+a = 1:19 # not cool
+  
+```
+

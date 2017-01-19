@@ -302,9 +302,9 @@ $(document).ready(function () {
 ##  [6] &quot;June&quot;      &quot;July&quot;      &quot;August&quot;    &quot;September&quot; &quot;October&quot;  
 ## [11] &quot;November&quot;  &quot;December&quot;</code></pre>
 <pre class="r"><code>sample(1:6, size = 2)</code></pre>
-<pre><code>## [1] 6 2</code></pre>
+<pre><code>## [1] 4 2</code></pre>
 <pre class="r"><code>sample(1:6, size = 2, replace = T)</code></pre>
-<pre><code>## [1] 6 3</code></pre>
+<pre><code>## [1] 1 4</code></pre>
 <pre class="r"><code>set.seed(19012017)
 sample(1:6, size = 2, replace = T)</code></pre>
 <pre><code>## [1] 4 5</code></pre>
@@ -313,6 +313,17 @@ sample(1:6, size = 2, replace = T)</code></pre>
 <pre class="r"><code>runif(10, min = 20, max = 50)</code></pre>
 <pre><code>##  [1] 34.02226 26.80585 34.55968 37.68316 42.71555 24.91827 30.37555
 ##  [8] 30.64998 22.49337 30.88836</code></pre>
+<pre class="r"><code>a &lt;- 1:19
+a</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19</code></pre>
+<pre class="r"><code>a+1</code></pre>
+<pre><code>##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre class="r"><code>a</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19</code></pre>
+<pre class="r"><code>a &lt;- a + 1
+a</code></pre>
+<pre><code>##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre class="r"><code>a = 1:19 # not cool</code></pre>
 </div>
 
 
