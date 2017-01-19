@@ -149,4 +149,15 @@ TRUE | c(FALSE, TRUE)
 TRUE & c(FALSE, TRUE)
 ```
 
+### Indexing
+```{r}
+a <- 1:100
+a[45]
+
+a <- c(masha = 1:100)
+a["masha43"]
+
+a[a > 40]
+```
+
 

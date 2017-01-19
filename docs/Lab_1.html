@@ -554,6 +554,33 @@ apropos(&quot;date&quot;)</code></pre>
 <pre class="r"><code>TRUE &amp; c(FALSE, TRUE)</code></pre>
 <pre><code>## [1] FALSE  TRUE</code></pre>
 </div>
+<div id="indexing" class="section level3">
+<h3>Indexing</h3>
+<pre class="r"><code>a &lt;- 1:100
+a[45]</code></pre>
+<pre><code>## [1] 45</code></pre>
+<pre class="r"><code>a &lt;- c(masha = 1:100)
+a[&quot;masha43&quot;]</code></pre>
+<pre><code>## masha43 
+##      43</code></pre>
+<pre class="r"><code>a[a &gt; 40]</code></pre>
+<pre><code>##  masha41  masha42  masha43  masha44  masha45  masha46  masha47  masha48 
+##       41       42       43       44       45       46       47       48 
+##  masha49  masha50  masha51  masha52  masha53  masha54  masha55  masha56 
+##       49       50       51       52       53       54       55       56 
+##  masha57  masha58  masha59  masha60  masha61  masha62  masha63  masha64 
+##       57       58       59       60       61       62       63       64 
+##  masha65  masha66  masha67  masha68  masha69  masha70  masha71  masha72 
+##       65       66       67       68       69       70       71       72 
+##  masha73  masha74  masha75  masha76  masha77  masha78  masha79  masha80 
+##       73       74       75       76       77       78       79       80 
+##  masha81  masha82  masha83  masha84  masha85  masha86  masha87  masha88 
+##       81       82       83       84       85       86       87       88 
+##  masha89  masha90  masha91  masha92  masha93  masha94  masha95  masha96 
+##       89       90       91       92       93       94       95       96 
+##  masha97  masha98  masha99 masha100 
+##       97       98       99      100</code></pre>
+</div>
 
 
 
