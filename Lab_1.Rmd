@@ -211,6 +211,14 @@ micatron <- function(zh, b, c){
 micatron(11, 10, 10)
 micatron(b = 10, 10, zh = 11)
 
+my_sum <- function(x, y = 10){
+  x+y
+}
+
+my_sum(11)
+
+my_sum(11, 12)
+
 
 ```
 
