@@ -161,6 +161,9 @@ a[a > 40]
 
 mtcars$cyl[17]
 mtcars[3, 7] # first rows, second columns
+mtcars[mtcars$cyl !=6, ]
+mtcars[mtcars$cyl !=6, 1:3]
+
 ```
 
 
