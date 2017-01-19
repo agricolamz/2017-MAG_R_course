@@ -2,5 +2,5 @@
 title: Intro to R and RStudio. Vectors. Dataframes. Packages.
 ---
 ```{r}
-
+2+2
 ```
