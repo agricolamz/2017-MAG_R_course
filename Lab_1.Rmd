@@ -62,5 +62,11 @@ month.name
 
 sample(1:6, size = 2)
 sample(1:6, size = 2, replace = T)
+
+set.seed(19012017)
+sample(1:6, size = 2, replace = T)
+sample(1:6, size = 2, replace = T)
+
+runif(10, min = 20, max = 50)
 ```
 
