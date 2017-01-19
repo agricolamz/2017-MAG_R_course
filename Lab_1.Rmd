@@ -54,5 +54,8 @@ seq(from = 2, to = 20, by = 3)
 seq(by = 3, to = 20, from = 2)
 seq(b = 3, t = 20, f = 2)
 seq(2, 20, 3)
+
+letters
+LETTERS
 ```
 
