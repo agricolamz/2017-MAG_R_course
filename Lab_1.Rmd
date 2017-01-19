@@ -1,6 +1,8 @@
 ---
 title: Intro to R and RStudio. Vectors. Dataframes. Packages.
 ---
-```{r, eval= FALSE}
+```{r}
+# calculator
+2+2 
 
 ```
