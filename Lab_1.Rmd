@@ -128,4 +128,25 @@ mtcars
 apropos("date")
 ```
 
+### Logic
+```{r}
+"mama" == "mama"
+"mama" == "tama"
+"mama" != "tama"
+"mama" > "tama"
+"mama" < "tama"
+"mama" < c("tama", "bama")
+3 <= 5
+10 >= 100
+10 > -Inf
+10 < Inf
+2+2 == 4
+10/3 == 100/3-30
+
+TRUE & FALSE
+TRUE | FALSE
+TRUE | c(FALSE, TRUE)
+TRUE & c(FALSE, TRUE)
+```
+
 
