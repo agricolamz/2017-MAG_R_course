@@ -12,5 +12,7 @@ title: Intro to R and RStudio. Vectors. Dataframes. Packages.
 sum(1, 2, 5,29, 43)
 prod(1, 2, 5,29, 43)
 50 %% 3
+abs(-53)
+factorial(20)
 
 ```
