@@ -163,7 +163,16 @@ mtcars$cyl[17]
 mtcars[3, 7] # first rows, second columns
 mtcars[mtcars$cyl !=6, ]
 mtcars[mtcars$cyl !=6, 1:3]
+rownames(mtcars[mtcars$cyl !=6, ])[1:3]
 
+View(mtcars)
+d <- mtcars
+```
+### Library
+```{r}
+#install.packages("lingtypology")
+library(lingtypology)
+map.feature(c("Russian", "Abaza", "Adyghe"))
 ```
 
 
