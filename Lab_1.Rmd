@@ -158,6 +158,9 @@ a <- c(masha = 1:100)
 a["masha43"]
 
 a[a > 40]
+
+mtcars$cyl[17]
+mtcars[3, 7] # first rows, second columns
 ```
 
 
