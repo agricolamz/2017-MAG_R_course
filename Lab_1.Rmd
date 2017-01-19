@@ -31,11 +31,14 @@ typeof(3)
 typeof(5L)
 typeof("Hi all")
 typeof(43 + 4i)
+typeof(TRUE)
+typeof(F)
 ```
 
 ### vectors
 ```{r}
 1:40
 40:1*10
+c("a", "b", "ку-ку")
 ```
 
