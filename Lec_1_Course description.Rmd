@@ -41,4 +41,4 @@ Teaching Assistant:
 * Modeling and Model Validation
 * Communicate visualization
 
-It is Data Science.
+It is not just Statistics or R programming. It is Data Science.
