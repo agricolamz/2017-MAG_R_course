@@ -126,3 +126,15 @@ anti_join(country_population, languages)
 full_join(country_population, languages)
 ```
 
+### 3.3 My data
+The most examples in that presentation are based on [Chi-kuk 2007](http://goo.gl/MKfSc6). Experiment consisted of a perception and judgment test aimed at measuring the correlation between acoustic cues and perceived sexual orientation. Naïve Cantonese speakers were asked to listen to the Cantonese speech samples collected in Experiment and judge whether the speakers were gay or heterosexual. There are 14 speakers and following parameters:
+
+* [s] duration (s.duration.ms)
+* vowel duration (vowel.duration.ms)
+* fundamental frequencies mean (F0) (average.f0.Hz)
+* fundamental frequencies range (f0.range.Hz)
+* percentage of homosexual impression (perceived.as.homo)
+* percentage of heterosexal impression (perceived.as.hetero)
+* speakers orientation (orientation)
+* speakers age (age)
+
