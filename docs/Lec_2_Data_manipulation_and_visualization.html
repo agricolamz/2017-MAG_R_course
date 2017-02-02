@@ -264,6 +264,13 @@ country_population</code></pre></div>
 {"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"French","2":"France","3":"fra"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>(country_population, languages)</code></pre></div>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["countries"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Finland","2":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(country_population, languages)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
 <pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
