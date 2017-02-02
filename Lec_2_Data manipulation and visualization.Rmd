@@ -1,0 +1,127 @@
+---
+title: "Data manipulation and visualization"
+subtitle: "tidyverse: dplyr, tidyr, ggplot2"
+date: 02.02.2017
+font-family: 'Brill'
+transition: none
+output:
+  slidy_presentation:
+    df_print: paged
+    footer: "Presentation link: https://goo.gl/gNqTPM"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1.1 Data Types
+* Vector
+```{r}
+c(42, 99, 43)
+```
+* Matrix, Array...
+```{r}
+matrix(1:12, nrow=3,ncol=4)
+```
+* List
+```{r}
+list(
+  n_lectures = 12,
+  l_topics = c("begining", "data manipulation", "descriptive stats"),
+  h_topics = c("data manipulations", "descriptive stats")
+  )
+```
+
+* Data Frame
+```{r}
+data.frame(
+  names = c("Olya", "Ilya", "Sasha", "George"),
+  lecturer = c(TRUE, TRUE, FALSE, TRUE),
+  lecturer_experience = c(19, 6, 0, 3)
+  )
+```
+
+
+[See Data Type Conversion page](http://www.statmethods.net/management/typeconversion.html)
+
+### 1.2 Data Frame exploration
+There are some embedded data frames (e. g. `mtcars`, `cars`, `iris`). How many rows and columns?
+```{r}
+nrow(iris) # returns the number of rows
+ncol(mtcars) #  returns the number of columns
+```
+```{r}
+head(cars) # returns the first 6 rows
+head(cars, 4) # returns the first 4 rows
+tail(cars) # returns the last 6 rows
+summary(cars)  # produce some stats
+str(cars)  # shows the structure: variables, their type
+```
+
+### 1.3 Data Frame Indexing
+```{r}
+mtcars$mpg # shows the mpg vector
+mtcars[3,7] # shows the 3. row, 7. column
+mtcars[3,] # shows the 3. row
+mtcars[,7] # shows the 7. column
+mtcars[mtcars$mpg < 20, ] # show all rows with the mpg value lower then 20
+```
+
+### 2. Tidyverse
+The [tidyverse](https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/) is a set of packages:
+
+* dplyr, for data manipulation
+* ggplot2, for data visualisation
+* tidyr, for data tidying
+* readr, for data import
+* purrr, for functional programming
+* tibble, for tibbles, a modern re-imagining of data frames
+
+Install tidyverse package using install.packages("tidyverse")
+
+Load tidyverse package
+```{r, message= FALSE}
+library(tidyverse)
+```
+In this presentation is used the folowing version of tideverse:
+```{r}
+packageVersion("tidyverse")
+packageVersion("dplyr")
+packageVersion("ggplot2")
+```
+
+### 3.1 Join dataframe by row or column
+
+```{r}
+my_data_1 <- mtcars[5:20,] # select a subset of mtcars
+my_data_2 <- mtcars[17:29,] # select a subset of mtcars
+combine_rows <- rbind.data.frame(my_data_1, my_data_2)
+nrow(my_data_1); nrow(my_data_2); nrow(combine_rows)
+```
+
+```{r}
+my_data_3 <- mtcars[,3:7] # select a subset of mtcars
+my_data_4 <- mtcars[,6:11] # select a subset of mtcars
+combine_cols <- cbind.data.frame(my_data_3, my_data_4)
+ncol(my_data_3); ncol(my_data_4); ncol(combine_cols)
+```
+
+### 3.2 Joins (dplyr)
+```{r}
+languages <- data.frame(
+  languages = c("Selkup", "French", "Chukchi", "Kashubian"),
+  countries = c("Russia", "France", "Russia", "Poland"),
+  iso = c("sel", "fra", "ckt", "pol")
+  )
+languages
+country_population <- data.frame(
+  countries = c("Russia", "Poland", "Finland"),
+  population_mln = c(143, 38, 5))
+country_population
+inner_join(languages, country_population)
+left_join(languages, country_population)
+right_join(languages, country_population)
+anti_join(languages, country_population)
+full_join(country_population, languages)
+```
+

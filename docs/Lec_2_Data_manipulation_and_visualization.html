@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="copyright" content="Presentation link: https://goo.gl/gNqTPM"/>
+  <title>Data manipulation and visualization</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link href="site_libs/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="site_libs/slidy-2/scripts/slidy.js"></script>
+  <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Data manipulation and visualization</h1>
+  <h1 class="subtitle">tidyverse: dplyr, tidyr, ggplot2</h1>
+  <p class="author">
+
+  </p>
+  <p class="date">02.02.2017</p>
+</div>
+<div id="data-types" class="slide section level3">
+<h1>1.1 Data Types</h1>
+<ul>
+<li>Vector</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">99</span>, <span class="dv">43</span>)</code></pre></div>
+<pre><code>## [1] 42 99 43</code></pre>
+<ul>
+<li>Matrix, Array…</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>,<span class="dt">ncol=</span><span class="dv">4</span>)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<ul>
+<li>List</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(
+  <span class="dt">n_lectures =</span> <span class="dv">12</span>,
+  <span class="dt">l_topics =</span> <span class="kw">c</span>(<span class="st">&quot;begining&quot;</span>, <span class="st">&quot;data manipulation&quot;</span>, <span class="st">&quot;descriptive stats&quot;</span>),
+  <span class="dt">h_topics =</span> <span class="kw">c</span>(<span class="st">&quot;data manipulations&quot;</span>, <span class="st">&quot;descriptive stats&quot;</span>)
+  )</code></pre></div>
+<pre><code>## $n_lectures
+## [1] 12
+## 
+## $l_topics
+## [1] &quot;begining&quot;          &quot;data manipulation&quot; &quot;descriptive stats&quot;
+## 
+## $h_topics
+## [1] &quot;data manipulations&quot; &quot;descriptive stats&quot;</code></pre>
+<ul>
+<li>Data Frame</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(
+  <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Olya&quot;</span>, <span class="st">&quot;Ilya&quot;</span>, <span class="st">&quot;Sasha&quot;</span>, <span class="st">&quot;George&quot;</span>),
+  <span class="dt">lecturer =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>),
+  <span class="dt">lecturer_experience =</span> <span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">3</span>)
+  )</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["names"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["lecturer"],"name":[2],"type":["lgl"],"align":["right"]},{"label":["lecturer_experience"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Olya","2":"TRUE","3":"19"},{"1":"Ilya","2":"TRUE","3":"6"},{"1":"Sasha","2":"FALSE","3":"0"},{"1":"George","2":"TRUE","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><a href="http://www.statmethods.net/management/typeconversion.html">See Data Type Conversion page</a></p>
+</div>
+<div id="data-frame-exploration" class="slide section level3">
+<h1>1.2 Data Frame exploration</h1>
+<p>There are some embedded data frames (e. g. <code>mtcars</code>, <code>cars</code>, <code>iris</code>). How many rows and columns?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iris) <span class="co"># returns the number of rows</span></code></pre></div>
+<pre><code>## [1] 150</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(mtcars) <span class="co">#  returns the number of columns</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cars) <span class="co"># returns the first 6 rows</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2"},{"1":"4","2":"10"},{"1":"7","2":"4"},{"1":"7","2":"22"},{"1":"8","2":"16"},{"1":"9","2":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cars, <span class="dv">4</span>) <span class="co"># returns the first 4 rows</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2"},{"1":"4","2":"10"},{"1":"7","2":"4"},{"1":"7","2":"22"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(cars) <span class="co"># returns the last 6 rows</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"23","2":"54"},{"1":"24","2":"70"},{"1":"24","2":"92"},{"1":"24","2":"93"},{"1":"24","2":"120"},{"1":"25","2":"85"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)  <span class="co"># produce some stats</span></code></pre></div>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cars)  <span class="co"># shows the structure: variables, their type</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    50 obs. of  2 variables:
+##  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...
+##  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</code></pre>
+</div>
+<div id="data-frame-indexing" class="slide section level3">
+<h1>1.3 Data Frame Indexing</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars$mpg <span class="co"># shows the mpg vector</span></code></pre></div>
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[<span class="dv">3</span>,<span class="dv">7</span>] <span class="co"># shows the 3. row, 7. column</span></code></pre></div>
+<pre><code>## [1] 18.61</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[<span class="dv">3</span>,] <span class="co"># shows the 3. row</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"22.8","2":"4","3":"108","4":"93","5":"3.85","6":"2.32","7":"18.61","8":"1","9":"1","10":"4","11":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[,<span class="dv">7</span>] <span class="co"># shows the 7. column</span></code></pre></div>
+<pre><code>##  [1] 16.46 17.02 18.61 19.44 17.02 20.22 15.84 20.00 22.90 18.30 18.90
+## [12] 17.40 17.60 18.00 17.98 17.82 17.42 19.47 18.52 19.90 20.01 16.87
+## [23] 17.30 15.41 17.05 18.90 16.70 16.90 14.50 15.50 14.60 18.60</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[mtcars$mpg &lt;<span class="st"> </span><span class="dv">20</span>, ] <span class="co"># show all rows with the mpg value lower then 20</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4"},{"1":"19.2","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.30","8":"1","9":"0","10":"4","11":"4"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4"},{"1":"16.4","2":"8","3":"275.8","4":"180","5":"3.07","6":"4.070","7":"17.40","8":"0","9":"0","10":"3","11":"3"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3"},{"1":"15.2","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.780","7":"18.00","8":"0","9":"0","10":"3","11":"3"},{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4"},{"1":"14.7","2":"8","3":"440.0","4":"230","5":"3.23","6":"5.345","7":"17.42","8":"0","9":"0","10":"3","11":"4"},{"1":"15.5","2":"8","3":"318.0","4":"150","5":"2.76","6":"3.520","7":"16.87","8":"0","9":"0","10":"3","11":"2"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2"},{"1":"13.3","2":"8","3":"350.0","4":"245","5":"3.73","6":"3.840","7":"15.41","8":"0","9":"0","10":"3","11":"4"},{"1":"19.2","2":"8","3":"400.0","4":"175","5":"3.08","6":"3.845","7":"17.05","8":"0","9":"0","10":"3","11":"2"},{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.170","7":"14.50","8":"0","9":"1","10":"5","11":"4"},{"1":"19.7","2":"6","3":"145.0","4":"175","5":"3.62","6":"2.770","7":"15.50","8":"0","9":"1","10":"5","11":"6"},{"1":"15.0","2":"8","3":"301.0","4":"335","5":"3.54","6":"3.570","7":"14.60","8":"0","9":"1","10":"5","11":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="tidyverse" class="slide section level3">
+<h1>2. Tidyverse</h1>
+<p>The <a href="https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/">tidyverse</a> is a set of packages:</p>
+<ul>
+<li>dplyr, for data manipulation</li>
+<li>ggplot2, for data visualisation</li>
+<li>tidyr, for data tidying</li>
+<li>readr, for data import</li>
+<li>purrr, for functional programming</li>
+<li>tibble, for tibbles, a modern re-imagining of data frames</li>
+</ul>
+<p>Install tidyverse package using install.packages(“tidyverse”)</p>
+<p>Load tidyverse package</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>In this presentation is used the folowing version of tideverse:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<pre><code>## [1] &#39;1.1.1&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<pre><code>## [1] &#39;0.5.0&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
+<pre><code>## [1] &#39;2.2.1&#39;</code></pre>
+</div>
+<div id="join-dataframe-by-row-or-column" class="slide section level3">
+<h1>3.1 Join dataframe by row or column</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_data_1 &lt;-<span class="st"> </span>mtcars[<span class="dv">5</span>:<span class="dv">20</span>,] <span class="co"># select a subset of mtcars</span>
+my_data_2 &lt;-<span class="st"> </span>mtcars[<span class="dv">17</span>:<span class="dv">29</span>,] <span class="co"># select a subset of mtcars</span>
+combine_rows &lt;-<span class="st"> </span><span class="kw">rbind.data.frame</span>(my_data_1, my_data_2)
+<span class="kw">nrow</span>(my_data_1); <span class="kw">nrow</span>(my_data_2); <span class="kw">nrow</span>(combine_rows)</code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 29</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_data_3 &lt;-<span class="st"> </span>mtcars[,<span class="dv">3</span>:<span class="dv">7</span>] <span class="co"># select a subset of mtcars</span>
+my_data_4 &lt;-<span class="st"> </span>mtcars[,<span class="dv">6</span>:<span class="dv">11</span>] <span class="co"># select a subset of mtcars</span>
+combine_cols &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(my_data_3, my_data_4)
+<span class="kw">ncol</span>(my_data_3); <span class="kw">ncol</span>(my_data_4); <span class="kw">ncol</span>(combine_cols)</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 11</code></pre>
+</div>
+<div id="joins-dplyr" class="slide section level3">
+<h1>3.2 Joins (dplyr)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">languages &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">languages =</span> <span class="kw">c</span>(<span class="st">&quot;Selkup&quot;</span>, <span class="st">&quot;French&quot;</span>, <span class="st">&quot;Chukchi&quot;</span>, <span class="st">&quot;Kashubian&quot;</span>),
+  <span class="dt">countries =</span> <span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;Poland&quot;</span>),
+  <span class="dt">iso =</span> <span class="kw">c</span>(<span class="st">&quot;sel&quot;</span>, <span class="st">&quot;fra&quot;</span>, <span class="st">&quot;ckt&quot;</span>, <span class="st">&quot;pol&quot;</span>)
+  )
+languages</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel"},{"1":"French","2":"France","3":"fra"},{"1":"Chukchi","2":"Russia","3":"ckt"},{"1":"Kashubian","2":"Poland","3":"pol"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_population &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">countries =</span> <span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;Poland&quot;</span>, <span class="st">&quot;Finland&quot;</span>),
+  <span class="dt">population_mln =</span> <span class="kw">c</span>(<span class="dv">143</span>, <span class="dv">38</span>, <span class="dv">5</span>))
+country_population</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["countries"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Russia","2":"143"},{"1":"Poland","2":"38"},{"1":"Finland","2":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inner_join</span>(languages, country_population)</code></pre></div>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel","4":"143"},{"1":"Chukchi","2":"Russia","3":"ckt","4":"143"},{"1":"Kashubian","2":"Poland","3":"pol","4":"38"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">left_join</span>(languages, country_population)</code></pre></div>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel","4":"143"},{"1":"French","2":"France","3":"fra","4":"NA"},{"1":"Chukchi","2":"Russia","3":"ckt","4":"143"},{"1":"Kashubian","2":"Poland","3":"pol","4":"38"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right_join</span>(languages, country_population)</code></pre></div>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in right_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel","4":"143"},{"1":"Chukchi","2":"Russia","3":"ckt","4":"143"},{"1":"Kashubian","2":"Poland","3":"pol","4":"38"},{"1":"NA","2":"Finland","3":"NA","4":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>(languages, country_population)</code></pre></div>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"French","2":"France","3":"fra"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(country_population, languages)</code></pre></div>
+<pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
+## factors with different levels, coercing to character vector</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["countries"],"name":[1],"type":["chr"],"align":["left"]},{"label":["population_mln"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["languages"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"Russia","2":"143","3":"Selkup","4":"sel"},{"1":"Russia","2":"143","3":"Chukchi","4":"ckt"},{"1":"Poland","2":"38","3":"Kashubian","4":"pol"},{"1":"Finland","2":"5","3":"NA","4":"NA"},{"1":"France","2":"NA","3":"French","4":"fra"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>
