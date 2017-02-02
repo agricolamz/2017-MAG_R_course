@@ -7,7 +7,7 @@ transition: none
 output:
   slidy_presentation:
     df_print: paged
-    footer: "Presentation link: https://goo.gl/Osquic"
+    footer: "Presentation link: https://goo.gl/fGi6Iv"
 ---
 
 ```{r setup, include=FALSE}
