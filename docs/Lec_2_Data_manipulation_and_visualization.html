@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 {"columns":[{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4"},{"1":"19.2","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.30","8":"1","9":"0","10":"4","11":"4"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4"},{"1":"16.4","2":"8","3":"275.8","4":"180","5":"3.07","6":"4.070","7":"17.40","8":"0","9":"0","10":"3","11":"3"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3"},{"1":"15.2","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.780","7":"18.00","8":"0","9":"0","10":"3","11":"3"},{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4"},{"1":"14.7","2":"8","3":"440.0","4":"230","5":"3.23","6":"5.345","7":"17.42","8":"0","9":"0","10":"3","11":"4"},{"1":"15.5","2":"8","3":"318.0","4":"150","5":"2.76","6":"3.520","7":"16.87","8":"0","9":"0","10":"3","11":"2"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2"},{"1":"13.3","2":"8","3":"350.0","4":"245","5":"3.73","6":"3.840","7":"15.41","8":"0","9":"0","10":"3","11":"4"},{"1":"19.2","2":"8","3":"400.0","4":"175","5":"3.08","6":"3.845","7":"17.05","8":"0","9":"0","10":"3","11":"2"},{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.170","7":"14.50","8":"0","9":"1","10":"5","11":"4"},{"1":"19.7","2":"6","3":"145.0","4":"175","5":"3.62","6":"2.770","7":"15.50","8":"0","9":"1","10":"5","11":"6"},{"1":"15.0","2":"8","3":"301.0","4":"335","5":"3.54","6":"3.570","7":"14.60","8":"0","9":"1","10":"5","11":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?mtcars</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ?mtcars</span></code></pre></div>
 </div>
 <div id="tidyverse" class="slide section level3">
 <h1>2. Tidyverse</h1>
@@ -341,26 +341,18 @@ homo</code></pre></div>
 </div>
 <p>%&gt;% is called <em>pipe</em>. Pipe is a technique for passing result of the work of one function to another.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">sin</span>(<span class="dv">1</span>:<span class="dv">22</span>))), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>##  [1] 0.9999951 0.9952926 0.9946649
-##  [4] 0.9805088 0.9792468 0.9554817
-##  [7] 0.9535709 0.9173173 0.9146888
-## [10] 0.8699440 0.8665952 0.8105471
-## [13] 0.8064043 0.7375779 0.7325114
-## [16] 0.6482029 0.6419646 0.5365662
-## [19] 0.5285977 0.3871398 0.3756594
+<pre><code>##  [1] 0.9999951 0.9952926 0.9946649 0.9805088 0.9792468 0.9554817 0.9535709
+##  [8] 0.9173173 0.9146888 0.8699440 0.8665952 0.8105471 0.8064043 0.7375779
+## [15] 0.7325114 0.6482029 0.6419646 0.5365662 0.5285977 0.3871398 0.3756594
 ## [22] 0.0940814</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>:<span class="dv">22</span> %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">sin</span>() %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">abs</span>() %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">sqrt</span>() %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">sort</span>(., <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="co"># dot here shows where should argument be</span></code></pre></div>
-<pre><code>##  [1] 0.9999951 0.9952926 0.9946649
-##  [4] 0.9805088 0.9792468 0.9554817
-##  [7] 0.9535709 0.9173173 0.9146888
-## [10] 0.8699440 0.8665952 0.8105471
-## [13] 0.8064043 0.7375779 0.7325114
-## [16] 0.6482029 0.6419646 0.5365662
-## [19] 0.5285977 0.3871398 0.3756594
+<pre><code>##  [1] 0.9999951 0.9952926 0.9946649 0.9805088 0.9792468 0.9554817 0.9535709
+##  [8] 0.9173173 0.9146888 0.8699440 0.8665952 0.8105471 0.8064043 0.7375779
+## [15] 0.7325114 0.6482029 0.6419646 0.5365662 0.5285977 0.3871398 0.3756594
 ## [22] 0.0940814</code></pre>
 <p>Pipes in <em>tidyverse</em> package came from <em>magritr</em> package. Sometimes it works incorrectly with not <em>tidyverse</em> functions.</p>
 </div>
@@ -485,13 +477,11 @@ homo</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo$f0.min &lt;-<span class="st"> </span>homo$average.f0.Hz -<span class="st"> </span>homo$f0.range.Hz/<span class="dv">2</span>
 homo$f0.min</code></pre></div>
-<pre><code>##  [1]  93.26  43.29  63.30  97.21 112.06
-##  [6] 129.79  69.86  77.41  61.66  68.05
+<pre><code>##  [1]  93.26  43.29  63.30  97.21 112.06 129.79  69.86  77.41  61.66  68.05
 ## [11]  75.68 117.30 105.09 102.78</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo$f0.max &lt;-<span class="st"> </span>homo$average.f0.Hz +<span class="st"> </span>homo$f0.range.Hz/<span class="dv">2</span>
 homo$f0.max</code></pre></div>
-<pre><code>##  [1] 145.76 157.29 166.50 156.01 149.46
-##  [6] 171.79 188.06 133.11 158.06 179.75
+<pre><code>##  [1] 145.76 157.29 166.50 156.01 149.46 171.79 188.06 133.11 158.06 179.75
 ## [11] 163.28 175.10 205.59 140.18</code></pre>
 <ul>
 <li><em>dplyr</em></li>
@@ -544,12 +534,20 @@ homo  </code></pre></div>
 <div id="tidyr-package" class="slide section level3">
 <h1>4.1. tidyr package</h1>
 <ul>
-<li>Short format
+<li>Short format</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.short &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+                   <span class="dt">consonant =</span> <span class="kw">c</span>(<span class="st">&quot;stops&quot;</span>, <span class="st">&quot;fricatives&quot;</span>, <span class="st">&quot;affricates&quot;</span>, <span class="st">&quot;nasals&quot;</span>),
+                   <span class="dt">initial =</span> <span class="kw">c</span>(<span class="dv">123</span>, <span class="dv">87</span>, <span class="dv">73</span>, <span class="dv">7</span>),
+                   <span class="dt">intervocal =</span> <span class="kw">c</span>(<span class="dv">57</span>, <span class="dv">77</span>, <span class="dv">82</span>, <span class="dv">78</span>),
+                   <span class="dt">final =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">69</span>, <span class="dv">12</span>, <span class="dv">104</span>))
+df.short</code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["initial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["intervocal"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["final"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"stops","2":"123","3":"57","4":"30"},{"1":"fricatives","2":"87","3":"77","4":"69"},{"1":"affricates","2":"73","3":"82","4":"12"},{"1":"nasals","2":"7","3":"78","4":"104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
-</div></li>
+</div>
+<ul>
 <li>Long format
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -622,12 +620,9 @@ df.short</code></pre></div>
   <span class="kw">lm</span>(y~x)$coefficients},
   quartet[, <span class="dv">1</span>:<span class="dv">4</span>*<span class="dv">2-1</span>],
   quartet[, <span class="dv">1</span>:<span class="dv">4</span>*<span class="dv">2</span>])</code></pre></div>
-<pre><code>##                    X1       X2        X3
-## (Intercept) 3.0000909 3.000909 3.0024545
-## x           0.5000909 0.500000 0.4997273
-##                    X4
-## (Intercept) 3.0017273
-## x           0.4999091</code></pre>
+<pre><code>##                    X1       X2        X3        X4
+## (Intercept) 3.0000909 3.000909 3.0024545 3.0017273
+## x           0.5000909 0.500000 0.4997273 0.4999091</code></pre>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-41-1.png" width="768" /></p>
 </div>
 <div id="scaterplot" class="slide section level3">
@@ -971,8 +966,7 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick
-## better value with `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> How many histogram bins do we need? * [Sturgers 1926] <em>nclass.Sturges(adyghe<span class="math inline">\(F1)_ * [Scott 1979] _nclass.scott(adyghe\)</span>F1)</em> * [Freedman, Diaconis 1981] <em>nclass.FD(adyghe$F1)</em></p>
 <ul>
 <li>base R</li>
@@ -995,8 +989,7 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick
-## better value with `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /></p>
 </div>
 

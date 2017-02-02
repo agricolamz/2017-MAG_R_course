@@ -66,7 +66,7 @@ mtcars[3,7] # shows the 3. row, 7. column
 mtcars[3,] # shows the 3. row
 mtcars[,7] # shows the 7. column
 mtcars[mtcars$mpg < 20, ] # show all rows with the mpg value lower then 20
-?mtcars
+# ?mtcars
 ```
 
 ### 2. Tidyverse
@@ -296,7 +296,7 @@ homo %>%
 
 ### 4.1. tidyr package
 * Short format
-```{r, echo = FALSE}
+```{r}
 df.short <- data.frame(
                    consonant = c("stops", "fricatives", "affricates", "nasals"),
                    initial = c(123, 87, 73, 7),
@@ -305,7 +305,7 @@ df.short <- data.frame(
 df.short
 ```
 * Long format
-```{r, , echo = FALSE}
+```{r, echo = FALSE}
 df.short %>% 
   gather(position, number, initial:final)
 ```
