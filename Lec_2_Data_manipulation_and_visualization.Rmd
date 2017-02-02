@@ -319,6 +319,7 @@ df.short
 df.short %>% 
   gather(position, number, initial:final) ->
   df.long
+df.long
 ```
 
 ### 4.2 Long format → Short format: spread (tidyr)
@@ -326,5 +327,6 @@ df.short %>%
 df.long %>% 
   spread(position, number) ->
   df.short
+df.short
 ```
 

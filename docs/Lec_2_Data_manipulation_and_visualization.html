@@ -559,13 +559,25 @@ df.short</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.short %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(position, number, initial:final) -&gt;
-<span class="st">  </span>df.long</code></pre></div>
+<span class="st">  </span>df.long
+df.long</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["position"],"name":[2],"type":["chr"],"align":["left"]},{"label":["number"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"stops","2":"initial","3":"123"},{"1":"fricatives","2":"initial","3":"87"},{"1":"affricates","2":"initial","3":"73"},{"1":"nasals","2":"initial","3":"7"},{"1":"stops","2":"intervocal","3":"57"},{"1":"fricatives","2":"intervocal","3":"77"},{"1":"affricates","2":"intervocal","3":"82"},{"1":"nasals","2":"intervocal","3":"78"},{"1":"stops","2":"final","3":"30"},{"1":"fricatives","2":"final","3":"69"},{"1":"affricates","2":"final","3":"12"},{"1":"nasals","2":"final","3":"104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="long-format-short-format-spread-tidyr" class="slide section level3">
 <h1>4.2 Long format → Short format: spread (tidyr)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.long %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">spread</span>(position, number) -&gt;
-<span class="st">  </span>df.short</code></pre></div>
+<span class="st">  </span>df.short
+df.short</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["final"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["initial"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["intervocal"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"affricates","2":"12","3":"73","4":"82"},{"1":"fricatives","2":"69","3":"87","4":"77"},{"1":"nasals","2":"104","3":"7","4":"78"},{"1":"stops","2":"30","3":"123","4":"57"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
