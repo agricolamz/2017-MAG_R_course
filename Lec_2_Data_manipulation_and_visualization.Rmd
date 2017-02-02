@@ -56,6 +56,7 @@ head(cars, 4) # returns the first 4 rows
 tail(cars) # returns the last 6 rows
 summary(cars)  # produce some stats
 str(cars)  # shows the structure: variables, their type
+#View(cars)
 ```
 
 ### 1.3 Data Frame Indexing
@@ -65,6 +66,7 @@ mtcars[3,7] # shows the 3. row, 7. column
 mtcars[3,] # shows the 3. row
 mtcars[,7] # shows the 7. column
 mtcars[mtcars$mpg < 20, ] # show all rows with the mpg value lower then 20
+?mtcars
 ```
 
 ### 2. Tidyverse
@@ -147,6 +149,7 @@ homo
 ### 3.4 Data Frame → Tibble (dplyr)
 Tibble is a useful modification of Data Frame.
 ```{r}
+library(tidyverse)
 homo <- tbl_df(homo)
 homo
 ```
@@ -161,7 +164,7 @@ homo[homo$age > 28,]
 * _dplyr_
 ```{r}
 homo %>%
-  filter(age > 28)
+  filter(age > 28, s.duration.ms < 60)
 ```
 
 %>%  is called *pipe*. Pipe is a technique for passing result of the work of one function to another.
@@ -219,7 +222,7 @@ homo[order(homo$orientation, homo$age), ]
 * _dplyr_
 ```{r}
 homo %>%
-  arrange(orientation, age)
+  arrange(orientation, desc(age))
 ```
 
 ### 3.9 distinct
@@ -232,7 +235,7 @@ unique(homo$orientation)
 * _dplyr_
 ```{r}
 homo %>%
-  distinct(orientation)
+  distinct(orientation, age > 20)
 ```
 
 * base R
@@ -260,9 +263,10 @@ homo$f0.max
 * _dplyr_
 ```{r}
 homo %>%
-  mutate(
-   f0.min = average.f0.Hz - f0.range.Hz/2,
-   f0.max = average.f0.Hz + f0.range.Hz/2)
+  mutate( f0.mn = average.f0.Hz - f0.range.Hz/2,
+          f0.mx = (average.f0.Hz + f0.range.Hz/2)) -> 
+  homo
+homo  
 ```
 ### 3.11 group_by and summarise (dplyr)
 
@@ -274,7 +278,7 @@ homo %>%
 ```{r}
 homo %>%
   group_by(orientation) %>% 
-  summarise(count = n())
+  summarise(my_mean = mean(s.duration.ms))
 ```
 
 ```{r}
@@ -291,7 +295,6 @@ homo %>%
 
 
 ### 4.1. tidyr package
-
 * Short format
 ```{r, echo = FALSE}
 df.short <- data.frame(
@@ -330,3 +333,402 @@ df.long %>%
 df.short
 ```
 
+
+### 5. Anscombe's quartet
+In Anscombe, F. J. (1973). "Graphs in Statistical Analysis" was presented the next sets of data:
+
+```{r}
+quartet <- read.csv("https://goo.gl/KHQLZI")
+head(quartet)
+```
+
+```{r}
+sapply(quartet[, 1:4*2-1], mean)
+sapply(quartet[, 1:4*2], mean)
+sapply(quartet[, 1:4*2-1], sd)
+sapply(quartet[, 1:4*2], sd)
+mapply(cor, quartet[, 1:4*2-1], quartet[, 1:4*2])
+mapply(function(x, y){
+  lm(y~x)$coefficients},
+  quartet[, 1:4*2-1],
+  quartet[, 1:4*2])
+```
+
+```{r, echo=FALSE, message= FALSE}
+library(ggplot2); library(grid); library(gridExtra)
+p1 <- ggplot(quartet, aes(X1, Y1)) +
+  geom_smooth(method = "lm") +
+  geom_point()+
+  theme_bw()
+p2 <- ggplot(quartet, aes(X2, Y2)) +
+  geom_smooth(method = "lm") +
+  geom_point()+
+  theme_bw()
+p3 <- ggplot(quartet, aes(X3, Y3)) +
+  geom_smooth(method = "lm") +
+  geom_point()+
+  theme_bw()
+p4 <- ggplot(quartet, aes(X4, Y4)) +
+  geom_smooth(method = "lm") +
+  geom_point()+
+  theme_bw()
+
+grid.arrange(p1, p2, p3, p4, ncol = 2, top = "Anscombe's quartet")
+
+```
+
+### 6.1 Scaterplot
+
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms)
+```
+
+* ggplot2
+```{r}
+ggplot(data = homo, aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point()
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point()
+```
+
+### 6.1.1 Scaterplot: color
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     col = c("red", "blue")[homo$orientation])
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms,
+             color = orientation)) +
+  geom_point()
+```
+
+### 6.1.2 Scaterplot: shape
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     pch = c(16, 17)[homo$orientation])
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms,
+             shape = orientation)) +
+  geom_point()
+```
+
+### 6.1.3 Scaterplot: size
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     cex = homo$age/20)
+```
+
+* :(
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     cex = homo$age)
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms,
+             size = age)) +
+  geom_point()
+```
+
+### 6.1.4 Scaterplot: text
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     pch = c("⚤", "⚣")[homo$orientation])
+```
+
+* dplyr, ggplot2
+```{r}
+levels(homo$orientation) <- c("⚣", "⚤")
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms, label = orientation)) +
+  geom_text()
+```
+
+```{r, echo = FALSE}
+levels(homo$orientation) <- c("homo", "hetero")
+```
+
+
+### 6.1.5 Scaterplot: title
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     main = "length of [s] vs. length of vowels")
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point()+
+  labs(title = "length of [s] vs. length of vowels",
+       subtitle = "based on 14 speakers of Cantonese",
+       caption = "data from [Chi kuk 2007]")
+```
+
+### 6.1.6 Scaterplot: axis
+* base R
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms,
+     xlab = "duration of [s] in ms", ylab = "vowel duration in ms")
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point()+
+  xlab("duration of [s] in ms")+
+  ylab("vowel duration in ms")
+```
+
+### 6.1.7 Log scales
+![](https://pbs.twimg.com/media/CTxg970WwAApE98.png)
+
+Lets use the frequency dictionary for Russian
+```{r}
+freq <- read.csv("https://goo.gl/TlX7xW", sep = "\t")
+freq %>%
+  arrange(desc(Freq.ipm.)) %>% 
+  slice(1:200) %>% 
+  ggplot(aes(Rank, Freq.ipm.)) +
+  geom_point() +
+  xlab("") +
+  ylab("ipm")
+```
+
+
+* base R
+```{r}
+plot(1:52138, freq$Freq.ipm.,
+  xlab = NA, ylab = "ipm",
+  las = 1,
+  log = "y")
+```
+
+* dplyr, ggplot2
+```{r}
+freq %>%
+  ggplot(aes(1:52138, Freq.ipm.))+
+  geom_point()+
+  xlab("")+
+  ylab("ipm")+
+  scale_y_log10()
+```
+
+### 6.1.8 Scaterplot: rug
+
+* R base
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms)
+rug(homo$s.duration.ms)
+rug(homo$vowel.duration.ms, side = 2)
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point() +
+  geom_rug()
+```
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms, color = orientation)) +
+  geom_point() +
+  geom_rug()
+```
+
+### 6.1.9 Scaterplot: lines
+* R base
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms)
+abline(h = 120, v = 60)
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point() +
+  geom_hline(yintercept = 120)+
+  geom_vline(xintercept = 60)
+```
+
+* R base
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms)
+abline(h = 120, lty = 2)
+abline(v = 60, lwd = 5)
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point() +
+  geom_hline(yintercept = 120, linetype = 2)+
+  geom_vline(xintercept = 60, size = 5)
+```
+
+* R base
+```{r}
+plot(homo$s.duration.ms, homo$vowel.duration.ms)
+abline(h = 120, lty = 4)
+abline(v = 60, col = "blue")
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point() +
+  geom_hline(yintercept = 120, linetype = 4)+
+  geom_vline(xintercept = 60, color = "blue")
+```
+
+### 6.2.1 Barplots: basics
+
+* base R
+```{r}
+barplot(homo$age, names.arg = homo$speaker)
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(speaker, age)) +
+  geom_bar(stat = "identity")
+```
+
+### 6.2.2 Barplots: color
+* base R
+```{r}
+barplot(homo$age, names.arg = homo$speaker,
+  col = homo$orientation)
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(speaker, age, fill = orientation)) +
+  geom_bar(stat = "identity")
+```
+
+### 6.3.1 Boxplots: basics
+* base R
+```{r}
+boxplot(homo$s.duration.ms~homo$orientation)
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(orientation, s.duration.ms)) +
+  geom_boxplot()
+```
+
+### 6.3.2 Boxplots: points
+* base R
+```{r}
+boxplot(homo$s.duration.ms~homo$orientation)
+stripchart(homo$s.duration.ms ~ homo$orientation,
+  pch = 1, vertical = T, add = T)
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(orientation, s.duration.ms)) +
+  geom_boxplot() +
+  geom_point()
+```
+
+### 6.3.3 Boxplots: jitter
+* base R
+```{r}
+boxplot(homo$s.duration.ms~homo$orientation)
+stripchart(homo$s.duration.ms~homo$orientation,
+  pch = 1, vertical = T, add = T, method = "jitter")
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(orientation, s.duration.ms)) +
+  geom_boxplot() +
+  geom_jitter()
+```
+
+### 6.3.3 Boxplots: jitter
+* base R
+There is a horrible package _vioplot_
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(orientation, s.duration.ms)) +
+  geom_violin() +
+  geom_jitter()
+```
+
+### 6. Preliminary summary: two variables
+
+* scaterplot: two quantitative varibles
+* barplot: nominal varibles and one number
+* boxplot: two nominal varibles and quantitative varibles
+* jittered points: two nominal varibles
+
+### 6.6.1 Histogram: basics
+* base R
+```{r}
+hist(homo$s.duration.ms)
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms)) +
+  geom_histogram()
+```
+How many histogram bins do we need?
+* [Sturgers 1926] _nclass.Sturges(adyghe$F1)_
+* [Scott 1979] _nclass.scott(adyghe$F1)_
+* [Freedman, Diaconis 1981] _nclass.FD(adyghe$F1)_
+
+* base R
+```{r}
+hist(homo$s.duration.ms,
+     breaks = nclass.FD(homo$s.duration.ms))
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms)) +
+  geom_histogram(bins = nclass.FD(homo$s.duration.ms))
+```
+
+### 6.6.2 Histogram: color
+* base R
+```{r}
+hist(homo$s.duration.ms, col = "lightblue")
+```
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms)) +
+  geom_histogram(fill = "lightblue")
+```
