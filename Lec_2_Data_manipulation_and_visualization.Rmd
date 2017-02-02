@@ -45,7 +45,7 @@ data.frame(
 [See Data Type Conversion page](http://www.statmethods.net/management/typeconversion.html)
 
 ### 1.2 Data Frame exploration
-There are some embedded data frames (e. g. `mtcars`, `cars`, `iris`). How many rows and columns?
+There are some embedded data frames (e. g. _mtcars_, _cars_, _iris_). How many rows and columns?
 ```{r}
 nrow(iris) # returns the number of rows
 ncol(mtcars) #  returns the number of columns
@@ -68,22 +68,22 @@ mtcars[mtcars$mpg < 20, ] # show all rows with the mpg value lower then 20
 ```
 
 ### 2. Tidyverse
-The [tidyverse](https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/) is a set of packages:
+The [_tidyverse_](https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/) is a set of packages:
 
-* dplyr, for data manipulation
-* ggplot2, for data visualisation
-* tidyr, for data tidying
-* readr, for data import
-* purrr, for functional programming
-* tibble, for tibbles, a modern re-imagining of data frames
+* _dplyr_, for data manipulation
+* _ggplot2_, for data visualisation
+* _tidyr_, for data tidying
+* _readr_, for data import
+* _purrr_, for functional programming
+* _tibble_, for tibbles, a modern re-imagining of data frames
 
-Install tidyverse package using install.packages("tidyverse")
+Install _tidyverse_ package using _install.packages("tidyverse")_
 
 Load tidyverse package
 ```{r, message= FALSE}
 library(tidyverse)
 ```
-In this presentation is used the folowing version of tideverse:
+In this presentation the folowing version of _tideverse_, _dplyr_ and _ggplot2_ are used:
 ```{r}
 packageVersion("tidyverse")
 packageVersion("dplyr")
@@ -126,15 +126,205 @@ anti_join(country_population, languages)
 full_join(country_population, languages)
 ```
 
-### 3.3 My data
-The most examples in that presentation are based on [Chi-kuk 2007](http://goo.gl/MKfSc6). Experiment consisted of a perception and judgment test aimed at measuring the correlation between acoustic cues and perceived sexual orientation. Naïve Cantonese speakers were asked to listen to the Cantonese speech samples collected in Experiment and judge whether the speakers were gay or heterosexual. There are 14 speakers and following parameters:
+### 3.3 Data
+The majority of examples in that presentation are based on [Chi-kuk 2007](http://goo.gl/MKfSc6). Experiment consisted of a perception and judgment test aimed at measuring the correlation between acoustic cues and perceived sexual orientation. Naïve Cantonese speakers were asked to listen to the Cantonese speech samples collected in Experiment and judge whether the speakers were gay or heterosexual. There are 14 speakers and following parameters:
 
-* [s] duration (s.duration.ms)
-* vowel duration (vowel.duration.ms)
-* fundamental frequencies mean (F0) (average.f0.Hz)
-* fundamental frequencies range (f0.range.Hz)
-* percentage of homosexual impression (perceived.as.homo)
-* percentage of heterosexal impression (perceived.as.hetero)
-* speakers orientation (orientation)
-* speakers age (age)
+* [s] duration (_s.duration.ms_)
+* vowel duration (_vowel.duration.ms_)
+* fundamental frequencies mean (F0) (_average.f0.Hz_)
+* fundamental frequencies range (_f0.range.Hz_)
+* percentage of homosexual impression (_perceived.as.homo_)
+* percentage of heterosexal impression (_perceived.as.hetero_)
+* speakers orientation (_orientation_)
+* speakers age (_age_)
+
+Download data
+```{r}
+homo <- read.csv("http://goo.gl/Zjr9aF")
+homo
+```
+
+### 3.4 Data Frame → Tibble (dplyr)
+Tibble is a useful modification of Data Frame.
+```{r}
+homo <- tbl_df(homo)
+homo
+```
+
+### 3.5 Filter (dplyr)
+How many speakers are older than 28?
+
+* base R
+```{r}
+homo[homo$age > 28,]
+```
+* _dplyr_
+```{r}
+homo %>%
+  filter(age > 28)
+```
+
+%>%  is called *pipe*. Pipe is a technique for passing result of the work of one function to another.
+
+```{r}
+sort(sqrt(abs(sin(1:22))), decreasing = TRUE)
+1:22 %>% 
+  sin() %>% 
+  abs() %>% 
+  sqrt() %>% 
+  sort(., decreasing = TRUE) # dot here shows where should argument be
+```
+Pipes in _tidyverse_ package came from _magritr_ package. Sometimes it works incorrectly with not _tidyverse_ functions.
+
+### 3.6 Slice (dplyr)
+
+* base R
+```{r}
+homo[3:7, ]
+```
+
+* _dplyr_
+```{r}
+homo %>%
+  slice(3:7)
+```
+
+
+### 3.7 Select (dplyr)
+
+* base R
+```{r}
+homo[, 8:10]
+```
+
+* _dplyr_
+```{r}
+homo %>%
+  select(8:10)
+```
+
+* _dplyr_ only
+```{r}
+homo %>%
+  select(speaker:average.f0.Hz)
+```
+
+### 3.8 arrange (dplyr)
+
+* base R
+```{r}
+homo[order(homo$orientation, homo$age), ]
+```
+
+* _dplyr_
+```{r}
+homo %>%
+  arrange(orientation, age)
+```
+
+### 3.9 distinct
+
+* base R
+```{r}
+unique(homo$orientation)
+```
+
+* _dplyr_
+```{r}
+homo %>%
+  distinct(orientation)
+```
+
+* base R
+```{r}
+unique(homo[c("orientation", "perceived.as.homo")])
+```
+
+* _dplyr_
+```{r}
+homo %>%
+  distinct(orientation, perceived.as.homo)
+```
+
+
+### 3.10 mutate (dplyr)
+
+* base R
+```{r}
+homo$f0.min <- homo$average.f0.Hz - homo$f0.range.Hz/2
+homo$f0.min
+homo$f0.max <- homo$average.f0.Hz + homo$f0.range.Hz/2
+homo$f0.max
+```
+
+* _dplyr_
+```{r}
+homo %>%
+  mutate(
+   f0.min = average.f0.Hz - f0.range.Hz/2,
+   f0.max = average.f0.Hz + f0.range.Hz/2)
+```
+### 3.11 group_by and summarise (dplyr)
+
+```{r}
+homo %>%
+  summarise(min(age), mean(s.duration.ms))
+```
+
+```{r}
+homo %>%
+  group_by(orientation) %>% 
+  summarise(count = n())
+```
+
+```{r}
+homo %>%
+  group_by(orientation) %>% 
+  summarise(mean(s.duration.ms))
+```
+
+```{r}
+homo %>%
+  group_by(orientation) %>% 
+  summarise(mean_by_orientation = mean(s.duration.ms))
+```
+
+
+### 4.1. tidyr package
+
+* Short format
+```{r, echo = FALSE}
+df.short <- data.frame(
+                   consonant = c("stops", "fricatives", "affricates", "nasals"),
+                   initial = c(123, 87, 73, 7),
+                   intervocal = c(57, 77, 82, 78),
+                   final = c(30, 69, 12, 104))
+df.short
+```
+* Long format
+```{r, , echo = FALSE}
+df.short %>% 
+  gather(position, number, initial:final)
+```
+
+### 4.2 Short format → Long format: gather (tidyr)
+```{r}
+df.short <- data.frame(
+                   consonant = c("stops", "fricatives", "affricates", "nasals"),
+                   initial = c(123, 87, 73, 7),
+                   intervocal = c(57, 77, 82, 78),
+                   final = c(30, 69, 12, 104))
+df.short
+
+df.short %>% 
+  gather(position, number, initial:final) ->
+  df.long
+```
+
+### 4.2 Long format → Short format: spread (tidyr)
+```{r}
+df.long %>% 
+  spread(position, number) ->
+  df.short
+```
 
