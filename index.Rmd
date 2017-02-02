@@ -9,3 +9,4 @@ title: "Linguistic data: quantitative analysis and visualisation"
 
 * [Lec 1: Course description](https://agricolamz.github.io/2017-MAG_R_course/Lec_1_Course_description.html)
 * [Lab 1](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
+* [Lec 2: Data manipulation and visualization](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data manipulation and visualization.html)
