@@ -7,3 +7,5 @@ navbar:
       href: index.html
     - text: "Lab 1"
       href: Lab_1.html
+    - text: "Lab 2"
+      href: Lab_2.html      

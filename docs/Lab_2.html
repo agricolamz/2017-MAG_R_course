@@ -11,7 +11,7 @@
 
 
 
-<title>Linguistic data: quantitative analysis and visualisation</title>
+<title>Data manipulation and visualization</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -193,25 +193,23 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Linguistic data: quantitative analysis and visualisation</h1>
+<h1 class="title toc-ignore">Data manipulation and visualization</h1>
 
 </div>
 
 
-<div id="r-and-rstudio-installation" class="section level3">
-<h3>R and RStudio installation</h3>
-<p><a href="https://www.r-project.org/">R</a>, <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>, <a href="https://www.rollapp.com/app/rstudio">RStudio online</a>, <a href="http://happygitwithr.com/rstudio-git-github.html">Connecting RStudio и GitHub</a>, <a href="https://www.r-bloggers.com/">R-bloggers</a></p>
-</div>
-<div id="intro-to-r-and-rstudio.-vectors.-dataframes.-packages." class="section level3">
-<h3>1. Intro to R and RStudio. Vectors. Dataframes. Packages.</h3>
-<ul>
-<li><a href="https://agricolamz.github.io/2017-MAG_R_course/Lec_1_Course_description.html">Lec 1: Course description</a></li>
-<li><a href="https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html">Lab 1</a></li>
-<li><a href="https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html">Lec 2: Data manipulation and visualization</a></li>
-<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSduc-FdDJHD171GhxQlVYlHfdvDXVpGh9b1rXpw0WcdE61ZFQ/viewform">HW-1. Deadline: 16.02.2017</a></li>
-<li><a href="https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html">Lab 2</a></li>
-</ul>
-</div>
+<pre class="r"><code># install.packages(&quot;tidyverse&quot;)
+library(tidyverse)
+words &lt;- read_csv(&quot;https://goo.gl/a4xNwj&quot;)
+words &lt;- c(words$trans_english, words$trans_russian)
+words &lt;-sapply(words, function(x){unlist(strsplit(x, &quot;,| &quot;))[1]})</code></pre>
+<p>Some useful functions: <code>nchar()</code>, <code>grepl()</code></p>
+<p><img src="Lab_2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Here is a string that we will treat as vowels:</p>
+<pre><code>## [1] &quot;e|u|i|o|a|у|е|ы|а|о|э|я|и|ю|ё&quot;</code></pre>
+<p><img src="Lab_2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Lab_2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Lab_2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 
 
 

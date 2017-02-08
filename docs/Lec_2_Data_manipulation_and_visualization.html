@@ -642,8 +642,9 @@ df.short</code></pre></div>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms)) +
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(average.f0.Hz, age))+
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> orientation))</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-44-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-color" class="slide section level3">
@@ -671,13 +672,21 @@ df.short</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">17</span>)[homo$orientation])</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">32</span>, <span class="dt">pch =</span> <span class="dv">1</span>:<span class="dv">32</span>)</code></pre></div>
+<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;26&#39;</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;27&#39;</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;28&#39;</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;29&#39;</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;30&#39;</code></pre>
+<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;31&#39;</code></pre>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-2.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms,
              <span class="dt">shape =</span> orientation)) +
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-48-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-size" class="slide section level3">
@@ -716,8 +725,8 @@ df.short</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(homo$orientation) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;⚣&quot;</span>, <span class="st">&quot;⚤&quot;</span>)
 homo %&gt;%
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms, <span class="dt">label =</span> orientation)) +
-<span class="st">  </span><span class="kw">geom_text</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms, <span class="dt">label =</span> orientation, <span class="dt">fill =</span> orientation)) +
+<span class="st">  </span><span class="kw">geom_label</span>()</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-53-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-title" class="slide section level3">
@@ -736,7 +745,8 @@ homo %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>()+
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;length of [s] vs. length of vowels&quot;</span>,
        <span class="dt">subtitle =</span> <span class="st">&quot;based on 14 speakers of Cantonese&quot;</span>,
-       <span class="dt">caption =</span> <span class="st">&quot;data from [Chi kuk 2007]&quot;</span>)</code></pre></div>
+       <span class="dt">caption =</span> <span class="st">&quot;data from [Chi kuk 2007]&quot;</span>)+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;It looks nice!&quot;</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-56-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-axis" class="slide section level3">
@@ -779,7 +789,7 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">52138</span>, freq$Freq.ipm.,
   <span class="dt">xlab =</span> <span class="ot">NA</span>, <span class="dt">ylab =</span> <span class="st">&quot;ipm&quot;</span>,
   <span class="dt">las =</span> <span class="dv">1</span>,
-  <span class="dt">log =</span> <span class="st">&quot;y&quot;</span>)</code></pre></div>
+  <span class="dt">log =</span> <span class="st">&quot;yx&quot;</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-60-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
@@ -805,7 +815,7 @@ freq %&gt;%
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms)) +
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms, <span class="dt">color =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_rug</span>()</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-63-1.png" width="768" /></p>
@@ -829,7 +839,7 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_point</span>() +
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">120</span>)+
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(homo$vowel.duration.ms))+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">60</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-66-1.png" width="768" /></p>
 <ul>
@@ -837,7 +847,7 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">120</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-<span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">60</span>, <span class="dt">lwd =</span> <span class="dv">5</span>)</code></pre></div>
+<span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">60</span>, <span class="dt">lwd =</span> <span class="dv">42</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-67-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
@@ -916,7 +926,7 @@ freq %&gt;%
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-77-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
-<span class="st">  </span><span class="kw">geom_boxplot</span>() +
+<span class="st">  </span><span class="kw">geom_boxplot</span>()+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-78-1.png" width="768" /></p>
 </div>
@@ -932,7 +942,7 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +
-<span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter-1" class="slide section level3">
@@ -951,10 +961,18 @@ freq %&gt;%
 <h1>6. Preliminary summary: two variables</h1>
 <ul>
 <li>scaterplot: two quantitative varibles</li>
-<li>barplot: nominal varibles and one number</li>
-<li>boxplot: two nominal varibles and quantitative varibles</li>
+<li>barplot: nominal varible and one number</li>
+<li>boxplot: nominal varible and quantitative varibles</li>
 <li>jittered points: two nominal varibles</li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">newvar =</span> mpg &gt;<span class="st"> </span><span class="dv">22</span>,
+         <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(newvr, newvar, <span class="dt">color =</span> newvar))+
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] -Inf</code></pre>
 </div>
 <div id="histogram-basics" class="slide section level3">
 <h1>6.6.1 Histogram: basics</h1>
@@ -962,22 +980,22 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> How many histogram bins do we need? * [Sturgers 1926] <em>nclass.Sturges(adyghe<span class="math inline">\(F1)_ * [Scott 1979] _nclass.scott(adyghe\)</span>F1)</em> * [Freedman, Diaconis 1981] <em>nclass.FD(adyghe$F1)</em></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /> How many histogram bins do we need? * [Sturgers 1926] <em>nclass.Sturges(adyghe<span class="math inline">\(F1)_ * [Scott 1979] _nclass.scott(adyghe\)</span>F1)</em> * [Freedman, Diaconis 1981] <em>nclass.FD(adyghe$F1)</em></p>
 <ul>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms,
      <span class="dt">breaks =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /></p>
 </div>
 <div id="histogram-color" class="slide section level3">
 <h1>6.6.2 Histogram: color</h1>
@@ -985,12 +1003,12 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /></p>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

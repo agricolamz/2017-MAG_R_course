@@ -307,7 +307,9 @@ df.short
 * Long format
 ```{r, echo = FALSE}
 df.short %>% 
-  gather(position, number, initial:final)
+  gather(position, number, initial:final) ->
+  df.long
+df.long
 ```
 
 ### 4.2 Short format → Long format: gather (tidyr)
@@ -393,8 +395,9 @@ ggplot(data = homo, aes(s.duration.ms, vowel.duration.ms)) +
 * dplyr, ggplot2
 ```{r}
 homo %>%
-  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
-  geom_point()
+  ggplot(aes(average.f0.Hz, age))+
+  geom_smooth(method = "lm")+
+  geom_point(aes(color = orientation))
 ```
 
 ### 6.1.1 Scaterplot: color
@@ -417,6 +420,7 @@ homo %>%
 ```{r}
 plot(homo$s.duration.ms, homo$vowel.duration.ms,
      pch = c(16, 17)[homo$orientation])
+plot(1:32, pch = 1:32)
 ```
 
 * dplyr, ggplot2
@@ -424,7 +428,7 @@ plot(homo$s.duration.ms, homo$vowel.duration.ms,
 homo %>%
   ggplot(aes(s.duration.ms, vowel.duration.ms,
              shape = orientation)) +
-  geom_point()
+  geom_point(color = "green")
 ```
 
 ### 6.1.3 Scaterplot: size
@@ -459,8 +463,8 @@ plot(homo$s.duration.ms, homo$vowel.duration.ms,
 ```{r}
 levels(homo$orientation) <- c("⚣", "⚤")
 homo %>%
-  ggplot(aes(s.duration.ms, vowel.duration.ms, label = orientation)) +
-  geom_text()
+  ggplot(aes(s.duration.ms, vowel.duration.ms, label = orientation, fill = orientation)) +
+  geom_label()
 ```
 
 ```{r, echo = FALSE}
@@ -482,7 +486,8 @@ homo %>%
   geom_point()+
   labs(title = "length of [s] vs. length of vowels",
        subtitle = "based on 14 speakers of Cantonese",
-       caption = "data from [Chi kuk 2007]")
+       caption = "data from [Chi kuk 2007]")+
+  ggtitle("It looks nice!")
 ```
 
 ### 6.1.6 Scaterplot: axis
@@ -522,7 +527,7 @@ freq %>%
 plot(1:52138, freq$Freq.ipm.,
   xlab = NA, ylab = "ipm",
   las = 1,
-  log = "y")
+  log = "yx")
 ```
 
 * dplyr, ggplot2
@@ -547,7 +552,7 @@ rug(homo$vowel.duration.ms, side = 2)
 * dplyr, ggplot2
 ```{r}
 homo %>%
-  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  ggplot(aes(s.duration.ms, vowel.duration.ms, color = orientation)) +
   geom_point() +
   geom_rug()
 ```
@@ -570,7 +575,7 @@ abline(h = 120, v = 60)
 homo %>%
   ggplot(aes(s.duration.ms, vowel.duration.ms)) +
   geom_point() +
-  geom_hline(yintercept = 120)+
+  geom_hline(yintercept = mean(homo$vowel.duration.ms))+
   geom_vline(xintercept = 60)
 ```
 
@@ -578,7 +583,7 @@ homo %>%
 ```{r}
 plot(homo$s.duration.ms, homo$vowel.duration.ms)
 abline(h = 120, lty = 2)
-abline(v = 60, lwd = 5)
+abline(v = 60, lwd = 42)
 ```
 
 * dplyr, ggplot2
@@ -656,7 +661,7 @@ stripchart(homo$s.duration.ms ~ homo$orientation,
 ```{r}
 homo %>%
   ggplot(aes(orientation, s.duration.ms)) +
-  geom_boxplot() +
+  geom_boxplot()+
   geom_point()
 ```
 
@@ -672,7 +677,7 @@ stripchart(homo$s.duration.ms~homo$orientation,
 homo %>%
   ggplot(aes(orientation, s.duration.ms)) +
   geom_boxplot() +
-  geom_jitter()
+  geom_jitter(width = 0.5)
 ```
 
 ### 6.3.3 Boxplots: jitter
@@ -689,9 +694,20 @@ homo %>%
 ### 6. Preliminary summary: two variables
 
 * scaterplot: two quantitative varibles
-* barplot: nominal varibles and one number
-* boxplot: two nominal varibles and quantitative varibles
+* barplot: nominal varible and one number
+* boxplot: nominal varible and quantitative varibles
 * jittered points: two nominal varibles
+
+```{r}
+mtcars %>% 
+  mutate(newvar = mpg > 22,
+         newvr = mpg < 17) %>% 
+  ggplot(aes(newvr, newvar, color = newvar))+
+  geom_jitter(width = 0.2)
+
+log(0)
+```
+
 
 ### 6.6.1 Histogram: basics
 * base R
