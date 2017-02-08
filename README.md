@@ -12,4 +12,4 @@
 
 ### 2. Data manipulation and visualization
 * [Lec 2: Data manipulation and visualization](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html)
-* [Lab 2](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
+* [Lab 2](https://agricolamz.github.io/2017-MAG_R_course/Lab_2.html)
