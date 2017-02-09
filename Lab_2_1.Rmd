@@ -1,6 +1,31 @@
 ---
 title: "Data manipulation and visualization"
+Lab 2
 ---
+
+### dplyr
+
+Data frame "flights"
+```{r, warning=FALSE, message=FALSE}
+# install.packages("nycflights13")
+library(nycflights13)
+head(flights)
+dim(flights)
+```
+Some useful dplyr functions: filter(), slice(), arrange(), select(), distinct(), mutate(), summarise(), sample()
+```{r, warning=FALSE, message=FALSE}
+filter(flights, month == 1, day == 1) # cf. Basic R: flights[flights$month == 1 & flights$day == 1, ]
+```
+(?) Find out how many flights there were on July 4? Dec 31? Dec 32? Use "|" to look for more than one date.
+```{r, warning=FALSE, message=FALSE}
+arrange(flights, year, month, day, desc(arr_delay)) # cf. Basic R: flights[order(flights$arr_delay, decreasing = TRUE), ]
+flight1 <- select(flights, year, month, day)
+```
+
+
+### tidyverse
+
+Data frame "words"
 ```{r, warning=FALSE, message=FALSE}
 # install.packages("tidyverse")
 # or (if you have any problem with installation) use github repository:
