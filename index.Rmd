@@ -14,7 +14,9 @@ title: "Linguistic data: quantitative analysis and visualisation"
 
 * [HW-1. Deadline: 16.02.2017](https://docs.google.com/forms/d/e/1FAIpQLSduc-FdDJHD171GhxQlVYlHfdvDXVpGh9b1rXpw0WcdE61ZFQ/viewform)
 
-### 2. Visualization.																									*	(09.02.2017) [Base R vs. ggplot2: 2 variables, 3 variables, many variables](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html)
+### 2. Visualization.
+
+*	(09.02.2017) [Base R vs. ggplot2: 2 variables, 3 variables, many variables](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html)
 * (09.02.2017) [Lab 2: Data manipulation and visualization](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
 * (16.02.2017) RMarkdown. Tables in RMarkdown. Mixing different languages in RMarkdown
 * [HW-2. Deadline: 02.03.2017](https://docs.google.com/forms/d/1ZsJAllHbkdVjr7kDybEEgws2V99gAraWqRyn1KBV-Sk/edit)
