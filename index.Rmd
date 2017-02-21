@@ -5,13 +5,77 @@ title: "Linguistic data: quantitative analysis and visualisation"
 ### R and RStudio installation
 [R](https://www.r-project.org/), [RStudio](https://www.rstudio.com/products/rstudio/download/#download), [RStudio online](https://www.rollapp.com/app/rstudio), [Connecting RStudio и GitHub](http://happygitwithr.com/rstudio-git-github.html), [R-bloggers](https://www.r-bloggers.com/)
 
-### 1. Intro to R and RStudio. Vectors. Dataframes. Packages.
-
-* [Lec 1: Course description](https://agricolamz.github.io/2017-MAG_R_course/Lec_1_Course_description.html)
-* [Lab 1](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
-* [HW-1. Deadline: 16.02.2017](https://docs.google.com/forms/d/e/1FAIpQLSduc-FdDJHD171GhxQlVYlHfdvDXVpGh9b1rXpw0WcdE61ZFQ/viewform)
+* (16.01.2017)	[Lec 1: Course description](https://agricolamz.github.io/2017-MAG_R_course/Lec_1_Course_description.html)
 * [about projects](https://github.com/agricolamz/2017-MAG_R_course/raw/master/projects.pdf)
 
-### 2. Data manipulation and visualization
-* [Lec 2: Data manipulation and visualization](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html)
-* [Lab 2](https://agricolamz.github.io/2017-MAG_R_course/Lab_2.html)
+### 1. Introduction to R. Types of data. Dataframe. User's functions
+* (16.01.2017)	[Lab 1: Base R objects. Simple plots. Simple functions. Base R functions code. User’s functions. Loops. Functions in functions. Default arguments. Optional arguments.](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
+* (02.02.2017)	[Dataframes. Read and write data. Manipulation with data (R base vs. dplyr)](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html)
+
+* [HW-1. Deadline: 16.02.2017](https://docs.google.com/forms/d/e/1FAIpQLSduc-FdDJHD171GhxQlVYlHfdvDXVpGh9b1rXpw0WcdE61ZFQ/viewform)
+
+### 2. Visualization.																									*	(09.02.2017) [Base R vs. ggplot2: 2 variables, 3 variables, many variables](https://agricolamz.github.io/2017-MAG_R_course/Lec_2_Data_manipulation_and_visualization.html)
+* (09.02.2017) [Lab 2: Data manipulation and visualization](https://agricolamz.github.io/2017-MAG_R_course/Lab_1.html)
+* (16.02.2017) RMarkdown. Tables in RMarkdown. Mixing different languages in RMarkdown
+* [HW-2. Deadline: 02.03.2017](https://docs.google.com/forms/d/1ZsJAllHbkdVjr7kDybEEgws2V99gAraWqRyn1KBV-Sk/edit)
+
+### 3. Descriptive statistics A. Confidence intervals. T-tests. P-values. Normality tests
+* (16.02.2017)	lecture
+* (02.03.2017)	Lab 3: Descriptive statistics, boxplot, violinplot. NAs.
+* (02.03.2017)	Lab 4: Z-score. Confidence intervals. CI. Bootstrap.
+* (..2017) Lab 5: T-tests. P-value.
+* HW-3. Deadline: ..2017
+
+### 4. χ². Fisher exact test
+
+* (..2017) lecture
+* (..2017) Lab 6:
+* HW-4. Deadline: ..2017
+																									
+### 5. Correlation																									
+
+* (..2017) lecture
+* (..2017) Lab 7:
+* HW-5. Deadline: ..2017
+
+### 6. Regressions: linear and polynomial															
+* (..2017) lecture
+* (..2017) Lab 8:
+* HW-6. Deadline: ..2017
+																									
+### 7. ANOVA																									
+
+* (..2017) lecture
+* (..2017) Lab 9:
+* HW-7. Deadline: ..2017
+
+### 8. Logistic regressions
+
+* (..2017) lecture
+* (..2017) Lab 10:
+* HW-8. Deadline: ..2017
+
+### 9. Mixed-effects models																						
+* (..2017) lecture
+* (..2017) Lab 11:
+* HW-9. Deadline: ..2017
+
+### 10. Decision trees. Decision forests															
+* (..2017) lecture
+* (..2017) Lab 12: Confidence intervals again. Bootstraping.
+* (..2017) Lab 13: Decision trees. Decision forests.
+* HW-10. Deadline: ..2017
+
+### 11. Clusterization
+
+* (..2017) lecture
+* (..2017) Lab 14: Different types of distance matrices. K-means
+* (..2017) Lab 15: Hierarchical clusterization. DBSCAN.
+* HW-11. Deadline: ..2017
+
+### 12. MDS, PCA, CA, MCA
+
+* (..2017) lecture
+* (..2017) Lab 16:
+* (..2017) Lab 17:
+* HW-12. Deadline: ..2017
