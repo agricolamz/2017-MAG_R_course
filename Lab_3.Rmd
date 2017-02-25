@@ -1,5 +1,5 @@
 ---
-title: "Lab ..."
+title: "Lab 3: Descriptive statistics. Confidence intervals. Errorbars"
 ---
 
 ```{r setup, include=FALSE}

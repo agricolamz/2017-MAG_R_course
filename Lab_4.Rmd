@@ -1,5 +1,5 @@
 ---
-title: "Lab ..."
+title: "Lab 4. T-tests. P-value"
 ---
 
 ```{r setup, include=FALSE}
