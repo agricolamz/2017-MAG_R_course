@@ -1,0 +1,89 @@
+---
+title: "Descriptive statistics. Measures of central tendency. Confidence intervals. P-value. T-test"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+<h3>Variable types in statistics</h3>
+<ul>
+<li>numeric</li>
+<ul>
+<li>interval (e.g. speed, time (MRT-mean reaction time in experiments), weight, age, sound frequency (F1, F2 in phonetics)) -- any number of data points in a given interval</li>
+<li>natural numbers (e.g. number of occurrences in a corpus; number of authors who use this word; also age)</li>
+</ul>
+<li>scalar (e.g. Likkert scale: assess the phrase on a scale from 1... to 7) &mdash; we know the order but do not know the distance</li>
+<li>nominal/categorical (e.g. grammatical categories of the verb; gender; place of birth; genre)</li>
+</ul>
+
+<div id="dplyr" class="section level3">
+<h3>Measures of central tendency</h3>
+<ul>
+<li>(arithmetic) mean</li>
+<li>median</li>
+<li>quartiles</li>
+<li>mode</li>
+</ul>
+
+```{r}
+# Basic R:
+mydata <- c(1,2,4,4,4,5,8,8,10,50)
+mean(mydata)
+```
+
+```{r}
+median(mydata)
+```
+```{r}
+table(mydata)
+```
+```{r}
+which.max(table(mydata))
+```
+
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+```{r}
+data.frame(mydata) %>% 
+ggplot(aes(mydata)) + 
+  geom_histogram(binwidth=1, colour="black", fill="darkgray")
+```
+<h3>Standard deviation</h3>
+<p>If $\bar{x}$ is a mean of X { x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>,... x<sub>n</sub> } then we can calculate the difference between each point and the mean and take a sum of the squared diffs (which is called variance).</p>
+$$var = ( x_1 - \bar{x} )^2 + ( x_2 - \bar{x} )^2 + ( x_3 - \bar{x} )^2 + ... + ( x_n - \bar{x} )^2$$
+Standard deviation is equal to the square root of the variance (is calculated in the same units as $x_1$...$x_n$).
+$$sd = \sqrt{var}$$
+```{r}
+sd(mydata)
+```
+<h4>mtcars data</h4>
+```{r}
+head(mtcars$mpg) # miles per gallon
+```
+<img src="http://r-statistics.co/screenshots/ggplot_masterlist_12.png" width="600" />
+<p>Standard deviation diagram for a normally distributed data (source: <a href="https://en.wikipedia.org/wiki/Standard_error">Wikipedia</a>)</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standard_deviation_diagram.svg/500px-Standard_deviation_diagram.svg.png" width=500 >
+<h3>Confidence Interval</h3>
+<p>Main question: based on a given sample, what can we infer about the population? <br />
+If we have just a single sample, perhaps the best estimate of the average value would be the sample mean, usually denoted as $\bar{x}$ (pronounced as x_bar). If we take more samples, their mean would differ a little (or a lot). So, the question is, how uncertain we are of that point estimate. For example, we would like to be 95% sure that the mean of any taken sample will be within certain interval. <br />
+For a known standard deviation, 
+$$CI_{95\%} = \bar{x} \pm 1.96*\frac{sd}{\sqrt{n}}$$
+given that the values in X are randomly distributed and independent of each other.</p>
+Thus, we can say that there is only a 5% chance that the <b>confidence interval</b> excludes the mean of the population.<br />
+CI can be shown at different confidence levels, for example 90%, 95% and 99%. The coefficients for the calcuating CI are the following: 1.645 for 90% CI, 1.96 for 95%, 2.326 for 98% CI, 2.576 for 99% CI.</p>
+```{r}
+unique(mtcars$vs) # vs is either V-engine or Straight-engine
+mtcars %>%
+  group_by(vs) %>%
+  summarise(mean.mpg = mean(mpg, na.rm = TRUE),
+            sd.mpg = sd(mpg, na.rm = TRUE),
+            n.mpg = n()) %>%
+  mutate(se.mpg = sd.mpg / sqrt(n.mpg),
+         lower.ci.mpg = mean.mpg - qt(1 - (0.05 / 2), n.mpg - 1) * se.mpg,
+         upper.ci.mpg = mean.mpg + qt(1 - (0.05 / 2), n.mpg - 1) * se.mpg)
+
+```
+
+
