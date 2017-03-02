@@ -11,7 +11,7 @@
 
 
 
-<title>Lab 3: Descriptive statistics. Confidence intervals. Errorbars</title>
+<title>Lab 3. CI</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -250,12 +250,26 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Lab 3: Descriptive statistics. Confidence intervals. Errorbars</h1>
+<h1 class="title toc-ignore">Lab 3. CI</h1>
 
 </div>
 
 
-
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&amp;w=1">Ссылка на гугл-форму</a></p>
+<div id="-1.2" class="section level3">
+<h3>1.1 и 1.2</h3>
+<pre class="r"><code>library(tidyverse)
+homo &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
+homo %&gt;% 
+  group_by(orientation) %&gt;%
+  summarise(mean = mean(s.duration.ms),
+            CI = 1.96*sd(s.duration.ms)/sqrt(length(s.duration.ms)))</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##   orientation     mean       CI
+##        &lt;fctr&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1      hetero 58.46571 5.299922
+## 2        homo 63.98286 5.421385</code></pre>
+</div>
 
 
 

@@ -1,0 +1,21 @@
+---
+title: "Lab 3. CI"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[Ссылка на гугл-форму](https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&w=1)
+
+### 1.1 и 1.2
+```{r, message=F}
+library(tidyverse)
+homo <- read.csv("http://goo.gl/Zjr9aF")
+homo %>% 
+  group_by(orientation) %>%
+  summarise(mean = mean(s.duration.ms),
+            CI = 1.96*sd(s.duration.ms)/sqrt(length(s.duration.ms)))
+
+```
+
