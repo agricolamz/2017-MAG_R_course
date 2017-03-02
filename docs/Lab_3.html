@@ -301,6 +301,67 @@ iris %&gt;%
   labs(title = &quot;[s] duration density plot&quot;,
        caption = &quot;Data from (Chi-kuk 2007)&quot;)</code></pre>
 <p><img src="Lab_3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>homo %&gt;% 
+  ggplot(aes(s.duration.ms, fill = orientation)) +
+  geom_density()+
+  geom_rug(aes(color = orientation), size = 5)+
+  facet_wrap(~orientation)+
+  labs(title = &quot;[s] duration density plot&quot;,
+       caption = &quot;Data from (Chi-kuk 2007)&quot;)</code></pre>
+<p><img src="Lab_3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="section-2" class="section level3">
+<h3>1.5</h3>
+<pre class="r"><code>t.test(s.duration.ms~orientation, data = homo)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  s.duration.ms by orientation
+## t = -1.4263, df = 11.994, p-value = 0.1793
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -13.945621   2.911336
+## sample estimates:
+## mean in group hetero   mean in group homo 
+##             58.46571             63.98286</code></pre>
+<p>p-value &lt; 0.05…</p>
+<p><a href="https://xkcd.com/1478/">xkcd</a> If all else fails, use “significant at p &gt; 0.05 level”; and hope no one notices</p>
+</div>
+<div id="one-sample-t-test" class="section level3">
+<h3>One-sample t-test</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/TRRx9Y&quot;)
+df[df$name == &quot;russian&quot;, 2]</code></pre>
+<pre><code>##  [1] 267.8670 232.8380 243.4084 225.5630 287.5199 266.7282 292.5137
+##  [8] 294.1029 257.6401 232.2932 228.4824 261.8669 246.7714 272.9506
+## [15] 220.8743 263.0739 243.9390 284.6122 278.2729 286.2970</code></pre>
+<pre class="r"><code>t.test(df[df$name == &quot;russian&quot;, 2], mu = 240)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df[df$name == &quot;russian&quot;, 2]
+## t = 3.6323, df = 19, p-value = 0.001773
+## alternative hypothesis: true mean is not equal to 240
+## 95 percent confidence interval:
+##  248.2132 270.5483
+## sample estimates:
+## mean of x 
+##  259.3808</code></pre>
+</div>
+<div id="paired-t-test" class="section level3">
+<h3>Paired t-test</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/MNkVws&quot;, sep=&quot;\t&quot;)
+t.test(df$LI.Front, df$LI.Temp, paired = TRUE)</code></pre>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  df$LI.Front and df$LI.Temp
+## t = 2.8581, df = 11, p-value = 0.01557
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.07855312 0.60478021
+## sample estimates:
+## mean of the differences 
+##               0.3416667</code></pre>
 </div>
 
 

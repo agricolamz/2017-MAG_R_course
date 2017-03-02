@@ -69,3 +69,25 @@ homo %>%
        caption = "Data from (Chi-kuk 2007)")
 ```
 
+### 1.5
+
+```{r}
+t.test(s.duration.ms~orientation, data = homo)
+```
+p-value < 0.05...
+
+[xkcd](https://xkcd.com/1478/)
+If all else fails, use "significant at p > 0.05 level"; and hope no one notices
+
+### One-sample t-test
+```{r}
+df <- read.csv("http://goo.gl/TRRx9Y")
+df[df$name == "russian", 2]
+t.test(df[df$name == "russian", 2], mu = 240)
+```
+
+### Paired t-test
+```{r}
+df <- read.csv("http://goo.gl/MNkVws", sep="\t")
+t.test(df$LI.Front, df$LI.Temp, paired = TRUE)
+```
