@@ -9,6 +9,10 @@ knitr::opts_chunk$set(echo = TRUE)
 [Ссылка на гугл-форму](https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&w=1)
 
 ### 1.1 и 1.2
+```{r, eval = FALSE}
+install.packages("tidyverse")
+```
+
 ```{r, message=F}
 library(tidyverse)
 homo <- read.csv("http://goo.gl/Zjr9aF")
@@ -16,6 +20,21 @@ homo %>%
   group_by(orientation) %>%
   summarise(mean = mean(s.duration.ms),
             CI = 1.96*sd(s.duration.ms)/sqrt(length(s.duration.ms)))
+
+```
+
+### 1.3
+```{r}
+homo %>% 
+  group_by(orientation) %>%
+  summarise(mean = mean(s.duration.ms),
+            CI = 1.96*sd(s.duration.ms)/sqrt(length(s.duration.ms))) %>% 
+  ggplot(aes(orientation, mean))+
+  geom_point()+
+  geom_errorbar(aes(ymin= mean-CI,
+                    ymax = mean+CI), width = 0.3)+
+  labs(title = "Mean [s] duration with 95% confidence interval",
+       caption = "Data from (Chi-kuk 2007)")
 
 ```
 
