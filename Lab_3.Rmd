@@ -38,3 +38,34 @@ homo %>%
 
 ```
 
+
+
+```{r}
+library(tidyverse)
+iris %>% 
+  ggplot(aes(x = Sepal.Length, y = Sepal.Width, color = Species))+
+  geom_point(size = 5)+
+  facet_wrap(~Species)
+```
+
+### 1.4
+```{r}
+homo %>% 
+  ggplot(aes(s.duration.ms, fill = orientation)) +
+  geom_density()+
+  geom_rug()+
+  facet_wrap(~orientation)+
+  labs(title = "[s] duration density plot",
+       caption = "Data from (Chi-kuk 2007)")
+```
+
+```{r}
+homo %>% 
+  ggplot(aes(s.duration.ms, fill = orientation)) +
+  geom_density()+
+  geom_rug(aes(color = orientation), size = 5)+
+  facet_wrap(~orientation)+
+  labs(title = "[s] duration density plot",
+       caption = "Data from (Chi-kuk 2007)")
+```
+
