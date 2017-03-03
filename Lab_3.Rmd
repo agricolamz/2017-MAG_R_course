@@ -6,9 +6,9 @@ title: "Lab 3. CI"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-[Ссылка на гугл-форму](https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&w=1)
+[Link to tasks](https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&w=1)
 
-### 1.1 и 1.2
+### 1.1 and 1.2
 ```{r, eval = FALSE}
 install.packages("tidyverse")
 ```
@@ -76,8 +76,8 @@ t.test(s.duration.ms~orientation, data = homo)
 ```
 p-value < 0.05...
 
-[xkcd](https://xkcd.com/1478/)
-If all else fails, use "significant at p > 0.05 level"; and hope no one notices
+[xkcd](https://xkcd.com/1478/):
+If all else fails, use "significant at p > 0.05 level"; and hope no one notices (*it is a joke*)
 
 ### One-sample t-test
 ```{r}
