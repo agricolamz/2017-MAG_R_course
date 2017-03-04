@@ -26,7 +26,7 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (16.02.2017) [Lecture: Central limit theorem. Confidence intervals](https://agricolamz.github.io/2017-MAG_R_course/Lec_3_Descriptive_statistics._Measures_of_central_tendency._Confidence_intervals.html)
 * (02.03.2017) Lab 3 and 4: Descriptive statistics, Confidence intervals, T-tests. P-value. Boxplot, errorbar.
     * [Assignment](https://goo.gl/forms/6e4ncZf6QejGRjyW2)
-    * Files from class: [Lab 3](https://agricolamz.github.io/2017-MAG_R_course/Lab_3.html), [Lab 4](https://agricolamz.github.io/2017-MAG_R_course/Lab_4.html)
+    * Files from class: [Lab 3 and 4](https://agricolamz.github.io/2017-MAG_R_course/Lab_3-4.html)
 * HW-3. Deadline: 16.03.2017
 
 ### 4. χ². Fisher exact test

@@ -1,8 +1,0 @@
----
-title: "Lab 4. T-tests. P-value"
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
