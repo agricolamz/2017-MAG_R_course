@@ -13,7 +13,7 @@
 
 <title>Intro to R and RStudio. Vectors. Dataframes. Packages.</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -23,12 +23,16 @@
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
-<link href="site_libs/leaflet-0.7.3/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-0.7.3/leaflet.js"></script>
+<link href="site_libs/leaflet-0.7.7/leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-0.7.7/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-1.0.1/leaflet.js"></script>
+<link href="site_libs/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet" />
+<script src="site_libs/leaflet-label-0.2.2/leaflet.label.js"></script>
+<script src="site_libs/Proj4Leaflet-0.7.2/proj4-compressed.js"></script>
+<script src="site_libs/Proj4Leaflet-0.7.2/proj4leaflet.js"></script>
+<script src="site_libs/leaflet-binding-1.1.0/leaflet.js"></script>
 <script src="site_libs/leaflet-providers-1.0.27/leaflet-providers.js"></script>
-<script src="site_libs/leaflet-providers-plugin-1.0.1/leaflet-providers-plugin.js"></script>
+<script src="site_libs/leaflet-providers-plugin-1.1.0/leaflet-providers-plugin.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -199,10 +203,7 @@ $(document).ready(function () {
       <a href="Lab_2.html">Lab 2</a>
     </li>
     <li>
-      <a href="Lab_3.html">Lab 3</a>
-    </li>
-    <li>
-      <a href="Lab_4.html">Lab 4</a>
+      <a href="Lab_3-4.html">Lab 3 and 4</a>
     </li>
     <li>
       <a href="Lab_5.html">Lab 5</a>
@@ -366,9 +367,9 @@ $(document).ready(function () {
 ##  [6] &quot;June&quot;      &quot;July&quot;      &quot;August&quot;    &quot;September&quot; &quot;October&quot;  
 ## [11] &quot;November&quot;  &quot;December&quot;</code></pre>
 <pre class="r"><code>sample(1:6, size = 2)</code></pre>
-<pre><code>## [1] 3 1</code></pre>
+<pre><code>## [1] 6 4</code></pre>
 <pre class="r"><code>sample(1:6, size = 2, replace = T)</code></pre>
-<pre><code>## [1] 6 5</code></pre>
+<pre><code>## [1] 1 6</code></pre>
 <pre class="r"><code>set.seed(19012017)
 sample(1:6, size = 2, replace = T)</code></pre>
 <pre><code>## [1] 4 5</code></pre>
@@ -515,98 +516,25 @@ df</code></pre>
 ## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <pre class="r"><code>#? cars
 apropos(&quot;date&quot;)</code></pre>
-<pre><code>##  [1] &quot;as.character.Date&quot;                      
-##  [2] &quot;as.data.frame.Date&quot;                     
-##  [3] &quot;as.Date&quot;                                
-##  [4] &quot;as.Date.character&quot;                      
-##  [5] &quot;as.Date.date&quot;                           
-##  [6] &quot;as.Date.dates&quot;                          
-##  [7] &quot;as.Date.default&quot;                        
-##  [8] &quot;as.Date.factor&quot;                         
-##  [9] &quot;as.Date.numeric&quot;                        
-## [10] &quot;as.Date.POSIXct&quot;                        
-## [11] &quot;as.Date.POSIXlt&quot;                        
-## [12] &quot;as.list.Date&quot;                           
-## [13] &quot;as.POSIXct.date&quot;                        
-## [14] &quot;as.POSIXct.Date&quot;                        
-## [15] &quot;as.POSIXct.dates&quot;                       
-## [16] &quot;as.POSIXlt.date&quot;                        
-## [17] &quot;as.POSIXlt.Date&quot;                        
-## [18] &quot;as.POSIXlt.dates&quot;                       
-## [19] &quot;axis.Date&quot;                              
-## [20] &quot;c.Date&quot;                                 
-## [21] &quot;.__C__Date&quot;                             
-## [22] &quot;col_date&quot;                               
-## [23] &quot;col_datetime&quot;                           
-## [24] &quot;cut.Date&quot;                               
-## [25] &quot;date&quot;                                   
-## [26] &quot;-.Date&quot;                                 
-## [27] &quot;[&lt;-.Date&quot;                               
-## [28] &quot;[.Date&quot;                                 
-## [29] &quot;[[.Date&quot;                                
-## [30] &quot;+.Date&quot;                                 
-## [31] &quot;date_names&quot;                             
-## [32] &quot;date_names_lang&quot;                        
-## [33] &quot;date_names_langs&quot;                       
-## [34] &quot;diff.Date&quot;                              
-## [35] &quot;format.Date&quot;                            
-## [36] &quot;is.numeric.Date&quot;                        
-## [37] &quot;ISOdate&quot;                                
-## [38] &quot;ISOdatetime&quot;                            
-## [39] &quot;julian.Date&quot;                            
-## [40] &quot;Math.Date&quot;                              
-## [41] &quot;mean.Date&quot;                              
-## [42] &quot;months.Date&quot;                            
-## [43] &quot;Ops.Date&quot;                               
-## [44] &quot;parse_date&quot;                             
-## [45] &quot;parse_datetime&quot;                         
-## [46] &quot;print.Date&quot;                             
-## [47] &quot;quarters.Date&quot;                          
-## [48] &quot;rep.Date&quot;                               
-## [49] &quot;round.Date&quot;                             
-## [50] &quot;.rs.enqueLoadedPackageUpdates&quot;          
-## [51] &quot;.rs.loadedPackageUpdates&quot;               
-## [52] &quot;.rs.rpc.check_for_package_updates&quot;      
-## [53] &quot;.rs.rpc.loaded_package_updates_required&quot;
-## [54] &quot;.rs.rpc.validate_server_url&quot;            
-## [55] &quot;.rs.rstudioIDEPackageRequiresUpdate&quot;    
-## [56] &quot;.rs.updatePackageEvents&quot;                
-## [57] &quot;.rs.updateRMarkdownPackage&quot;             
-## [58] &quot;.rs.updateRStudioIDEPackage&quot;            
-## [59] &quot;.rs.validateAndNormalizeEncoding&quot;       
-## [60] &quot;.rs.validateAndTransformLocation&quot;       
-## [61] &quot;.rs.validateCharacterParams&quot;            
-## [62] &quot;scale_colour_date&quot;                      
-## [63] &quot;scale_colour_datetime&quot;                  
-## [64] &quot;ScaleContinuousDate&quot;                    
-## [65] &quot;ScaleContinuousDatetime&quot;                
-## [66] &quot;scale_fill_date&quot;                        
-## [67] &quot;scale_fill_datetime&quot;                    
-## [68] &quot;scale_size_date&quot;                        
-## [69] &quot;scale_size_datetime&quot;                    
-## [70] &quot;scale_x_date&quot;                           
-## [71] &quot;scale_x_datetime&quot;                       
-## [72] &quot;scale_y_date&quot;                           
-## [73] &quot;scale_y_datetime&quot;                       
-## [74] &quot;seq.Date&quot;                               
-## [75] &quot;split.Date&quot;                             
-## [76] &quot;summary.Date&quot;                           
-## [77] &quot;Summary.Date&quot;                           
-## [78] &quot;Sys.Date&quot;                               
-## [79] &quot;theme_update&quot;                           
-## [80] &quot;tidyverse_update&quot;                       
-## [81] &quot;trunc.Date&quot;                             
-## [82] &quot;update&quot;                                 
-## [83] &quot;update.default&quot;                         
-## [84] &quot;update.formula&quot;                         
-## [85] &quot;update_geom_defaults&quot;                   
-## [86] &quot;update_labels&quot;                          
-## [87] &quot;update_list&quot;                            
-## [88] &quot;update.packages&quot;                        
-## [89] &quot;update.packageStatus&quot;                   
-## [90] &quot;update_stat_defaults&quot;                   
-## [91] &quot;weekdays.Date&quot;                          
-## [92] &quot;xtfrm.Date&quot;</code></pre>
+<pre><code>##  [1] &quot;as.character.Date&quot;    &quot;as.data.frame.Date&quot;   &quot;as.Date&quot;             
+##  [4] &quot;as.Date.character&quot;    &quot;as.Date.date&quot;         &quot;as.Date.dates&quot;       
+##  [7] &quot;as.Date.default&quot;      &quot;as.Date.factor&quot;       &quot;as.Date.numeric&quot;     
+## [10] &quot;as.Date.POSIXct&quot;      &quot;as.Date.POSIXlt&quot;      &quot;as.list.Date&quot;        
+## [13] &quot;as.POSIXct.date&quot;      &quot;as.POSIXct.Date&quot;      &quot;as.POSIXct.dates&quot;    
+## [16] &quot;as.POSIXlt.date&quot;      &quot;as.POSIXlt.Date&quot;      &quot;as.POSIXlt.dates&quot;    
+## [19] &quot;axis.Date&quot;            &quot;c.Date&quot;               &quot;.__C__Date&quot;          
+## [22] &quot;cut.Date&quot;             &quot;date&quot;                 &quot;-.Date&quot;              
+## [25] &quot;[&lt;-.Date&quot;             &quot;[.Date&quot;               &quot;[[.Date&quot;             
+## [28] &quot;+.Date&quot;               &quot;diff.Date&quot;            &quot;format.Date&quot;         
+## [31] &quot;is.numeric.Date&quot;      &quot;ISOdate&quot;              &quot;ISOdatetime&quot;         
+## [34] &quot;julian.Date&quot;          &quot;Math.Date&quot;            &quot;mean.Date&quot;           
+## [37] &quot;months.Date&quot;          &quot;Ops.Date&quot;             &quot;print.Date&quot;          
+## [40] &quot;quarters.Date&quot;        &quot;rep.Date&quot;             &quot;round.Date&quot;          
+## [43] &quot;seq.Date&quot;             &quot;split.Date&quot;           &quot;summary.Date&quot;        
+## [46] &quot;Summary.Date&quot;         &quot;Sys.Date&quot;             &quot;trunc.Date&quot;          
+## [49] &quot;update&quot;               &quot;update.default&quot;       &quot;update.formula&quot;      
+## [52] &quot;update.packages&quot;      &quot;update.packageStatus&quot; &quot;weekdays.Date&quot;       
+## [55] &quot;xtfrm.Date&quot;</code></pre>
 </div>
 <div id="logic" class="section level3">
 <h3>Logic</h3>
@@ -745,8 +673,8 @@ d &lt;- mtcars</code></pre>
 <pre class="r"><code>#install.packages(&quot;lingtypology&quot;)
 library(lingtypology)
 map.feature(c(&quot;Russian&quot;, &quot;Abaza&quot;, &quot;Adyghe&quot;))</code></pre>
-<div id="htmlwidget-04827dc46de110dfb923" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-04827dc46de110dfb923">{"x":{"calls":[{"method":"addTiles","args":["OpenStreetMap.Mapnik",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addProviderTiles","args":["OpenStreetMap.Mapnik",null,"OpenStreetMap.Mapnik",{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addCircleMarkers","args":[[56,44.428484,44],[38,41.793874,39.33],5,null,["Russian","Abaza","Adyghe"],{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":false,"color":"blue","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":1,"dashArray":null},null,null,["<a href='http://glottolog.org/resource/languoid/iso/rus' target='_blank'>Russian\u003c/a><br>","<a href='http://glottolog.org/resource/languoid/iso/abq' target='_blank'>Abaza\u003c/a><br>","<a href='http://glottolog.org/resource/languoid/iso/ady' target='_blank'>Adyghe\u003c/a><br>"]]}],"limits":{"lat":[44,56],"lng":[38,41.793874]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-460a9a481c68675bffe4" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-460a9a481c68675bffe4">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"zoomControl":false},"calls":[{"method":"addTiles","args":["OpenStreetMap.Mapnik",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addProviderTiles","args":["OpenStreetMap.Mapnik",null,"OpenStreetMap.Mapnik",{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addCircleMarkers","args":[[56,44.428484,44],[38,41.793874,39.33],5,null,["Russian","Abaza","Adyghe"],{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":false,"color":"blue","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":1,"dashArray":null},null,null,["<a href='http://glottolog.org/resource/languoid/iso/rus' target='_blank'>Russian<\/a><br>","<a href='http://glottolog.org/resource/languoid/iso/abq' target='_blank'>Abaza<\/a><br>","<a href='http://glottolog.org/resource/languoid/iso/ady' target='_blank'>Adyghe<\/a><br>"],null,null,{"clickable":false,"noHide":true,"direction":"right","opacity":1,"offset":[12,-15],"textsize":"10px","textOnly":true,"style":{"font-size":"14px"},"zoomAnimation":true,"className":""},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]}],"limits":{"lat":[44,56],"lng":[38,41.793874]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="loops" class="section level3">
 <h3>Loops</h3>
