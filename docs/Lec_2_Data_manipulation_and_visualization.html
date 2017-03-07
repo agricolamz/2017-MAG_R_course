@@ -3319,13 +3319,7 @@ df.short</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">17</span>)[homo$orientation])</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-1.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">32</span>, <span class="dt">pch =</span> <span class="dv">1</span>:<span class="dv">32</span>)</code></pre></div>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;26&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;27&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;28&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;29&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;30&#39;</code></pre>
-<pre><code>## Warning in plot.xy(xy, type, ...): не разработанное pch-значение &#39;31&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">25</span>, <span class="dt">pch =</span> <span class="dv">1</span>:<span class="dv">25</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-2.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
@@ -3807,13 +3801,12 @@ freq %&gt;%
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-98-1.png" width="768" /></p>
 <p>Sometimes it is nice to put your data in all facets:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="co"># Add an additional geom without facetization variable!</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> homo[,-<span class="dv">9</span>], <span class="kw">aes</span>(speaker, s.duration.ms), <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
-<span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">margins =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><a href="https://github.com/agricolamz/2017-MAG_R_course/blob/master/Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png"><img src="https://github.com/agricolamz/2017-MAG_R_course/blob/master/Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png" /></a></p>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~orientation)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png" width="768" /></p>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

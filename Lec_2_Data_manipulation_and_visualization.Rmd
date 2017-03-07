@@ -420,7 +420,7 @@ homo %>%
 ```{r}
 plot(homo$s.duration.ms, homo$vowel.duration.ms,
      pch = c(16, 17)[homo$orientation])
-plot(1:32, pch = 1:32)
+plot(1:25, pch = 1:25)
 ```
 
 * dplyr, ggplot2
@@ -849,14 +849,11 @@ homo %>%
 
 Sometimes it is nice to put your data in all facets:
 
-```{r, eval= FALSE}
+```{r}
 homo %>% 
-  mutate(older_then_28 = ifelse(age > 28, "older", "younger")) %>% 
   ggplot(aes(speaker, s.duration.ms))+
   # Add an additional geom without facetization variable!
   geom_point(data = homo[,-9], aes(speaker, s.duration.ms), color = "grey") + 
   geom_point() + 
-  facet_grid(older_then_28~orientation, margins = TRUE)
+  facet_wrap(~orientation)
 ```
-
-[![](https://github.com/agricolamz/2017-MAG_R_course/blob/master/Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png)](https://github.com/agricolamz/2017-MAG_R_course/blob/master/Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png)
