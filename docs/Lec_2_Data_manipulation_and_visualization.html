@@ -48,8 +48,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   </style>
   <link href="site_libs/slidy-2/styles/slidy.css" rel="stylesheet" />
   <script src="site_libs/slidy-2/scripts/slidy.js"></script>
-  <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-  <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
 <body>
 <div class="slide titlepage">
@@ -99,10 +97,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="dt">lecturer =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>),
   <span class="dt">lecturer_experience =</span> <span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">3</span>)
   )</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["names"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["lecturer"],"name":[2],"type":["lgl"],"align":["right"]},{"label":["lecturer_experience"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Olya","2":"TRUE","3":"19"},{"1":"Ilya","2":"TRUE","3":"6"},{"1":"Sasha","2":"FALSE","3":"0"},{"1":"George","2":"TRUE","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">names</th>
+<th align="left">lecturer</th>
+<th align="right">lecturer_experience</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Olya</td>
+<td align="left">TRUE</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">Ilya</td>
+<td align="left">TRUE</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Sasha</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">George</td>
+<td align="left">TRUE</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p><a href="http://www.statmethods.net/management/typeconversion.html">See Data Type Conversion page</a></p>
 </div>
@@ -114,22 +140,114 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(mtcars) <span class="co">#  returns the number of columns</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cars) <span class="co"># returns the first 6 rows</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2"},{"1":"4","2":"10"},{"1":"7","2":"4"},{"1":"7","2":"22"},{"1":"8","2":"16"},{"1":"9","2":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">speed</th>
+<th align="right">dist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cars, <span class="dv">4</span>) <span class="co"># returns the first 4 rows</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2"},{"1":"4","2":"10"},{"1":"7","2":"4"},{"1":"7","2":"22"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">speed</th>
+<th align="right">dist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">22</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(cars) <span class="co"># returns the last 6 rows</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"23","2":"54"},{"1":"24","2":"70"},{"1":"24","2":"92"},{"1":"24","2":"93"},{"1":"24","2":"120"},{"1":"25","2":"85"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">speed</th>
+<th align="right">dist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>45</td>
+<td align="right">23</td>
+<td align="right">54</td>
+</tr>
+<tr class="even">
+<td>46</td>
+<td align="right">24</td>
+<td align="right">70</td>
+</tr>
+<tr class="odd">
+<td>47</td>
+<td align="right">24</td>
+<td align="right">92</td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td align="right">24</td>
+<td align="right">93</td>
+</tr>
+<tr class="odd">
+<td>49</td>
+<td align="right">24</td>
+<td align="right">120</td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td align="right">25</td>
+<td align="right">85</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)  <span class="co"># produce some stats</span></code></pre></div>
 <pre><code>##      speed           dist       
@@ -154,20 +272,320 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[<span class="dv">3</span>,<span class="dv">7</span>] <span class="co"># shows the 3. row, 7. column</span></code></pre></div>
 <pre><code>## [1] 18.61</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[<span class="dv">3</span>,] <span class="co"># shows the 3. row</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"22.8","2":"4","3":"108","4":"93","5":"3.85","6":"2.32","7":"18.61","8":"1","9":"1","10":"4","11":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.32</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[,<span class="dv">7</span>] <span class="co"># shows the 7. column</span></code></pre></div>
 <pre><code>##  [1] 16.46 17.02 18.61 19.44 17.02 20.22 15.84 20.00 22.90 18.30 18.90
 ## [12] 17.40 17.60 18.00 17.98 17.82 17.42 19.47 18.52 19.90 20.01 16.87
 ## [23] 17.30 15.41 17.05 18.90 16.70 16.90 14.50 15.50 14.60 18.60</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[mtcars$mpg &lt;<span class="st"> </span><span class="dv">20</span>, ] <span class="co"># show all rows with the mpg value lower then 20</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4"},{"1":"19.2","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.30","8":"1","9":"0","10":"4","11":"4"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4"},{"1":"16.4","2":"8","3":"275.8","4":"180","5":"3.07","6":"4.070","7":"17.40","8":"0","9":"0","10":"3","11":"3"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3"},{"1":"15.2","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.780","7":"18.00","8":"0","9":"0","10":"3","11":"3"},{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4"},{"1":"14.7","2":"8","3":"440.0","4":"230","5":"3.23","6":"5.345","7":"17.42","8":"0","9":"0","10":"3","11":"4"},{"1":"15.5","2":"8","3":"318.0","4":"150","5":"2.76","6":"3.520","7":"16.87","8":"0","9":"0","10":"3","11":"2"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2"},{"1":"13.3","2":"8","3":"350.0","4":"245","5":"3.73","6":"3.840","7":"15.41","8":"0","9":"0","10":"3","11":"4"},{"1":"19.2","2":"8","3":"400.0","4":"175","5":"3.08","6":"3.845","7":"17.05","8":"0","9":"0","10":"3","11":"2"},{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.170","7":"14.50","8":"0","9":"1","10":"5","11":"4"},{"1":"19.7","2":"6","3":"145.0","4":"175","5":"3.62","6":"2.770","7":"15.50","8":"0","9":"1","10":"5","11":"6"},{"1":"15.0","2":"8","3":"301.0","4":"335","5":"3.54","6":"3.570","7":"14.60","8":"0","9":"1","10":"5","11":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Valiant</td>
+<td align="right">18.1</td>
+<td align="right">6</td>
+<td align="right">225.0</td>
+<td align="right">105</td>
+<td align="right">2.76</td>
+<td align="right">3.460</td>
+<td align="right">20.22</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td>Duster 360</td>
+<td align="right">14.3</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">245</td>
+<td align="right">3.21</td>
+<td align="right">3.570</td>
+<td align="right">15.84</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Merc 280</td>
+<td align="right">19.2</td>
+<td align="right">6</td>
+<td align="right">167.6</td>
+<td align="right">123</td>
+<td align="right">3.92</td>
+<td align="right">3.440</td>
+<td align="right">18.30</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>Merc 280C</td>
+<td align="right">17.8</td>
+<td align="right">6</td>
+<td align="right">167.6</td>
+<td align="right">123</td>
+<td align="right">3.92</td>
+<td align="right">3.440</td>
+<td align="right">18.90</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Merc 450SE</td>
+<td align="right">16.4</td>
+<td align="right">8</td>
+<td align="right">275.8</td>
+<td align="right">180</td>
+<td align="right">3.07</td>
+<td align="right">4.070</td>
+<td align="right">17.40</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td>Merc 450SL</td>
+<td align="right">17.3</td>
+<td align="right">8</td>
+<td align="right">275.8</td>
+<td align="right">180</td>
+<td align="right">3.07</td>
+<td align="right">3.730</td>
+<td align="right">17.60</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td>Merc 450SLC</td>
+<td align="right">15.2</td>
+<td align="right">8</td>
+<td align="right">275.8</td>
+<td align="right">180</td>
+<td align="right">3.07</td>
+<td align="right">3.780</td>
+<td align="right">18.00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td>Cadillac Fleetwood</td>
+<td align="right">10.4</td>
+<td align="right">8</td>
+<td align="right">472.0</td>
+<td align="right">205</td>
+<td align="right">2.93</td>
+<td align="right">5.250</td>
+<td align="right">17.98</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Lincoln Continental</td>
+<td align="right">10.4</td>
+<td align="right">8</td>
+<td align="right">460.0</td>
+<td align="right">215</td>
+<td align="right">3.00</td>
+<td align="right">5.424</td>
+<td align="right">17.82</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>Chrysler Imperial</td>
+<td align="right">14.7</td>
+<td align="right">8</td>
+<td align="right">440.0</td>
+<td align="right">230</td>
+<td align="right">3.23</td>
+<td align="right">5.345</td>
+<td align="right">17.42</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Dodge Challenger</td>
+<td align="right">15.5</td>
+<td align="right">8</td>
+<td align="right">318.0</td>
+<td align="right">150</td>
+<td align="right">2.76</td>
+<td align="right">3.520</td>
+<td align="right">16.87</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td>AMC Javelin</td>
+<td align="right">15.2</td>
+<td align="right">8</td>
+<td align="right">304.0</td>
+<td align="right">150</td>
+<td align="right">3.15</td>
+<td align="right">3.435</td>
+<td align="right">17.30</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Camaro Z28</td>
+<td align="right">13.3</td>
+<td align="right">8</td>
+<td align="right">350.0</td>
+<td align="right">245</td>
+<td align="right">3.73</td>
+<td align="right">3.840</td>
+<td align="right">15.41</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>Pontiac Firebird</td>
+<td align="right">19.2</td>
+<td align="right">8</td>
+<td align="right">400.0</td>
+<td align="right">175</td>
+<td align="right">3.08</td>
+<td align="right">3.845</td>
+<td align="right">17.05</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Ford Pantera L</td>
+<td align="right">15.8</td>
+<td align="right">8</td>
+<td align="right">351.0</td>
+<td align="right">264</td>
+<td align="right">4.22</td>
+<td align="right">3.170</td>
+<td align="right">14.50</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>Ferrari Dino</td>
+<td align="right">19.7</td>
+<td align="right">6</td>
+<td align="right">145.0</td>
+<td align="right">175</td>
+<td align="right">3.62</td>
+<td align="right">2.770</td>
+<td align="right">15.50</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td>Maserati Bora</td>
+<td align="right">15.0</td>
+<td align="right">8</td>
+<td align="right">301.0</td>
+<td align="right">335</td>
+<td align="right">3.54</td>
+<td align="right">3.570</td>
+<td align="right">14.60</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ?mtcars</span></code></pre></div>
 </div>
@@ -218,69 +636,272 @@ combine_cols &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</sp
   <span class="dt">iso =</span> <span class="kw">c</span>(<span class="st">&quot;sel&quot;</span>, <span class="st">&quot;fra&quot;</span>, <span class="st">&quot;ckt&quot;</span>, <span class="st">&quot;pol&quot;</span>)
   )
 languages</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel"},{"1":"French","2":"France","3":"fra"},{"1":"Chukchi","2":"Russia","3":"ckt"},{"1":"Kashubian","2":"Poland","3":"pol"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">languages</th>
+<th align="left">countries</th>
+<th align="left">iso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Selkup</td>
+<td align="left">Russia</td>
+<td align="left">sel</td>
+</tr>
+<tr class="even">
+<td align="left">French</td>
+<td align="left">France</td>
+<td align="left">fra</td>
+</tr>
+<tr class="odd">
+<td align="left">Chukchi</td>
+<td align="left">Russia</td>
+<td align="left">ckt</td>
+</tr>
+<tr class="even">
+<td align="left">Kashubian</td>
+<td align="left">Poland</td>
+<td align="left">pol</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">country_population &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">countries =</span> <span class="kw">c</span>(<span class="st">&quot;Russia&quot;</span>, <span class="st">&quot;Poland&quot;</span>, <span class="st">&quot;Finland&quot;</span>),
   <span class="dt">population_mln =</span> <span class="kw">c</span>(<span class="dv">143</span>, <span class="dv">38</span>, <span class="dv">5</span>))
 country_population</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["countries"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Russia","2":"143"},{"1":"Poland","2":"38"},{"1":"Finland","2":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">countries</th>
+<th align="right">population_mln</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Russia</td>
+<td align="right">143</td>
+</tr>
+<tr class="even">
+<td align="left">Poland</td>
+<td align="right">38</td>
+</tr>
+<tr class="odd">
+<td align="left">Finland</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inner_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
 <pre><code>## Warning in inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
 ## factors with different levels, coercing to character vector</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel","4":"143"},{"1":"Chukchi","2":"Russia","3":"ckt","4":"143"},{"1":"Kashubian","2":"Poland","3":"pol","4":"38"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">languages</th>
+<th align="left">countries</th>
+<th align="left">iso</th>
+<th align="right">population_mln</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Selkup</td>
+<td align="left">Russia</td>
+<td align="left">sel</td>
+<td align="right">143</td>
+</tr>
+<tr class="even">
+<td align="left">Chukchi</td>
+<td align="left">Russia</td>
+<td align="left">ckt</td>
+<td align="right">143</td>
+</tr>
+<tr class="odd">
+<td align="left">Kashubian</td>
+<td align="left">Poland</td>
+<td align="left">pol</td>
+<td align="right">38</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">left_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
 <pre><code>## Warning in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
 ## factors with different levels, coercing to character vector</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel","4":"143"},{"1":"French","2":"France","3":"fra","4":"NA"},{"1":"Chukchi","2":"Russia","3":"ckt","4":"143"},{"1":"Kashubian","2":"Poland","3":"pol","4":"38"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">languages</th>
+<th align="left">countries</th>
+<th align="left">iso</th>
+<th align="right">population_mln</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Selkup</td>
+<td align="left">Russia</td>
+<td align="left">sel</td>
+<td align="right">143</td>
+</tr>
+<tr class="even">
+<td align="left">French</td>
+<td align="left">France</td>
+<td align="left">fra</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Chukchi</td>
+<td align="left">Russia</td>
+<td align="left">ckt</td>
+<td align="right">143</td>
+</tr>
+<tr class="even">
+<td align="left">Kashubian</td>
+<td align="left">Poland</td>
+<td align="left">pol</td>
+<td align="right">38</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
 <pre><code>## Warning in right_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
 ## factors with different levels, coercing to character vector</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["chr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Selkup","2":"Russia","3":"sel","4":"143"},{"1":"Chukchi","2":"Russia","3":"ckt","4":"143"},{"1":"Kashubian","2":"Poland","3":"pol","4":"38"},{"1":"NA","2":"Finland","3":"NA","4":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">languages</th>
+<th align="left">countries</th>
+<th align="left">iso</th>
+<th align="right">population_mln</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Selkup</td>
+<td align="left">Russia</td>
+<td align="left">sel</td>
+<td align="right">143</td>
+</tr>
+<tr class="even">
+<td align="left">Chukchi</td>
+<td align="left">Russia</td>
+<td align="left">ckt</td>
+<td align="right">143</td>
+</tr>
+<tr class="odd">
+<td align="left">Kashubian</td>
+<td align="left">Poland</td>
+<td align="left">pol</td>
+<td align="right">38</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">Finland</td>
+<td align="left">NA</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["languages"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["countries"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"French","2":"France","3":"fra"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">languages</th>
+<th align="left">countries</th>
+<th align="left">iso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">French</td>
+<td align="left">France</td>
+<td align="left">fra</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>(country_population, languages)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["countries"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["population_mln"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Finland","2":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">countries</th>
+<th align="right">population_mln</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Finland</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(country_population, languages)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
 <pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
 ## factors with different levels, coercing to character vector</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["countries"],"name":[1],"type":["chr"],"align":["left"]},{"label":["population_mln"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["languages"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["iso"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"Russia","2":"143","3":"Selkup","4":"sel"},{"1":"Russia","2":"143","3":"Chukchi","4":"ckt"},{"1":"Poland","2":"38","3":"Kashubian","4":"pol"},{"1":"Finland","2":"5","3":"NA","4":"NA"},{"1":"France","2":"NA","3":"French","4":"fra"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">countries</th>
+<th align="right">population_mln</th>
+<th align="left">languages</th>
+<th align="left">iso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Russia</td>
+<td align="right">143</td>
+<td align="left">Selkup</td>
+<td align="left">sel</td>
+</tr>
+<tr class="even">
+<td align="left">Russia</td>
+<td align="right">143</td>
+<td align="left">Chukchi</td>
+<td align="left">ckt</td>
+</tr>
+<tr class="odd">
+<td align="left">Poland</td>
+<td align="right">38</td>
+<td align="left">Kashubian</td>
+<td align="left">pol</td>
+</tr>
+<tr class="even">
+<td align="left">Finland</td>
+<td align="right">5</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">France</td>
+<td align="right">NA</td>
+<td align="left">French</td>
+<td align="left">fra</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="data" class="slide section level3">
@@ -299,10 +920,193 @@ country_population</code></pre></div>
 <p>Download data</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://goo.gl/Zjr9aF&quot;</span>)
 homo</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"A","2":"61.40","3":"112.60","4":"119.51","5":"52.5","6":"7","7":"18","8":"0.28","9":"hetero","10":"30"},{"1":"B","2":"63.90","3":"126.49","4":"100.29","5":"114.0","6":"20","7":"5","8":"0.80","9":"hetero","10":"19"},{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28"},{"1":"H","2":"62.46","3":"120.13","4":"105.26","5":"55.7","6":"21","7":"4","8":"0.84","9":"hetero","10":"22"},{"1":"I","2":"60.45","3":"140.44","4":"109.86","5":"96.4","6":"20","7":"5","8":"0.80","9":"homo","10":"22"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40"},{"1":"K","2":"62.94","3":"137.37","4":"119.48","5":"87.6","6":"21","7":"4","8":"0.84","9":"homo","10":"30"},{"1":"L","2":"53.31","3":"112.05","4":"146.20","5":"57.8","6":"8","7":"17","8":"0.32","9":"hetero","10":"25"},{"1":"M","2":"45.13","3":"133.74","4":"155.34","5":"100.5","6":"9","7":"16","8":"0.36","9":"hetero","10":"20"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="right">7</td>
+<td align="right">18</td>
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+<td align="right">114.0</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+<td align="right">55.7</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+<td align="right">96.4</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+<td align="right">57.8</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+<td align="right">100.5</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="data-frame-tibble-dplyr" class="slide section level3">
@@ -311,10 +1115,193 @@ homo</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 homo &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(homo)
 homo</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"A","2":"61.40","3":"112.60","4":"119.51","5":"52.5","6":"7","7":"18","8":"0.28","9":"hetero","10":"30"},{"1":"B","2":"63.90","3":"126.49","4":"100.29","5":"114.0","6":"20","7":"5","8":"0.80","9":"hetero","10":"19"},{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28"},{"1":"H","2":"62.46","3":"120.13","4":"105.26","5":"55.7","6":"21","7":"4","8":"0.84","9":"hetero","10":"22"},{"1":"I","2":"60.45","3":"140.44","4":"109.86","5":"96.4","6":"20","7":"5","8":"0.80","9":"homo","10":"22"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40"},{"1":"K","2":"62.94","3":"137.37","4":"119.48","5":"87.6","6":"21","7":"4","8":"0.84","9":"homo","10":"30"},{"1":"L","2":"53.31","3":"112.05","4":"146.20","5":"57.8","6":"8","7":"17","8":"0.32","9":"hetero","10":"25"},{"1":"M","2":"45.13","3":"133.74","4":"155.34","5":"100.5","6":"9","7":"16","8":"0.36","9":"hetero","10":"20"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="right">7</td>
+<td align="right">18</td>
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+<td align="right">114.0</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+<td align="right">55.7</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+<td align="right">96.4</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+<td align="right">57.8</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+<td align="right">100.5</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="filter-dplyr" class="slide section level3">
@@ -324,20 +1311,170 @@ homo</code></pre></div>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo[homo$age &gt;<span class="st"> </span><span class="dv">28</span>,]</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"A","2":"61.40","3":"112.60","4":"119.51","5":"52.5","6":"7","7":"18","8":"0.28","9":"hetero","10":"30"},{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40"},{"1":"K","2":"62.94","3":"137.37","4":"119.48","5":"87.6","6":"21","7":"4","8":"0.84","9":"homo","10":"30"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="right">7</td>
+<td align="right">18</td>
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="even">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li><em>dplyr</em></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, s.duration.ms &lt;<span class="st"> </span><span class="dv">60</span>)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>%&gt;% is called <em>pipe</em>. Pipe is a technique for passing result of the work of one function to another.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(<span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">sin</span>(<span class="dv">1</span>:<span class="dv">22</span>))), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</code></pre></div>
@@ -362,20 +1499,170 @@ homo</code></pre></div>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo[<span class="dv">3</span>:<span class="dv">7</span>, ]</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li><em>dplyr</em></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">slice</span>(<span class="dv">3</span>:<span class="dv">7</span>)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="select-dplyr" class="slide section level3">
@@ -384,30 +1671,279 @@ homo</code></pre></div>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo[, <span class="dv">8</span>:<span class="dv">10</span>]</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["perceived.as.homo.percent"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"0.28","2":"hetero","3":"30"},{"1":"0.80","2":"hetero","3":"19"},{"1":"0.36","2":"homo","3":"29"},{"1":"0.60","2":"homo","3":"36"},{"1":"0.40","2":"homo","3":"27"},{"1":"0.68","2":"homo","3":"33"},{"1":"0.80","2":"hetero","3":"28"},{"1":"0.84","2":"hetero","3":"22"},{"1":"0.80","2":"homo","3":"22"},{"1":"0.32","2":"homo","3":"40"},{"1":"0.84","2":"homo","3":"30"},{"1":"0.32","2":"hetero","3":"25"},{"1":"0.36","2":"hetero","3":"20"},{"1":"0.16","2":"hetero","3":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li><em>dplyr</em></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">select</span>(<span class="dv">8</span>:<span class="dv">10</span>)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["perceived.as.homo.percent"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"0.28","2":"hetero","3":"30"},{"1":"0.80","2":"hetero","3":"19"},{"1":"0.36","2":"homo","3":"29"},{"1":"0.60","2":"homo","3":"36"},{"1":"0.40","2":"homo","3":"27"},{"1":"0.68","2":"homo","3":"33"},{"1":"0.80","2":"hetero","3":"28"},{"1":"0.84","2":"hetero","3":"22"},{"1":"0.80","2":"homo","3":"22"},{"1":"0.32","2":"homo","3":"40"},{"1":"0.84","2":"homo","3":"30"},{"1":"0.32","2":"hetero","3":"25"},{"1":"0.36","2":"hetero","3":"20"},{"1":"0.16","2":"hetero","3":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li><em>dplyr</em> only</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">select</span>(speaker:average.f0.Hz)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A","2":"61.40","3":"112.60","4":"119.51"},{"1":"B","2":"63.90","3":"126.49","4":"100.29"},{"1":"C","2":"55.08","3":"126.81","4":"114.90"},{"1":"D","2":"78.11","3":"119.17","4":"126.61"},{"1":"E","2":"64.71","3":"93.68","4":"130.76"},{"1":"F","2":"67.00","3":"127.87","4":"150.79"},{"1":"G","2":"65.39","3":"147.52","4":"128.96"},{"1":"H","2":"62.46","3":"120.13","4":"105.26"},{"1":"I","2":"60.45","3":"140.44","4":"109.86"},{"1":"J","2":"59.59","3":"121.01","4":"123.90"},{"1":"K","2":"62.94","3":"137.37","4":"119.48"},{"1":"L","2":"53.31","3":"112.05","4":"146.20"},{"1":"M","2":"45.13","3":"133.74","4":"155.34"},{"1":"N","2":"57.67","3":"118.02","4":"121.48"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="arrange-dplyr" class="slide section level3">
@@ -416,20 +1952,386 @@ homo</code></pre></div>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo[<span class="kw">order</span>(homo$orientation, homo$age), ]</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"B","2":"63.90","3":"126.49","4":"100.29","5":"114.0","6":"20","7":"5","8":"0.80","9":"hetero","10":"19"},{"1":"M","2":"45.13","3":"133.74","4":"155.34","5":"100.5","6":"9","7":"16","8":"0.36","9":"hetero","10":"20"},{"1":"H","2":"62.46","3":"120.13","4":"105.26","5":"55.7","6":"21","7":"4","8":"0.84","9":"hetero","10":"22"},{"1":"L","2":"53.31","3":"112.05","4":"146.20","5":"57.8","6":"8","7":"17","8":"0.32","9":"hetero","10":"25"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29"},{"1":"A","2":"61.40","3":"112.60","4":"119.51","5":"52.5","6":"7","7":"18","8":"0.28","9":"hetero","10":"30"},{"1":"I","2":"60.45","3":"140.44","4":"109.86","5":"96.4","6":"20","7":"5","8":"0.80","9":"homo","10":"22"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27"},{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"K","2":"62.94","3":"137.37","4":"119.48","5":"87.6","6":"21","7":"4","8":"0.84","9":"homo","10":"30"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+<td align="right">114.0</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+<td align="right">100.5</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">H</td>
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+<td align="right">55.7</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+<td align="right">57.8</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="right">7</td>
+<td align="right">18</td>
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">I</td>
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+<td align="right">96.4</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li><em>dplyr</em></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">arrange</span>(orientation, <span class="kw">desc</span>(age))</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"A","2":"61.40","3":"112.60","4":"119.51","5":"52.5","6":"7","7":"18","8":"0.28","9":"hetero","10":"30"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28"},{"1":"L","2":"53.31","3":"112.05","4":"146.20","5":"57.8","6":"8","7":"17","8":"0.32","9":"hetero","10":"25"},{"1":"H","2":"62.46","3":"120.13","4":"105.26","5":"55.7","6":"21","7":"4","8":"0.84","9":"hetero","10":"22"},{"1":"M","2":"45.13","3":"133.74","4":"155.34","5":"100.5","6":"9","7":"16","8":"0.36","9":"hetero","10":"20"},{"1":"B","2":"63.90","3":"126.49","4":"100.29","5":"114.0","6":"20","7":"5","8":"0.80","9":"hetero","10":"19"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33"},{"1":"K","2":"62.94","3":"137.37","4":"119.48","5":"87.6","6":"21","7":"4","8":"0.84","9":"homo","10":"30"},{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27"},{"1":"I","2":"60.45","3":"140.44","4":"109.86","5":"96.4","6":"20","7":"5","8":"0.80","9":"homo","10":"22"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="right">7</td>
+<td align="right">18</td>
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+<td align="right">57.8</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="left">H</td>
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+<td align="right">55.7</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+<td align="right">100.5</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+<td align="right">114.0</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">I</td>
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+<td align="right">96.4</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="distinct" class="slide section level3">
@@ -445,29 +2347,166 @@ homo</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">distinct</span>(orientation, age &gt;<span class="st"> </span><span class="dv">20</span>)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["orientation"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["age > 20"],"name":[2],"type":["lgl"],"align":["right"]}],"data":[{"1":"hetero","2":"TRUE"},{"1":"hetero","2":"FALSE"},{"1":"homo","2":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">orientation</th>
+<th align="left">age &gt; 20</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">hetero</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(homo[<span class="kw">c</span>(<span class="st">&quot;orientation&quot;</span>, <span class="st">&quot;perceived.as.homo&quot;</span>)])</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["orientation"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["perceived.as.homo"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"hetero","2":"7"},{"1":"hetero","2":"20"},{"1":"homo","2":"9"},{"1":"homo","2":"15"},{"1":"homo","2":"10"},{"1":"homo","2":"17"},{"1":"hetero","2":"21"},{"1":"homo","2":"20"},{"1":"homo","2":"8"},{"1":"homo","2":"21"},{"1":"hetero","2":"8"},{"1":"hetero","2":"9"},{"1":"hetero","2":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">orientation</th>
+<th align="right">perceived.as.homo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">hetero</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li><em>dplyr</em></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">distinct</span>(orientation, perceived.as.homo)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["orientation"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["perceived.as.homo"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"hetero","2":"7"},{"1":"hetero","2":"20"},{"1":"homo","2":"9"},{"1":"homo","2":"15"},{"1":"homo","2":"10"},{"1":"homo","2":"17"},{"1":"hetero","2":"21"},{"1":"homo","2":"20"},{"1":"homo","2":"8"},{"1":"homo","2":"21"},{"1":"hetero","2":"8"},{"1":"hetero","2":"9"},{"1":"hetero","2":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">orientation</th>
+<th align="right">perceived.as.homo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="left">homo</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">hetero</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="mutate-dplyr" class="slide section level3">
@@ -491,44 +2530,343 @@ homo$f0.max</code></pre></div>
           <span class="dt">f0.mx =</span> (average.f0.Hz +<span class="st"> </span>f0.range.Hz/<span class="dv">2</span>)) -&gt;<span class="st"> </span>
 <span class="st">  </span>homo
 homo  </code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["speaker"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["s.duration.ms"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["vowel.duration.ms"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average.f0.Hz"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["f0.range.Hz"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["perceived.as.homo"],"name":[6],"type":["int"],"align":["right"]},{"label":["perceived.as.hetero"],"name":[7],"type":["int"],"align":["right"]},{"label":["perceived.as.homo.percent"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["orientation"],"name":[9],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[10],"type":["int"],"align":["right"]},{"label":["f0.min"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["f0.max"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["f0.mn"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["f0.mx"],"name":[14],"type":["dbl"],"align":["right"]}],"data":[{"1":"A","2":"61.40","3":"112.60","4":"119.51","5":"52.5","6":"7","7":"18","8":"0.28","9":"hetero","10":"30","11":"93.26","12":"145.76","13":"93.26","14":"145.76"},{"1":"B","2":"63.90","3":"126.49","4":"100.29","5":"114.0","6":"20","7":"5","8":"0.80","9":"hetero","10":"19","11":"43.29","12":"157.29","13":"43.29","14":"157.29"},{"1":"C","2":"55.08","3":"126.81","4":"114.90","5":"103.2","6":"9","7":"16","8":"0.36","9":"homo","10":"29","11":"63.30","12":"166.50","13":"63.30","14":"166.50"},{"1":"D","2":"78.11","3":"119.17","4":"126.61","5":"58.8","6":"15","7":"10","8":"0.60","9":"homo","10":"36","11":"97.21","12":"156.01","13":"97.21","14":"156.01"},{"1":"E","2":"64.71","3":"93.68","4":"130.76","5":"37.4","6":"10","7":"15","8":"0.40","9":"homo","10":"27","11":"112.06","12":"149.46","13":"112.06","14":"149.46"},{"1":"F","2":"67.00","3":"127.87","4":"150.79","5":"42.0","6":"17","7":"8","8":"0.68","9":"homo","10":"33","11":"129.79","12":"171.79","13":"129.79","14":"171.79"},{"1":"G","2":"65.39","3":"147.52","4":"128.96","5":"118.2","6":"20","7":"5","8":"0.80","9":"hetero","10":"28","11":"69.86","12":"188.06","13":"69.86","14":"188.06"},{"1":"H","2":"62.46","3":"120.13","4":"105.26","5":"55.7","6":"21","7":"4","8":"0.84","9":"hetero","10":"22","11":"77.41","12":"133.11","13":"77.41","14":"133.11"},{"1":"I","2":"60.45","3":"140.44","4":"109.86","5":"96.4","6":"20","7":"5","8":"0.80","9":"homo","10":"22","11":"61.66","12":"158.06","13":"61.66","14":"158.06"},{"1":"J","2":"59.59","3":"121.01","4":"123.90","5":"111.7","6":"8","7":"17","8":"0.32","9":"homo","10":"40","11":"68.05","12":"179.75","13":"68.05","14":"179.75"},{"1":"K","2":"62.94","3":"137.37","4":"119.48","5":"87.6","6":"21","7":"4","8":"0.84","9":"homo","10":"30","11":"75.68","12":"163.28","13":"75.68","14":"163.28"},{"1":"L","2":"53.31","3":"112.05","4":"146.20","5":"57.8","6":"8","7":"17","8":"0.32","9":"hetero","10":"25","11":"117.30","12":"175.10","13":"117.30","14":"175.10"},{"1":"M","2":"45.13","3":"133.74","4":"155.34","5":"100.5","6":"9","7":"16","8":"0.36","9":"hetero","10":"20","11":"105.09","12":"205.59","13":"105.09","14":"205.59"},{"1":"N","2":"57.67","3":"118.02","4":"121.48","5":"37.4","6":"4","7":"21","8":"0.16","9":"hetero","10":"29","11":"102.78","12":"140.18","13":"102.78","14":"140.18"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="right">perceived.as.homo</th>
+<th align="right">perceived.as.hetero</th>
+<th align="right">perceived.as.homo.percent</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+<th align="right">f0.min</th>
+<th align="right">f0.max</th>
+<th align="right">f0.mn</th>
+<th align="right">f0.mx</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="right">7</td>
+<td align="right">18</td>
+<td align="right">0.28</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+<td align="right">93.26</td>
+<td align="right">145.76</td>
+<td align="right">93.26</td>
+<td align="right">145.76</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+<td align="right">114.0</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+<td align="right">43.29</td>
+<td align="right">157.29</td>
+<td align="right">43.29</td>
+<td align="right">157.29</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+<td align="right">63.30</td>
+<td align="right">166.50</td>
+<td align="right">63.30</td>
+<td align="right">166.50</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">0.60</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+<td align="right">97.21</td>
+<td align="right">156.01</td>
+<td align="right">97.21</td>
+<td align="right">156.01</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">0.40</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+<td align="right">112.06</td>
+<td align="right">149.46</td>
+<td align="right">112.06</td>
+<td align="right">149.46</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.68</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+<td align="right">129.79</td>
+<td align="right">171.79</td>
+<td align="right">129.79</td>
+<td align="right">171.79</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+<td align="right">69.86</td>
+<td align="right">188.06</td>
+<td align="right">69.86</td>
+<td align="right">188.06</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+<td align="right">55.7</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+<td align="right">77.41</td>
+<td align="right">133.11</td>
+<td align="right">77.41</td>
+<td align="right">133.11</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+<td align="right">96.4</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.80</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+<td align="right">61.66</td>
+<td align="right">158.06</td>
+<td align="right">61.66</td>
+<td align="right">158.06</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+<td align="right">68.05</td>
+<td align="right">179.75</td>
+<td align="right">68.05</td>
+<td align="right">179.75</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="right">21</td>
+<td align="right">4</td>
+<td align="right">0.84</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+<td align="right">75.68</td>
+<td align="right">163.28</td>
+<td align="right">75.68</td>
+<td align="right">163.28</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+<td align="right">57.8</td>
+<td align="right">8</td>
+<td align="right">17</td>
+<td align="right">0.32</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+<td align="right">117.30</td>
+<td align="right">175.10</td>
+<td align="right">117.30</td>
+<td align="right">175.10</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+<td align="right">100.5</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">0.36</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+<td align="right">105.09</td>
+<td align="right">205.59</td>
+<td align="right">105.09</td>
+<td align="right">205.59</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">0.16</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+<td align="right">102.78</td>
+<td align="right">140.18</td>
+<td align="right">102.78</td>
+<td align="right">140.18</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="group_by-and-summarise-dplyr" class="slide section level3">
 <h1>3.11 group_by and summarise (dplyr)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">summarise</span>(<span class="kw">min</span>(age), <span class="kw">mean</span>(s.duration.ms))</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["min(age)"],"name":[1],"type":["int"],"align":["right"]},{"label":["mean(s.duration.ms)"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"19","2":"61.22429"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">min(age)</th>
+<th align="right">mean(s.duration.ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">61.22429</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(orientation) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">my_mean =</span> <span class="kw">mean</span>(s.duration.ms))</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["orientation"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["my_mean"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"hetero","2":"58.46571"},{"1":"homo","2":"63.98286"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">orientation</th>
+<th align="right">my_mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">58.46571</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">63.98286</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(orientation) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(s.duration.ms))</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["orientation"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mean(s.duration.ms)"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"hetero","2":"58.46571"},{"1":"homo","2":"63.98286"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">orientation</th>
+<th align="right">mean(s.duration.ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">58.46571</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">63.98286</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(orientation) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_by_orientation =</span> <span class="kw">mean</span>(s.duration.ms))</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["orientation"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mean_by_orientation"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"hetero","2":"58.46571"},{"1":"homo","2":"63.98286"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">orientation</th>
+<th align="right">mean_by_orientation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hetero</td>
+<td align="right">58.46571</td>
+</tr>
+<tr class="even">
+<td align="left">homo</td>
+<td align="right">63.98286</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="tidyr-package" class="slide section level3">
@@ -542,19 +2880,121 @@ homo  </code></pre></div>
                    <span class="dt">intervocal =</span> <span class="kw">c</span>(<span class="dv">57</span>, <span class="dv">77</span>, <span class="dv">82</span>, <span class="dv">78</span>),
                    <span class="dt">final =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">69</span>, <span class="dv">12</span>, <span class="dv">104</span>))
 df.short</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["initial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["intervocal"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["final"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"stops","2":"123","3":"57","4":"30"},{"1":"fricatives","2":"87","3":"77","4":"69"},{"1":"affricates","2":"73","3":"82","4":"12"},{"1":"nasals","2":"7","3":"78","4":"104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">consonant</th>
+<th align="right">initial</th>
+<th align="right">intervocal</th>
+<th align="right">final</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="right">123</td>
+<td align="right">57</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="right">87</td>
+<td align="right">77</td>
+<td align="right">69</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="right">73</td>
+<td align="right">82</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="right">7</td>
+<td align="right">78</td>
+<td align="right">104</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ul>
 <li>Long format
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["position"],"name":[2],"type":["chr"],"align":["left"]},{"label":["number"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"stops","2":"initial","3":"123"},{"1":"fricatives","2":"initial","3":"87"},{"1":"affricates","2":"initial","3":"73"},{"1":"nasals","2":"initial","3":"7"},{"1":"stops","2":"intervocal","3":"57"},{"1":"fricatives","2":"intervocal","3":"77"},{"1":"affricates","2":"intervocal","3":"82"},{"1":"nasals","2":"intervocal","3":"78"},{"1":"stops","2":"final","3":"30"},{"1":"fricatives","2":"final","3":"69"},{"1":"affricates","2":"final","3":"12"},{"1":"nasals","2":"final","3":"104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div></li>
+<div class="kable-table">
+</li>
 </ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">consonant</th>
+<th align="left">position</th>
+<th align="right">number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="left">initial</td>
+<td align="right">123</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="left">initial</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="left">initial</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="left">initial</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="left">intervocal</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="left">intervocal</td>
+<td align="right">77</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="left">intervocal</td>
+<td align="right">82</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="left">intervocal</td>
+<td align="right">78</td>
+</tr>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="left">final</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="left">final</td>
+<td align="right">69</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="left">final</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="left">final</td>
+<td align="right">104</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="short-format-long-format-gather-tidyr" class="slide section level3">
 <h1>4.2 Short format → Long format: gather (tidyr)</h1>
@@ -564,19 +3004,120 @@ df.short</code></pre></div>
                    <span class="dt">intervocal =</span> <span class="kw">c</span>(<span class="dv">57</span>, <span class="dv">77</span>, <span class="dv">82</span>, <span class="dv">78</span>),
                    <span class="dt">final =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">69</span>, <span class="dv">12</span>, <span class="dv">104</span>))
 df.short</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["initial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["intervocal"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["final"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"stops","2":"123","3":"57","4":"30"},{"1":"fricatives","2":"87","3":"77","4":"69"},{"1":"affricates","2":"73","3":"82","4":"12"},{"1":"nasals","2":"7","3":"78","4":"104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">consonant</th>
+<th align="right">initial</th>
+<th align="right">intervocal</th>
+<th align="right">final</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="right">123</td>
+<td align="right">57</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="right">87</td>
+<td align="right">77</td>
+<td align="right">69</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="right">73</td>
+<td align="right">82</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="right">7</td>
+<td align="right">78</td>
+<td align="right">104</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.short %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(position, number, initial:final) -&gt;
 <span class="st">  </span>df.long
 df.long</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["position"],"name":[2],"type":["chr"],"align":["left"]},{"label":["number"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"stops","2":"initial","3":"123"},{"1":"fricatives","2":"initial","3":"87"},{"1":"affricates","2":"initial","3":"73"},{"1":"nasals","2":"initial","3":"7"},{"1":"stops","2":"intervocal","3":"57"},{"1":"fricatives","2":"intervocal","3":"77"},{"1":"affricates","2":"intervocal","3":"82"},{"1":"nasals","2":"intervocal","3":"78"},{"1":"stops","2":"final","3":"30"},{"1":"fricatives","2":"final","3":"69"},{"1":"affricates","2":"final","3":"12"},{"1":"nasals","2":"final","3":"104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">consonant</th>
+<th align="left">position</th>
+<th align="right">number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="left">initial</td>
+<td align="right">123</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="left">initial</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="left">initial</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="left">initial</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="left">intervocal</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="left">intervocal</td>
+<td align="right">77</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="left">intervocal</td>
+<td align="right">82</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="left">intervocal</td>
+<td align="right">78</td>
+</tr>
+<tr class="odd">
+<td align="left">stops</td>
+<td align="left">final</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="left">final</td>
+<td align="right">69</td>
+</tr>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="left">final</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">nasals</td>
+<td align="left">final</td>
+<td align="right">104</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="long-format-short-format-spread-tidyr" class="slide section level3">
@@ -585,10 +3126,43 @@ df.long</code></pre></div>
 <span class="st">  </span><span class="kw">spread</span>(position, number) -&gt;
 <span class="st">  </span>df.short
 df.short</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["consonant"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["final"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["initial"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["intervocal"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"affricates","2":"12","3":"73","4":"82"},{"1":"fricatives","2":"69","3":"87","4":"77"},{"1":"nasals","2":"104","3":"7","4":"78"},{"1":"stops","2":"30","3":"123","4":"57"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">consonant</th>
+<th align="right">final</th>
+<th align="right">initial</th>
+<th align="right">intervocal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">affricates</td>
+<td align="right">12</td>
+<td align="right">73</td>
+<td align="right">82</td>
+</tr>
+<tr class="even">
+<td align="left">fricatives</td>
+<td align="right">69</td>
+<td align="right">87</td>
+<td align="right">77</td>
+</tr>
+<tr class="odd">
+<td align="left">nasals</td>
+<td align="right">104</td>
+<td align="right">7</td>
+<td align="right">78</td>
+</tr>
+<tr class="even">
+<td align="left">stops</td>
+<td align="right">30</td>
+<td align="right">123</td>
+<td align="right">57</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="anscombes-quartet" class="slide section level3">
@@ -596,10 +3170,83 @@ df.short</code></pre></div>
 <p>In Anscombe, F. J. (1973). “Graphs in Statistical Analysis” was presented the next sets of data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quartet &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/KHQLZI&quot;</span>)
 <span class="kw">head</span>(quartet)</code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["X1"],"name":[1],"type":["int"],"align":["right"]},{"label":["Y1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["X2"],"name":[3],"type":["int"],"align":["right"]},{"label":["Y2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["X3"],"name":[5],"type":["int"],"align":["right"]},{"label":["Y3"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["X4"],"name":[7],"type":["int"],"align":["right"]},{"label":["Y4"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"10","2":"8.04","3":"10","4":"9.14","5":"10","6":"7.46","7":"8","8":"6.58"},{"1":"8","2":"6.95","3":"8","4":"8.14","5":"8","6":"6.77","7":"8","8":"5.76"},{"1":"13","2":"7.58","3":"13","4":"8.74","5":"13","6":"12.74","7":"8","8":"7.71"},{"1":"9","2":"8.81","3":"9","4":"8.77","5":"9","6":"7.11","7":"8","8":"8.84"},{"1":"11","2":"8.33","3":"11","4":"9.26","5":"11","6":"7.81","7":"8","8":"8.47"},{"1":"14","2":"9.96","3":"14","4":"8.10","5":"14","6":"8.84","7":"8","8":"7.04"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">X1</th>
+<th align="right">Y1</th>
+<th align="right">X2</th>
+<th align="right">Y2</th>
+<th align="right">X3</th>
+<th align="right">Y3</th>
+<th align="right">X4</th>
+<th align="right">Y4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">8.04</td>
+<td align="right">10</td>
+<td align="right">9.14</td>
+<td align="right">10</td>
+<td align="right">7.46</td>
+<td align="right">8</td>
+<td align="right">6.58</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">6.95</td>
+<td align="right">8</td>
+<td align="right">8.14</td>
+<td align="right">8</td>
+<td align="right">6.77</td>
+<td align="right">8</td>
+<td align="right">5.76</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">7.58</td>
+<td align="right">13</td>
+<td align="right">8.74</td>
+<td align="right">13</td>
+<td align="right">12.74</td>
+<td align="right">8</td>
+<td align="right">7.71</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">8.81</td>
+<td align="right">9</td>
+<td align="right">8.77</td>
+<td align="right">9</td>
+<td align="right">7.11</td>
+<td align="right">8</td>
+<td align="right">8.84</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">8.33</td>
+<td align="right">11</td>
+<td align="right">9.26</td>
+<td align="right">11</td>
+<td align="right">7.81</td>
+<td align="right">8</td>
+<td align="right">8.47</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">9.96</td>
+<td align="right">14</td>
+<td align="right">8.10</td>
+<td align="right">14</td>
+<td align="right">8.84</td>
+<td align="right">8</td>
+<td align="right">7.04</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(quartet[, <span class="dv">1</span>:<span class="dv">4</span>*<span class="dv">2-1</span>], mean)</code></pre></div>
 <pre><code>## X1 X2 X3 X4 
@@ -745,8 +3392,7 @@ homo %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>()+
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;length of [s] vs. length of vowels&quot;</span>,
        <span class="dt">subtitle =</span> <span class="st">&quot;based on 14 speakers of Cantonese&quot;</span>,
-       <span class="dt">caption =</span> <span class="st">&quot;data from [Chi kuk 2007]&quot;</span>)+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;It looks nice!&quot;</span>)</code></pre></div>
+       <span class="dt">caption =</span> <span class="st">&quot;data from [Chi kuk 2007]&quot;</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-56-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-axis" class="slide section level3">
@@ -877,18 +3523,113 @@ freq %&gt;%
 </div>
 <div id="barplots-basics" class="slide section level3">
 <h1>6.2.1 Barplots: basics</h1>
+<p>There are two possible situations:</p>
+<ul>
+<li>not aggregate data</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(homo[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">9</span>)])</code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="left">orientation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">homo</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">homo</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">hetero</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left">hetero</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="left">hetero</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="left">hetero</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>aggregate data</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(homo[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)])</code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="not-aggregate-data">Not aggregate data</h4>
+<ul>
+<li>base R</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(homo$orientation))</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-73-1.png" width="768" /></p>
+<ul>
+<li>dplyr, ggplot2</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation)) +
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-74-1.png" width="768" /></p>
+<h4 id="aggregate-data">Aggregate data</h4>
 <ul>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(homo$age, <span class="dt">names.arg =</span> homo$speaker)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-71-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-75-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, age)) +
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-72-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-76-1.png" width="768" /></p>
 </div>
 <div id="barplots-color" class="slide section level3">
 <h1>6.2.2 Barplots: color</h1>
@@ -897,11 +3638,11 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(homo$age, <span class="dt">names.arg =</span> homo$speaker,
   <span class="dt">col =</span> homo$orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-73-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-77-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, age, <span class="dt">fill =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-74-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-78-1.png" width="768" /></p>
 </div>
 <div id="boxplots-basics" class="slide section level3">
 <h1>6.3.1 Boxplots: basics</h1>
@@ -909,11 +3650,11 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-75-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-79-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-76-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
 </div>
 <div id="boxplots-points" class="slide section level3">
 <h1>6.3.2 Boxplots: points</h1>
@@ -923,12 +3664,12 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)
 <span class="kw">stripchart</span>(homo$s.duration.ms ~<span class="st"> </span>homo$orientation,
   <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">vertical =</span> T, <span class="dt">add =</span> T)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-77-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-81-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>()+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-78-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter" class="slide section level3">
 <h1>6.3.3 Boxplots: jitter</h1>
@@ -938,12 +3679,12 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)
 <span class="kw">stripchart</span>(homo$s.duration.ms~homo$orientation,
   <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">vertical =</span> T, <span class="dt">add =</span> T, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-79-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter-1" class="slide section level3">
 <h1>6.3.3 Boxplots: jitter</h1>
@@ -955,7 +3696,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_violin</span>() +
 <span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-81-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /></p>
 </div>
 <div id="preliminary-summary-two-variables" class="slide section level3">
 <h1>6. Preliminary summary: two variables</h1>
@@ -963,16 +3704,25 @@ freq %&gt;%
 <li>scaterplot: two quantitative varibles</li>
 <li>barplot: nominal varible and one number</li>
 <li>boxplot: nominal varible and quantitative varibles</li>
-<li>jittered points: two nominal varibles</li>
+<li>jittered points or sized points: two nominal varibles</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">newvar =</span> mpg &gt;<span class="st"> </span><span class="dv">22</span>,
          <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(newvr, newvar, <span class="dt">color =</span> newvar))+
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">0</span>)</code></pre></div>
-<pre><code>## [1] -Inf</code></pre>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">newvar =</span> mpg &gt;<span class="st"> </span><span class="dv">22</span>,
+         <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(newvar, newvr) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">number =</span> <span class="kw">n</span>()) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(newvr, newvar, <span class="dt">label =</span> number))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> number, <span class="dt">color =</span> newvar))+
+<span class="st">  </span><span class="kw">geom_text</span>()+
+<span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">30</span>))+
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">size =</span> F)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-2.png" width="768" /></p>
 </div>
 <div id="histogram-basics" class="slide section level3">
 <h1>6.6.1 Histogram: basics</h1>
@@ -980,22 +3730,25 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /> How many histogram bins do we need? * [Sturgers 1926] <em>nclass.Sturges(adyghe<span class="math inline">\(F1)_ * [Scott 1979] _nclass.scott(adyghe\)</span>F1)</em> * [Freedman, Diaconis 1981] <em>nclass.FD(adyghe$F1)</em></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /> How many histogram bins do we need?</p>
 <ul>
-<li>base R</li>
+<li>[Sturgers 1926] <em>nclass.Sturges(adyghe$F1)</em></li>
+<li>[Scott 1979] <em>nclass.scott(adyghe$F1)</em></li>
+<li><p>[Freedman, Diaconis 1981] <em>nclass.FD(adyghe$F1)</em></p></li>
+<li><p>base R</p></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms,
      <span class="dt">breaks =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-89-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-90-1.png" width="768" /></p>
 </div>
 <div id="histogram-color" class="slide section level3">
 <h1>6.6.2 Histogram: color</h1>
@@ -1003,12 +3756,55 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-91-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-92-1.png" width="768" /></p>
+</div>
+<div id="facets" class="slide section level3">
+<h1>6.7 Facets</h1>
+<p>Facetization is the most powerful <code>ggplot2</code> tool that allow to split up your data by one or more variables and plot the subsets of data together.</p>
+<h4 id="facet_wrap"><code>facet_wrap()</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~orientation)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-93-1.png" width="768" /></p>
+<p>You can see that there are all speakers on both graph, but only certain speakers have dot value. It is because by default scales of facets are equal.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~orientation, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-94-1.png" width="768" /></p>
+<p>It is possible to make only one scale “free”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-95-1.png" width="768" /></p>
+<h4 id="facet_grid"><code>facet_grid()</code></h4>
+<p>It is possible to facet using more then one variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-96-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-97-1.png" width="768" /></p>
+<p>There is a nice argument <code>margins</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
+<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>, <span class="dt">margins =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-98-1.png" width="768" /></p>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

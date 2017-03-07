@@ -6,7 +6,7 @@ font-family: 'Brill'
 transition: none
 output:
   slidy_presentation:
-    df_print: paged
+    df_print: kable
     footer: "Presentation link: https://goo.gl/fGi6Iv"
 ---
 
@@ -141,7 +141,7 @@ The majority of examples in that presentation are based on [Chi-kuk 2007](http:/
 * speakers age (_age_)
 
 Download data
-```{r}
+```{r, cache= TRUE}
 homo <- read.csv("http://goo.gl/Zjr9aF")
 homo
 ```
@@ -486,8 +486,7 @@ homo %>%
   geom_point()+
   labs(title = "length of [s] vs. length of vowels",
        subtitle = "based on 14 speakers of Cantonese",
-       caption = "data from [Chi kuk 2007]")+
-  ggtitle("It looks nice!")
+       caption = "data from [Chi kuk 2007]")
 ```
 
 ### 6.1.6 Scaterplot: axis
@@ -506,11 +505,12 @@ homo %>%
   ylab("vowel duration in ms")
 ```
 
+
 ### 6.1.7 Log scales
 ![](https://pbs.twimg.com/media/CTxg970WwAApE98.png)
 
 Lets use the frequency dictionary for Russian
-```{r}
+```{r, cache= TRUE}
 freq <- read.csv("https://goo.gl/TlX7xW", sep = "\t")
 freq %>%
   arrange(desc(Freq.ipm.)) %>% 
@@ -613,6 +613,34 @@ homo %>%
 
 ### 6.2.1 Barplots: basics
 
+There are two possible situations:
+
+* not aggregate data
+```{r}
+head(homo[, c(1, 9)])
+```
+
+* aggregate data
+```{r}
+head(homo[, c(1, 10)])
+```
+
+#### Not aggregate data
+
+* base R
+```{r}
+barplot(table(homo$orientation))
+```
+
+* dplyr, ggplot2
+```{r}
+homo %>%
+  ggplot(aes(orientation)) +
+  geom_bar()
+```
+
+#### Aggregate data
+
 * base R
 ```{r}
 barplot(homo$age, names.arg = homo$speaker)
@@ -696,7 +724,7 @@ homo %>%
 * scaterplot: two quantitative varibles
 * barplot: nominal varible and one number
 * boxplot: nominal varible and quantitative varibles
-* jittered points: two nominal varibles
+* jittered points or sized points: two nominal varibles
 
 ```{r}
 mtcars %>% 
@@ -705,7 +733,16 @@ mtcars %>%
   ggplot(aes(newvr, newvar, color = newvar))+
   geom_jitter(width = 0.2)
 
-log(0)
+mtcars %>% 
+  mutate(newvar = mpg > 22,
+         newvr = mpg < 17) %>% 
+  group_by(newvar, newvr) %>% 
+  summarise(number = n()) %>% 
+  ggplot(aes(newvr, newvar, label = number))+
+  geom_point(aes(size = number, color = newvar))+
+  geom_text()+
+  scale_size(range = c(10, 30))+
+  guides(size = F)
 ```
 
 
@@ -721,6 +758,7 @@ homo %>%
   geom_histogram()
 ```
 How many histogram bins do we need?
+
 * [Sturgers 1926] _nclass.Sturges(adyghe$F1)_
 * [Scott 1979] _nclass.scott(adyghe$F1)_
 * [Freedman, Diaconis 1981] _nclass.FD(adyghe$F1)_
@@ -748,3 +786,76 @@ homo %>%
   ggplot(aes(s.duration.ms)) +
   geom_histogram(fill = "lightblue")
 ```
+
+### 6.7 Facets
+
+Facetization is the most powerful `ggplot2` tool that allow to split up your data by one or more variables and plot the subsets of data together.
+
+#### `facet_wrap()`
+
+```{r}
+homo %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+  geom_point() + 
+  facet_wrap(~orientation)
+```
+
+You can see that there are all speakers on both graph, but only certain speakers have dot value. It is because by default scales of facets are equal.
+
+```{r}
+homo %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+  geom_point() + 
+  facet_wrap(~orientation, scales = "free")
+```
+
+It is possible to make only one scale "free":
+```{r}
+homo %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+  geom_point() + 
+  facet_wrap(~orientation, scales = "free_x")
+```
+
+
+#### `facet_grid()`
+It is possible to facet using more then one variable.
+
+```{r}
+homo %>% 
+  mutate(older_then_28 = ifelse(age > 28, "older", "younger")) %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+  geom_point() + 
+  facet_wrap(older_then_28~orientation, scales = "free_x")
+```
+
+```{r}
+homo %>% 
+  mutate(older_then_28 = ifelse(age > 28, "older", "younger")) %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+  geom_point() + 
+  facet_grid(older_then_28~orientation, scales = "free_x")
+```
+
+There is a nice argument `margins`.
+
+```{r}
+homo %>% 
+  mutate(older_then_28 = ifelse(age > 28, "older", "younger")) %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+  geom_point() + 
+  facet_grid(older_then_28~orientation, scales = "free_x", margins = TRUE)
+```
+
+Sometimes it is nice to put your data in all facets:
+
+```{r}
+homo %>% 
+  mutate(older_then_28 = ifelse(age > 28, "older", "younger")) %>% 
+  ggplot(aes(speaker, s.duration.ms))+
+# Add an additional geom without facetization variable!
+  geom_point(data = homo[,-9], aes(speaker, s.duration.ms), color = "grey") + 
+  geom_point() + 
+  facet_grid(older_then_28~orientation, scales = "free_x", margins = TRUE)
+```
+
