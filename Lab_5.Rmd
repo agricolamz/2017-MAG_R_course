@@ -6,7 +6,11 @@ title: "Lab 5"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 1.1 and 1.2.
+## 1.1 and 1.2
+
+95% CI formula again: $`mean(x) \pm 1.96\frac{standard\ deviation}{number of obs.}`$
+
+
 ```{r, eval = FALSE, echo = FALSE, message= FALSE}
 library(tidyverse)
 icelandic <- read.csv("https://goo.gl/7gIjvK")
