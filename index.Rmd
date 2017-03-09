@@ -29,12 +29,12 @@ title: "Linguistic data: quantitative analysis and visualisation"
     * Files from class: [Lab 3 and 4](https://agricolamz.github.io/2017-MAG_R_course/Lab_3-4.html)
 * HW-3. Deadline: 19.03.2017
 
-### 4. More about t-test. Fisher exact test
+### 4. More about t-test: one-tailed, paired, test power, Coehn's d. Mann–Whitney U-test.
 
 * (09.03.2017) lecture
 * (09.03.2017) [Lab 5](https://agricolamz.github.io/2017-MAG_R_course/Lab_5.html), [Assignment](https://goo.gl/forms/PUIzhEsFWuqVCksj1)
 
-### 5. χ². Correlation																									
+### 5. χ². Exact Fisher test. Correlation																									
 * (..2017) lecture
 * (..2017) Lab 6:
 * HW-4. Deadline: ..2017
