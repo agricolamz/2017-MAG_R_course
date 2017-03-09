@@ -6,7 +6,7 @@ title: "Lab 5"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 1.1 and 1.2
+## 1.1 and 1.2.
 ```{r, eval = FALSE, echo = FALSE, message= FALSE}
 library(tidyverse)
 icelandic <- read.csv("https://goo.gl/7gIjvK")
@@ -47,7 +47,7 @@ icelandic %>%
 icelandic %>% 
   ggplot(aes(sample = vowel.dur, color = aspiration))+
   geom_qq()+
-  facet_wrap(~speaker)+
+  facet_wrap(~speaker, scales = "free")+
   labs(title = "Vowel duration density plot",
        caption = "Data from (Coretta 2017)")
 ```
