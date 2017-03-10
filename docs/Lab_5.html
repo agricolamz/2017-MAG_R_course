@@ -252,24 +252,110 @@ $(document).ready(function () {
 </div>
 
 
+<div id="assignment-link" class="section level2">
+<h2><a href="https://goo.gl/forms/jbGre01K8EkqTZ6g2">Assignment link</a></h2>
+</div>
 <div id="and-1.2" class="section level2">
 <h2>1.1 and 1.2</h2>
-<p>95% CI formula again: <span class="math inline">\(mean \pm 1.96\frac{standard\ deviation}{number\ of\ obs.}\)</span></p>
+<p>95% CI formula again: <span class="math inline">\(mean \pm 1.96\frac{standard\ deviation}{number\ of\ observation}\)</span></p>
+<pre class="r"><code>library(tidyverse)
+icelandic &lt;- read.csv(&quot;https://goo.gl/7gIjvK&quot;)
+icelandic %&gt;% 
+  group_by(aspiration, speaker) %&gt;%
+  summarise(mean = mean(vowel.dur),
+            CI = 1.96*sd(vowel.dur)/sqrt(length(vowel.dur)))</code></pre>
+<pre><code>## Source: local data frame [10 x 4]
+## Groups: aspiration [?]
+## 
+##    aspiration speaker      mean       CI
+##        &lt;fctr&gt;  &lt;fctr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1          no   brs02  95.27593 4.396906
+## 2          no   bte03 102.75791 6.399292
+## 3          no    jj04  95.72652 5.542966
+## 4          no   shg05  77.65635 4.242477
+## 5          no    tt01 100.59767 5.625930
+## 6         yes   brs02  72.87988 4.009082
+## 7         yes   bte03  95.40109 4.503628
+## 8         yes    jj04  86.80463 4.634397
+## 9         yes   shg05  63.27287 3.363331
+## 10        yes    tt01  78.25853 3.498920</code></pre>
 </div>
 <div id="section" class="section level2">
 <h2>1.3</h2>
+<pre class="r"><code>icelandic %&gt;% 
+  group_by(aspiration, speaker) %&gt;%
+  summarise(mean = mean(vowel.dur),
+            CI = 1.96*sd(vowel.dur)/sqrt(length(vowel.dur))) %&gt;% 
+    ggplot(aes(aspiration, mean))+
+  geom_point()+
+  geom_errorbar(aes(ymin= mean-CI,
+                    ymax = mean+CI), width = 0.3)+
+  facet_wrap(~speaker)+
+  labs(title = &quot;Mean vowel duration with 95% confidence interval&quot;,
+       caption = &quot;Data from (Coretta 2017)&quot;)</code></pre>
+<p><img src="Lab_5_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="section-1" class="section level2">
 <h2>1.4</h2>
+<pre class="r"><code>icelandic %&gt;% 
+  ggplot(aes(vowel.dur, fill = aspiration, color = aspiration))+
+  geom_density(alpha = 0.4)+
+  geom_rug()+
+  facet_wrap(~speaker)+
+  labs(title = &quot;Vowel duration density plot&quot;,
+       caption = &quot;Data from (Coretta 2017)&quot;,
+       x = &quot;vowel duration&quot;)</code></pre>
+<p><img src="Lab_5_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="section-2" class="section level2">
 <h2>1.6-1.10</h2>
+<pre class="r"><code>table(icelandic$speaker)</code></pre>
+<pre><code>## 
+## brs02 bte03  jj04 shg05  tt01 
+##   163   157   151   160   175</code></pre>
+<pre class="r"><code>icelandic_1 &lt;- subset(icelandic,speaker == &quot;brs02&quot;)
+icelandic_2 &lt;- subset(icelandic,speaker == &quot;bte03&quot;)
+icelandic_3 &lt;- subset(icelandic,speaker == &quot;jj04&quot;)
+icelandic_4 &lt;- subset(icelandic,speaker == &quot;shg05&quot;)
+icelandic_5 &lt;- subset(icelandic,speaker == &quot;tt01&quot;)
+t.test.results_1 &lt;- t.test(vowel.dur~aspiration, icelandic_1)
+t.test.results_2 &lt;- t.test(vowel.dur~aspiration, icelandic_2)
+t.test.results_3 &lt;- t.test(vowel.dur~aspiration, icelandic_3)
+t.test.results_4 &lt;- t.test(vowel.dur~aspiration, icelandic_4)
+t.test.results_5 &lt;- t.test(vowel.dur~aspiration, icelandic_5)</code></pre>
 </div>
 <div id="section-3" class="section level2">
 <h2>1.11-1.15</h2>
+<pre class="r"><code>library(lsr)
+cohensD(vowel.dur~aspiration, data = icelandic_1)</code></pre>
+<pre><code>## [1] 1.15919</code></pre>
+<pre class="r"><code>cohensD(vowel.dur~aspiration, data = icelandic_2)</code></pre>
+<pre><code>## [1] 0.2908475</code></pre>
+<pre class="r"><code>cohensD(vowel.dur~aspiration, data = icelandic_3)</code></pre>
+<pre><code>## [1] 0.3902875</code></pre>
+<pre class="r"><code>cohensD(vowel.dur~aspiration, data = icelandic_4)</code></pre>
+<pre><code>## [1] 0.8318769</code></pre>
+<pre class="r"><code>cohensD(vowel.dur~aspiration, data = icelandic_5)</code></pre>
+<pre><code>## [1] 1.001688</code></pre>
 </div>
 <div id="section-4" class="section level2">
 <h2>1.16</h2>
+<pre class="r"><code>power.t.test(n = length(icelandic_4$vowel.dur),
+             sd = sd(icelandic_4$vowel.dur),
+             delta = t.test.results_4$estimate[2] - t.test.results_4$estimate[1],
+             sig.level = 0.05,
+             type = &quot;two.sample&quot;)</code></pre>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 160
+##           delta = 14.38348
+##              sd = 18.68138
+##       sig.level = 0.05
+##           power = 0.9999995
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
 </div>
 
 

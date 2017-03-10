@@ -1945,6 +1945,225 @@ homo</code></pre></div>
 </tbody>
 </table>
 </div>
+<p>It is possible to use <code>select()</code> function to remove columns:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-<span class="kw">c</span>(speaker, perceived.as.hetero, perceived.as.homo, perceived.as.homo.percent))</code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">s.duration.ms</th>
+<th align="right">vowel.duration.ms</th>
+<th align="right">average.f0.Hz</th>
+<th align="right">f0.range.Hz</th>
+<th align="left">orientation</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">61.40</td>
+<td align="right">112.60</td>
+<td align="right">119.51</td>
+<td align="right">52.5</td>
+<td align="left">hetero</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">63.90</td>
+<td align="right">126.49</td>
+<td align="right">100.29</td>
+<td align="right">114.0</td>
+<td align="left">hetero</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">55.08</td>
+<td align="right">126.81</td>
+<td align="right">114.90</td>
+<td align="right">103.2</td>
+<td align="left">homo</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="right">78.11</td>
+<td align="right">119.17</td>
+<td align="right">126.61</td>
+<td align="right">58.8</td>
+<td align="left">homo</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="right">64.71</td>
+<td align="right">93.68</td>
+<td align="right">130.76</td>
+<td align="right">37.4</td>
+<td align="left">homo</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">67.00</td>
+<td align="right">127.87</td>
+<td align="right">150.79</td>
+<td align="right">42.0</td>
+<td align="left">homo</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="right">65.39</td>
+<td align="right">147.52</td>
+<td align="right">128.96</td>
+<td align="right">118.2</td>
+<td align="left">hetero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">62.46</td>
+<td align="right">120.13</td>
+<td align="right">105.26</td>
+<td align="right">55.7</td>
+<td align="left">hetero</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">60.45</td>
+<td align="right">140.44</td>
+<td align="right">109.86</td>
+<td align="right">96.4</td>
+<td align="left">homo</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">59.59</td>
+<td align="right">121.01</td>
+<td align="right">123.90</td>
+<td align="right">111.7</td>
+<td align="left">homo</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">62.94</td>
+<td align="right">137.37</td>
+<td align="right">119.48</td>
+<td align="right">87.6</td>
+<td align="left">homo</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">53.31</td>
+<td align="right">112.05</td>
+<td align="right">146.20</td>
+<td align="right">57.8</td>
+<td align="left">hetero</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">45.13</td>
+<td align="right">133.74</td>
+<td align="right">155.34</td>
+<td align="right">100.5</td>
+<td align="left">hetero</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">57.67</td>
+<td align="right">118.02</td>
+<td align="right">121.48</td>
+<td align="right">37.4</td>
+<td align="left">hetero</td>
+<td align="right">29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># When you want to remove one column you can write it without </span>
+<span class="co"># c() function, e. g. -speaker</span></code></pre></div>
+<p>It is possible to reorder columns using <code>select()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
+<span class="st">  </span><span class="kw">select</span>(speaker, age, s.duration.ms)</code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">speaker</th>
+<th align="right">age</th>
+<th align="right">s.duration.ms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">30</td>
+<td align="right">61.40</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">19</td>
+<td align="right">63.90</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">29</td>
+<td align="right">55.08</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">36</td>
+<td align="right">78.11</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">27</td>
+<td align="right">64.71</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">33</td>
+<td align="right">67.00</td>
+</tr>
+<tr class="odd">
+<td align="left">G</td>
+<td align="right">28</td>
+<td align="right">65.39</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="right">22</td>
+<td align="right">62.46</td>
+</tr>
+<tr class="odd">
+<td align="left">I</td>
+<td align="right">22</td>
+<td align="right">60.45</td>
+</tr>
+<tr class="even">
+<td align="left">J</td>
+<td align="right">40</td>
+<td align="right">59.59</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="right">30</td>
+<td align="right">62.94</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="right">25</td>
+<td align="right">53.31</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">20</td>
+<td align="right">45.13</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="right">29</td>
+<td align="right">57.67</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="arrange-dplyr" class="slide section level3">
 <h1>3.8 arrange (dplyr)</h1>
@@ -3270,7 +3489,7 @@ df.short</code></pre></div>
 <pre><code>##                    X1       X2        X3        X4
 ## (Intercept) 3.0000909 3.000909 3.0024545 3.0017273
 ## x           0.5000909 0.500000 0.4997273 0.4999091</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-41-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-43-1.png" width="768" /></p>
 </div>
 <div id="scaterplot" class="slide section level3">
 <h1>6.1 Scaterplot</h1>
@@ -3278,13 +3497,13 @@ df.short</code></pre></div>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-42-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-44-1.png" width="768" /></p>
 <ul>
 <li>ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> homo, <span class="kw">aes</span>(s.duration.ms, vowel.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-43-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-45-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3292,7 +3511,7 @@ df.short</code></pre></div>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(average.f0.Hz, age))+
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)+
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> orientation))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-44-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-46-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-color" class="slide section level3">
 <h1>6.1.1 Scaterplot: color</h1>
@@ -3301,7 +3520,7 @@ df.short</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)[homo$orientation])</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-45-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3309,7 +3528,7 @@ df.short</code></pre></div>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms,
              <span class="dt">color =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-46-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-48-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-shape" class="slide section level3">
 <h1>6.1.2 Scaterplot: shape</h1>
@@ -3318,9 +3537,9 @@ df.short</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">17</span>)[homo$orientation])</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-49-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">25</span>, <span class="dt">pch =</span> <span class="dv">1</span>:<span class="dv">25</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-47-2.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-49-2.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3328,7 +3547,7 @@ df.short</code></pre></div>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms,
              <span class="dt">shape =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-48-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-50-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-size" class="slide section level3">
 <h1>6.1.3 Scaterplot: size</h1>
@@ -3337,13 +3556,13 @@ df.short</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">cex =</span> homo$age/<span class="dv">20</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-49-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-51-1.png" width="768" /></p>
 <ul>
 <li>:(</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">cex =</span> homo$age)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-50-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-52-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3351,7 +3570,7 @@ df.short</code></pre></div>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms,
              <span class="dt">size =</span> age)) +
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-51-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-53-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-text" class="slide section level3">
 <h1>6.1.4 Scaterplot: text</h1>
@@ -3360,7 +3579,7 @@ df.short</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">pch =</span> <span class="kw">c</span>(<span class="st">&quot;⚤&quot;</span>, <span class="st">&quot;⚣&quot;</span>)[homo$orientation])</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-52-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-54-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3368,7 +3587,7 @@ df.short</code></pre></div>
 homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms, <span class="dt">label =</span> orientation, <span class="dt">fill =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_label</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-53-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-55-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-title" class="slide section level3">
 <h1>6.1.5 Scaterplot: title</h1>
@@ -3377,7 +3596,7 @@ homo %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">main =</span> <span class="st">&quot;length of [s] vs. length of vowels&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-55-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-57-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3387,7 +3606,7 @@ homo %&gt;%
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;length of [s] vs. length of vowels&quot;</span>,
        <span class="dt">subtitle =</span> <span class="st">&quot;based on 14 speakers of Cantonese&quot;</span>,
        <span class="dt">caption =</span> <span class="st">&quot;data from [Chi kuk 2007]&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-56-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-58-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-axis" class="slide section level3">
 <h1>6.1.6 Scaterplot: axis</h1>
@@ -3396,7 +3615,7 @@ homo %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms,
      <span class="dt">xlab =</span> <span class="st">&quot;duration of [s] in ms&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;vowel duration in ms&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-57-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-59-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3405,7 +3624,7 @@ homo %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>()+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;duration of [s] in ms&quot;</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;vowel duration in ms&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-58-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-60-1.png" width="768" /></p>
 </div>
 <div id="log-scales" class="slide section level3">
 <h1>6.1.7 Log scales</h1>
@@ -3422,7 +3641,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) +
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;ipm&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-59-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-61-1.png" width="768" /></p>
 <ul>
 <li>base R</li>
 </ul>
@@ -3430,7 +3649,7 @@ freq %&gt;%
   <span class="dt">xlab =</span> <span class="ot">NA</span>, <span class="dt">ylab =</span> <span class="st">&quot;ipm&quot;</span>,
   <span class="dt">las =</span> <span class="dv">1</span>,
   <span class="dt">log =</span> <span class="st">&quot;yx&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-60-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-62-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3440,7 +3659,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;ipm&quot;</span>)+
 <span class="st">  </span><span class="kw">scale_y_log10</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-61-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-63-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-rug" class="slide section level3">
 <h1>6.1.8 Scaterplot: rug</h1>
@@ -3450,7 +3669,7 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms)
 <span class="kw">rug</span>(homo$s.duration.ms)
 <span class="kw">rug</span>(homo$vowel.duration.ms, <span class="dt">side =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-62-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-64-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3458,12 +3677,12 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms, <span class="dt">color =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_rug</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-63-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-65-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms, <span class="dt">color =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_rug</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-64-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-66-1.png" width="768" /></p>
 </div>
 <div id="scaterplot-lines" class="slide section level3">
 <h1>6.1.9 Scaterplot: lines</h1>
@@ -3472,7 +3691,7 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">120</span>, <span class="dt">v =</span> <span class="dv">60</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-65-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-67-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3481,14 +3700,14 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(homo$vowel.duration.ms))+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">60</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-66-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-68-1.png" width="768" /></p>
 <ul>
 <li>R base</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">120</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
 <span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">60</span>, <span class="dt">lwd =</span> <span class="dv">42</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-67-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-69-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3497,14 +3716,14 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">120</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">60</span>, <span class="dt">size =</span> <span class="dv">5</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-68-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-70-1.png" width="768" /></p>
 <ul>
 <li>R base</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(homo$s.duration.ms, homo$vowel.duration.ms)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">120</span>, <span class="dt">lty =</span> <span class="dv">4</span>)
 <span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">60</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-69-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-71-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
@@ -3513,7 +3732,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">120</span>, <span class="dt">linetype =</span> <span class="dv">4</span>)+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">60</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-70-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-72-1.png" width="768" /></p>
 </div>
 <div id="barplots-basics" class="slide section level3">
 <h1>6.2.1 Barplots: basics</h1>
@@ -3603,27 +3822,27 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(homo$orientation))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-73-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-75-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation)) +
 <span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-74-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-76-1.png" width="768" /></p>
 <h4 id="aggregate-data">Aggregate data</h4>
 <ul>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(homo$age, <span class="dt">names.arg =</span> homo$speaker)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-75-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-77-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, age)) +
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-76-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-78-1.png" width="768" /></p>
 </div>
 <div id="barplots-color" class="slide section level3">
 <h1>6.2.2 Barplots: color</h1>
@@ -3632,11 +3851,11 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(homo$age, <span class="dt">names.arg =</span> homo$speaker,
   <span class="dt">col =</span> homo$orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-77-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-79-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, age, <span class="dt">fill =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-78-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
 </div>
 <div id="boxplots-basics" class="slide section level3">
 <h1>6.3.1 Boxplots: basics</h1>
@@ -3644,11 +3863,11 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-79-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-81-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /></p>
 </div>
 <div id="boxplots-points" class="slide section level3">
 <h1>6.3.2 Boxplots: points</h1>
@@ -3658,12 +3877,12 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)
 <span class="kw">stripchart</span>(homo$s.duration.ms ~<span class="st"> </span>homo$orientation,
   <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">vertical =</span> T, <span class="dt">add =</span> T)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-81-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>()+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter" class="slide section level3">
 <h1>6.3.3 Boxplots: jitter</h1>
@@ -3673,12 +3892,12 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)
 <span class="kw">stripchart</span>(homo$s.duration.ms~homo$orientation,
   <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">vertical =</span> T, <span class="dt">add =</span> T, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter-1" class="slide section level3">
 <h1>6.3.3 Boxplots: jitter</h1>
@@ -3690,7 +3909,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_violin</span>() +
 <span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /></p>
 </div>
 <div id="preliminary-summary-two-variables" class="slide section level3">
 <h1>6. Preliminary summary: two variables</h1>
@@ -3705,7 +3924,7 @@ freq %&gt;%
          <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(newvr, newvar, <span class="dt">color =</span> newvar))+
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">newvar =</span> mpg &gt;<span class="st"> </span><span class="dv">22</span>,
          <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
@@ -3716,7 +3935,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_text</span>()+
 <span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">30</span>))+
 <span class="st">  </span><span class="kw">guides</span>(<span class="dt">size =</span> F)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-2.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-2.png" width="768" /></p>
 </div>
 <div id="histogram-basics" class="slide section level3">
 <h1>6.6.1 Histogram: basics</h1>
@@ -3724,12 +3943,12 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-89-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /> How many histogram bins do we need?</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-90-1.png" width="768" /> How many histogram bins do we need?</p>
 <ul>
 <li>[Sturgers 1926] <em>nclass.Sturges(adyghe$F1)</em></li>
 <li>[Scott 1979] <em>nclass.scott(adyghe$F1)</em></li>
@@ -3738,11 +3957,11 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms,
      <span class="dt">breaks =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-89-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-91-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-90-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-92-1.png" width="768" /></p>
 </div>
 <div id="histogram-color" class="slide section level3">
 <h1>6.6.2 Histogram: color</h1>
@@ -3750,12 +3969,12 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-91-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-93-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-92-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-94-1.png" width="768" /></p>
 </div>
 <div id="facets" class="slide section level3">
 <h1>6.7 Facets</h1>
@@ -3765,19 +3984,19 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-93-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-95-1.png" width="768" /></p>
 <p>You can see that there are all speakers on both graph, but only certain speakers have dot value. It is because by default scales of facets are equal.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-94-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-96-1.png" width="768" /></p>
 <p>It is possible to make only one scale “free”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-95-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-97-1.png" width="768" /></p>
 <h4 id="facet_grid"><code>facet_grid()</code></h4>
 <p>It is possible to facet using more then one variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
@@ -3785,20 +4004,20 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-96-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-98-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-97-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png" width="768" /></p>
 <p>There is a nice argument <code>margins</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>, <span class="dt">margins =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-98-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-100-1.png" width="768" /></p>
 <p>Sometimes it is nice to put your data in all facets:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
@@ -3806,7 +4025,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> homo[,-<span class="dv">9</span>], <span class="kw">aes</span>(speaker, s.duration.ms), <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-101-1.png" width="768" /></p>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

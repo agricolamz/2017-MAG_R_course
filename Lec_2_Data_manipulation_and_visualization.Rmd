@@ -212,6 +212,25 @@ homo %>%
   select(speaker:average.f0.Hz)
 ```
 
+It is possible to use `select()` function to remove columns:
+
+```{r}
+homo %>%
+  select(-c(speaker, perceived.as.hetero, perceived.as.homo, perceived.as.homo.percent))
+# When you want to remove one column you can write it without 
+# c() function, e. g. -speaker
+```
+
+It is possible to reorder columns using `select()` function:
+
+```{r}
+homo %>%
+  select(speaker, age, s.duration.ms)
+```
+
+
+
+
 ### 3.8 arrange (dplyr)
 
 * base R

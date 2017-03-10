@@ -6,12 +6,14 @@ title: "Lab 5"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## [Assignment link](https://goo.gl/forms/jbGre01K8EkqTZ6g2)
+
 ## 1.1 and 1.2
 
-95% CI formula again: $mean \pm 1.96\frac{standard\ deviation}{number\ of\ obs.}$
+95% CI formula again: $mean \pm 1.96\frac{standard\ deviation}{number\ of\ observation}$
 
 
-```{r, eval = FALSE, echo = FALSE, message= FALSE}
+```{r, message= FALSE}
 library(tidyverse)
 icelandic <- read.csv("https://goo.gl/7gIjvK")
 icelandic %>% 
@@ -21,7 +23,7 @@ icelandic %>%
 ```
 
 ## 1.3
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 icelandic %>% 
   group_by(aspiration, speaker) %>%
   summarise(mean = mean(vowel.dur),
@@ -37,7 +39,7 @@ icelandic %>%
 ```
 
 ## 1.4
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 icelandic %>% 
   ggplot(aes(vowel.dur, fill = aspiration, color = aspiration))+
   geom_density(alpha = 0.4)+
@@ -58,7 +60,7 @@ icelandic %>%
 
 ## 1.6-1.10
 
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 table(icelandic$speaker)
 icelandic_1 <- subset(icelandic,speaker == "brs02")
 icelandic_2 <- subset(icelandic,speaker == "bte03")
@@ -73,7 +75,7 @@ t.test.results_5 <- t.test(vowel.dur~aspiration, icelandic_5)
 ```
 
 ## 1.11-1.15
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 library(lsr)
 cohensD(vowel.dur~aspiration, data = icelandic_1)
 cohensD(vowel.dur~aspiration, data = icelandic_2)
@@ -83,7 +85,7 @@ cohensD(vowel.dur~aspiration, data = icelandic_5)
 ```
 
 ## 1.16
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 power.t.test(n = length(icelandic_4$vowel.dur),
              sd = sd(icelandic_4$vowel.dur),
              delta = t.test.results_4$estimate[2] - t.test.results_4$estimate[1],
