@@ -83,13 +83,3 @@ cohensD(vowel.dur~aspiration, data = icelandic_3)
 cohensD(vowel.dur~aspiration, data = icelandic_4)
 cohensD(vowel.dur~aspiration, data = icelandic_5)
 ```
-
-## 1.16
-```{r}
-power.t.test(n = length(icelandic_4$vowel.dur),
-             sd = sd(icelandic_4$vowel.dur),
-             delta = t.test.results_4$estimate[2] - t.test.results_4$estimate[1],
-             sig.level = 0.05,
-             type = "two.sample")
-```
-

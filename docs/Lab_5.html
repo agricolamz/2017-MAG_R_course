@@ -338,25 +338,6 @@ cohensD(vowel.dur~aspiration, data = icelandic_1)</code></pre>
 <pre class="r"><code>cohensD(vowel.dur~aspiration, data = icelandic_5)</code></pre>
 <pre><code>## [1] 1.001688</code></pre>
 </div>
-<div id="section-4" class="section level2">
-<h2>1.16</h2>
-<pre class="r"><code>power.t.test(n = length(icelandic_4$vowel.dur),
-             sd = sd(icelandic_4$vowel.dur),
-             delta = t.test.results_4$estimate[2] - t.test.results_4$estimate[1],
-             sig.level = 0.05,
-             type = &quot;two.sample&quot;)</code></pre>
-<pre><code>## 
-##      Two-sample t test power calculation 
-## 
-##               n = 160
-##           delta = 14.38348
-##              sd = 18.68138
-##       sig.level = 0.05
-##           power = 0.9999995
-##     alternative = two.sided
-## 
-## NOTE: n is number in *each* group</code></pre>
-</div>
 
 
 
