@@ -75,4 +75,14 @@ df[,-1] %>%
   arrange(desc(Freq))
 ```
 
+```{r, message= FALSE, include = FALSE}
+# install.packages("GGally")
+library(GGally)
+ggpairs(df[,-1])
+```
+
+
+
+
+
 
