@@ -1,8 +1,24 @@
 ---
-title: "Lab ..."
+title: "Lab 6: χ², Fisher Test, correlations"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1.1-1.2
+```{r, include = FALSE}
+df <- data.frame(
+  no_adpositions = c(11, 30),
+  prepositions = c(5, 511),
+  postpositions = c(59, 576),
+  no_dominant_order = c(2, 58),
+  inpositions = c(0, 8))
+
+chisq.test(df)$expected < 5
+
+# answer: inpositions, no_adpositions, no_dominant_order
+
+fisher.test(df)
 ```
 
