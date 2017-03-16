@@ -254,18 +254,201 @@ $(document).ready(function () {
 
 <div id="section" class="section level3">
 <h3>1.1</h3>
+<pre class="r"><code>chisq.test(matrix(c(5485, 8318, 15913, 8259), nrow = 2))</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  matrix(c(5485, 8318, 15913, 8259), nrow = 2)
+## X-squared = 2431.2, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 <div id="section-1" class="section level3">
 <h3>2.1</h3>
+<pre class="r"><code>ru &lt;- read.csv(&quot;http://goo.gl/KljqjU&quot;)
+table(ru)</code></pre>
+<pre><code>##     case
+## prep acc loc
+##   na 156  96
+##   w  119  95</code></pre>
+<pre class="r"><code>chisq.test(table(ru))$expected &gt; 5</code></pre>
+<pre><code>##     case
+## prep  acc  loc
+##   na TRUE TRUE
+##   w  TRUE TRUE</code></pre>
+<pre class="r"><code>chisq.test(table(ru))</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  table(ru)
+## X-squared = 1.6459, df = 1, p-value = 0.1995</code></pre>
 </div>
 <div id="section-2" class="section level3">
 <h3>2.2</h3>
+<pre class="r"><code>pl &lt;- read.csv(&quot;http://goo.gl/xNozm2&quot;)
+table(pl)</code></pre>
+<pre><code>##     case
+## prep acc loc
+##   na  11  78
+##   w    1  15</code></pre>
+<pre class="r"><code>chisq.test(table(pl))$expected &gt; 5</code></pre>
+<pre><code>## Warning in chisq.test(table(pl)): Chi-squared approximation may be
+## incorrect</code></pre>
+<pre><code>##     case
+## prep   acc  loc
+##   na  TRUE TRUE
+##   w  FALSE TRUE</code></pre>
+<pre class="r"><code>fisher.test(table(pl))</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(pl)
+## p-value = 0.6873
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   0.2664267 97.0032253
+## sample estimates:
+## odds ratio 
+##    2.10313</code></pre>
 </div>
 <div id="section-3" class="section level3">
 <h3>3.1-3.2</h3>
+<pre class="r"><code>df &lt;- data.frame(
+  no_adpositions = c(11, 30),
+  prepositions = c(5, 511),
+  postpositions = c(59, 576),
+  no_dominant_order = c(2, 58),
+  inpositions = c(0, 8))
+
+chisq.test(df)$expected &lt; 5</code></pre>
+<pre><code>## Warning in chisq.test(df): Chi-squared approximation may be incorrect</code></pre>
+<pre><code>##      no_adpositions prepositions postpositions no_dominant_order
+## [1,]           TRUE        FALSE         FALSE              TRUE
+## [2,]          FALSE        FALSE         FALSE             FALSE
+##      inpositions
+## [1,]        TRUE
+## [2,]       FALSE</code></pre>
+<pre class="r"><code># answer: inpositions, no_adpositions, no_dominant_order
+
+fisher.test(df)</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  df
+## p-value = 2.332e-13
+## alternative hypothesis: two.sided</code></pre>
 </div>
 <div id="section-4" class="section level3">
 <h3>4.1</h3>
+<pre class="r"><code>library(tidyverse)
+df &lt;- read.csv(&quot;http://goo.gl/txmyO9&quot;, sep = &quot;\t&quot;)
+df[,-1] %&gt;% 
+  cor() -&gt;
+  m
+m</code></pre>
+<pre><code>##                  FOG        PL        FP  Jasnopis FrequencyQ
+## FOG        1.0000000 0.9049325 0.6405376 0.5973699  0.5067984
+## PL         0.9049325 1.0000000 0.6011638 0.6776606  0.5384389
+## FP         0.6405376 0.6011638 1.0000000 0.2080650  0.1656842
+## Jasnopis   0.5973699 0.6776606 0.2080650 1.0000000  0.6844838
+## FrequencyQ 0.5067984 0.5384389 0.1656842 0.6844838  1.0000000</code></pre>
+<pre class="r"><code># better View
+m %&gt;% 
+  as.table() %&gt;% 
+  as.data.frame() %&gt;% 
+  arrange(desc(Freq))</code></pre>
+<pre><code>##          Var1       Var2      Freq
+## 1         FOG        FOG 1.0000000
+## 2          PL         PL 1.0000000
+## 3          FP         FP 1.0000000
+## 4    Jasnopis   Jasnopis 1.0000000
+## 5  FrequencyQ FrequencyQ 1.0000000
+## 6          PL        FOG 0.9049325
+## 7         FOG         PL 0.9049325
+## 8  FrequencyQ   Jasnopis 0.6844838
+## 9    Jasnopis FrequencyQ 0.6844838
+## 10   Jasnopis         PL 0.6776606
+## 11         PL   Jasnopis 0.6776606
+## 12         FP        FOG 0.6405376
+## 13        FOG         FP 0.6405376
+## 14         FP         PL 0.6011638
+## 15         PL         FP 0.6011638
+## 16   Jasnopis        FOG 0.5973699
+## 17        FOG   Jasnopis 0.5973699
+## 18 FrequencyQ         PL 0.5384389
+## 19         PL FrequencyQ 0.5384389
+## 20 FrequencyQ        FOG 0.5067984
+## 21        FOG FrequencyQ 0.5067984
+## 22   Jasnopis         FP 0.2080650
+## 23         FP   Jasnopis 0.2080650
+## 24 FrequencyQ         FP 0.1656842
+## 25         FP FrequencyQ 0.1656842</code></pre>
+<pre class="r"><code># &quot;kendall&quot;
+df[,-1] %&gt;% 
+  cor(., method = &quot;kendall&quot;) %&gt;% 
+  as.table() %&gt;% 
+  as.data.frame() %&gt;% 
+  arrange(desc(Freq))</code></pre>
+<pre><code>##          Var1       Var2      Freq
+## 1         FOG        FOG 1.0000000
+## 2          PL        FOG 1.0000000
+## 3         FOG         PL 1.0000000
+## 4          PL         PL 1.0000000
+## 5          FP         FP 1.0000000
+## 6    Jasnopis   Jasnopis 1.0000000
+## 7  FrequencyQ FrequencyQ 1.0000000
+## 8    Jasnopis        FOG 0.6216365
+## 9    Jasnopis         PL 0.6216365
+## 10        FOG   Jasnopis 0.6216365
+## 11         PL   Jasnopis 0.6216365
+## 12 FrequencyQ   Jasnopis 0.5171766
+## 13   Jasnopis FrequencyQ 0.5171766
+## 14         FP        FOG 0.4763305
+## 15         FP         PL 0.4763305
+## 16        FOG         FP 0.4763305
+## 17         PL         FP 0.4763305
+## 18 FrequencyQ        FOG 0.3596708
+## 19 FrequencyQ         PL 0.3596708
+## 20        FOG FrequencyQ 0.3596708
+## 21         PL FrequencyQ 0.3596708
+## 22   Jasnopis         FP 0.2299379
+## 23         FP   Jasnopis 0.2299379
+## 24 FrequencyQ         FP 0.1007961
+## 25         FP FrequencyQ 0.1007961</code></pre>
+<pre class="r"><code># &quot;spearman&quot;
+df[,-1] %&gt;% 
+  cor(., method = &quot;spearman&quot;) %&gt;% 
+  as.table() %&gt;% 
+  as.data.frame() %&gt;% 
+  arrange(desc(Freq))</code></pre>
+<pre><code>##          Var1       Var2      Freq
+## 1         FOG        FOG 1.0000000
+## 2          PL        FOG 1.0000000
+## 3         FOG         PL 1.0000000
+## 4          PL         PL 1.0000000
+## 5          FP         FP 1.0000000
+## 6    Jasnopis   Jasnopis 1.0000000
+## 7  FrequencyQ FrequencyQ 1.0000000
+## 8    Jasnopis        FOG 0.7001796
+## 9    Jasnopis         PL 0.7001796
+## 10        FOG   Jasnopis 0.7001796
+## 11         PL   Jasnopis 0.7001796
+## 12 FrequencyQ   Jasnopis 0.6305604
+## 13   Jasnopis FrequencyQ 0.6305604
+## 14         FP        FOG 0.5999786
+## 15         FP         PL 0.5999786
+## 16        FOG         FP 0.5999786
+## 17         PL         FP 0.5999786
+## 18 FrequencyQ        FOG 0.4612179
+## 19 FrequencyQ         PL 0.4612179
+## 20        FOG FrequencyQ 0.4612179
+## 21         PL FrequencyQ 0.4612179
+## 22   Jasnopis         FP 0.2979418
+## 23         FP   Jasnopis 0.2979418
+## 24 FrequencyQ         FP 0.1302221
+## 25         FP FrequencyQ 0.1302221</code></pre>
+<pre class="r"><code># install.packages(&quot;GGally&quot;)
+library(GGally)
+ggpairs(df[,-1])</code></pre>
+<p><img src="Lab_6_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 
 
