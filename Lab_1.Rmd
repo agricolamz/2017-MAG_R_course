@@ -149,6 +149,13 @@ TRUE | c(FALSE, TRUE)
 TRUE & c(FALSE, TRUE)
 ```
 
+
+```{r}
+0.2+0.2 == 0.4
+0.1+0.2 == 0.3 # Floating point representation of a number is always an approximation!
+```
+[read more about it](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+
 ### Indexing
 ```{r}
 a <- 1:100
@@ -236,4 +243,3 @@ apply(mtcars, 2, function(x){mean(x)+ min(x)})
 nchar(month.name)^2
 sapply(month.name, function(x){nchar(x)^2})
 ```
-
