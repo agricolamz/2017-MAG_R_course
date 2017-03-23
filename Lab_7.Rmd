@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, message=FALSE}
 library(tidyverse)
+library(GGally)
 ```
 
 ### 1.1
@@ -70,3 +71,28 @@ df %>%
   scale_x_log10(labels = comma)+
   scale_y_log10(labels = comma)
 ```
+
+### 3. 
+```{r, eval = FALSE, echo= FALSE}
+df <- read.csv("https://goo.gl/pY55GP", sep = "\t")
+
+cor(df)
+ggpairs(df)
+
+m1 <- summary(lm(towl~se+to, data = df))
+m2 <- summary(lm(towl~to, data = df))
+m3 <- summary(lm(towl~se, data = df))
+
+m1$adj.r.squared
+m2$adj.r.squared
+m3$adj.r.squared
+
+
+m3 <- lm(towl~se, data = df)
+df$pred <- (predict(m3, newdata = read.csv("https://goo.gl/J2xihh")))
+
+df %>% 
+  summarise(mean = mean(pred),
+         CI=1.96*sd(pred)/sqrt(length(pred)))
+```
+
