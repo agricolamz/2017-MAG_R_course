@@ -1,8 +1,30 @@
 ---
-title: "Lab ..."
+title: "Lab 8. Dummy variables. Anova"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## [Assignment link](https://goo.gl/forms/IgIy6Kw3EWVcTi8y1)
+
+### 1. 
+```{r, echo= FALSE, eval= FALSE}
+df <- read.csv("http://goo.gl/0btfKa")
+
+df %>% 
+  ggplot(aes(ejectives, n.cons.lapsyd, color = ejectives))+
+  geom_jitter(width = 0.2)+
+  labs(title = "Number of syllables ~ presence of ejectives",
+       x = "presence of ejectives",
+       y = "number of syllables")
+
+df %>% 
+  group_by(ejectives) %>% 
+  summarise(mean(n.cons.lapsyd))
+
+fit <- lm(n.cons.lapsyd~ejectives, data = df)
+summary(fit)
+
+fit$coefficients
+```

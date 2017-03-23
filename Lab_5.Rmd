@@ -49,7 +49,7 @@ icelandic %>%
        caption = "Data from (Coretta 2017)",
        x = "vowel duration")
 ```
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 icelandic %>% 
   ggplot(aes(sample = vowel.dur, color = aspiration))+
   geom_qq()+

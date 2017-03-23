@@ -36,46 +36,46 @@ title: "Linguistic data: quantitative analysis and visualisation"
 ### 5. χ². Exact Fisher test. Correlations																									
 * (16.03.2017) lecture
 * (16.03.2017) [Lab 6](https://agricolamz.github.io/2017-MAG_R_course/Lab_6.html), [Assignment](https://goo.gl/forms/mDNkVbNj29aLRCVf2)
-* HW-3. Deadline: 26.03.2017
+* HW-3. Deadline: 09.04.2017
 
 ### 6. Regressions: linear and polynomial															
-* (..2017) lecture
-* (..2017) Lab 7:
-* HW-4. Deadline: ..2017
+* (23.03.2017) lecture
+* (23.03.2017) [Lab 7](https://agricolamz.github.io/2017-MAG_R_course/Lab_7.html), [Assignment](https://goo.gl/forms/b2zXpiU6BGYo4zZe2)
+
 																									
 ### 7. ANOVA																									
 
 * (..2017) lecture
 * (..2017) Lab 8:
-* HW-5. Deadline: ..2017
+* HW-4. Deadline: 23.04.2017
 
 ### 8. Logistic regressions
 
 * (..2017) lecture
 * (..2017) Lab 9:
-* HW-6. Deadline: ..2017
+* HW-5. Deadline: ..2017
 
 ### 9. Mixed-effects models																						
 * (..2017) lecture
 * (..2017) Lab 10:
-* HW-7. Deadline: ..2017
+* HW-6. Deadline: ..2017
 
 ### 10. Decision trees. Decision forests															
 * (..2017) lecture
 * (..2017) Lab 11: Confidence intervals again. Bootstraping.
 * (..2017) Lab 12: Decision trees. Decision forests.
-* HW-8. Deadline: ..2017
+* HW-7. Deadline: ..2017
 
 ### 11. Clusterization
 
 * (..2017) lecture
 * (..2017) Lab 13: Different types of distance matrices. K-means
 * (..2017) Lab 14: Hierarchical clusterization. DBSCAN.
-* HW-9. Deadline: ..2017
+* HW-8. Deadline: ..2017
 
 ### 12. MDS, PCA, CA, MCA
 
 * (..2017) lecture
 * (..2017) Lab 15:
 * (..2017) Lab 16:
-* HW-10. Deadline: ..2017
+* HW-9. Deadline: ..2017

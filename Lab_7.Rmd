@@ -1,8 +1,72 @@
 ---
-title: "Lab ..."
+title: "Lab 7: linear regression"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## [Assignment link](https://goo.gl/forms/b2zXpiU6BGYo4zZe2)
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+### 1.1
+```{r, eval = FALSE, echo= FALSE}
+df <- read.csv("http://goo.gl/Qo3Yy2")
+
+df %>%
+  ggplot(aes(mother, child))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+
+df %>%
+  ggplot(aes(mother, child))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  geom_point(aes(mean(mother), mean(child)), color = "tomato", size = 5)
+
+cor(df)
+
+fit <- lm(child~mother, data = df)
+summary(fit)
+ggplot(data = fit, aes(fit$fitted.values, fit$residuals))+
+  geom_point()+
+  geom_line(aes(y = 0))+
+  labs(title = "fitted values ~ residuals",
+       x = "fitted values",
+       y = "residuals")
+
+ggplot(data = fit, aes(sample = fit$residuals))+
+  geom_qq()+
+  labs(title = "qqplot for residuals")
+
+
+predict(fit, data.frame(mother = 11:17/10))
+```
+
+
+
+### 2.
+```{r, eval = FALSE, echo= FALSE}
+df <- read.csv("https://goo.gl/TcyiRc", sep = "\t")
+
+df %>% 
+  ggplot(aes(r.frequency,rus.freq.dict))+
+  geom_point(alpha = 0.2)+
+  labs(titles = "relative frequencies from the short story and frequency dictionary",
+       x = "relative frequencies from the short story",
+       y = "relative frequencies from the frequency dictionary")
+
+library(scales)
+df %>% 
+  ggplot(aes(r.frequency,rus.freq.dict))+
+  geom_point(alpha = 0.2)+
+    labs(titles = "relative frequencies from the short story and frequency dictionary",
+         subtitle = "scales are with log transformation",
+       x = "relative frequencies from the short story",
+       y = "relative frequencies from the frequency dictionary")+
+  scale_x_log10(labels = comma)+
+  scale_y_log10(labels = comma)
+```

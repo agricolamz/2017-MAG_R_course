@@ -306,6 +306,13 @@ icelandic %&gt;%
        caption = &quot;Data from (Coretta 2017)&quot;,
        x = &quot;vowel duration&quot;)</code></pre>
 <p><img src="Lab_5_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>icelandic %&gt;% 
+  ggplot(aes(sample = vowel.dur, color = aspiration))+
+  geom_qq()+
+  facet_wrap(~speaker, scales = &quot;free&quot;)+
+  labs(title = &quot;Vowel duration density plot&quot;,
+       caption = &quot;Data from (Coretta 2017)&quot;)</code></pre>
+<p><img src="Lab_5_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="section-2" class="section level2">
 <h2>1.6-1.10</h2>
