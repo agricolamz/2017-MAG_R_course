@@ -3,18 +3,18 @@ title: "Lab 7: linear regression"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
 ```
 
 ## [Assignment link](https://goo.gl/forms/b2zXpiU6BGYo4zZe2)
 
-```{r, message=FALSE}
+```{r}
 library(tidyverse)
 library(GGally)
 ```
 
 ### 1.1
-```{r, eval = FALSE, echo= FALSE}
+```{r}
 df <- read.csv("http://goo.gl/Qo3Yy2")
 
 df %>%
@@ -47,10 +47,8 @@ ggplot(data = fit, aes(sample = fit$residuals))+
 predict(fit, data.frame(mother = 11:17/10))
 ```
 
-
-
 ### 2.
-```{r, eval = FALSE, echo= FALSE}
+```{r}
 df <- read.csv("https://goo.gl/TcyiRc", sep = "\t")
 
 df %>% 
@@ -72,27 +70,12 @@ df %>%
   scale_y_log10(labels = comma)
 ```
 
-### 3. 
-```{r, eval = FALSE, echo= FALSE}
-df <- read.csv("https://goo.gl/pY55GP", sep = "\t")
+### Remark on R formula syntax
 
-cor(df)
-ggpairs(df)
-
-m1 <- summary(lm(towl~se+to, data = df))
-m2 <- summary(lm(towl~to, data = df))
-m3 <- summary(lm(towl~se, data = df))
-
-m1$adj.r.squared
-m2$adj.r.squared
-m3$adj.r.squared
-
-
-m3 <- lm(towl~se, data = df)
-df$pred <- (predict(m3, newdata = read.csv("https://goo.gl/J2xihh")))
-
-df %>% 
-  summarise(mean = mean(pred),
-         CI=1.96*sd(pred)/sqrt(length(pred)))
-```
-
+* `y~x` gives you $y_i=\beta_0+\beta_1\times x_i$
+* `y~x+z` gives you $y_i=\beta_0+\beta_1\times x_i+\beta_2\times z_i$
+* `y~.` gives you $y_i=\beta_0+\beta_1\times x_i \dots \beta_k\times z_i$ (it makes a regression from all $k$ predictors)
+* `y~1` gives you $y_i=\beta_0$
+* `y~x-1` gives you $y_i=\beta_1\times x_i$
+* `y~I(x-1)` gives you $y_i=\beta_0+\beta_1\times (x_i-1)$
+* `y~I(x^2)` gives you $y_i=\beta_0+\beta_1\times x_i^2$

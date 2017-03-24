@@ -258,12 +258,92 @@ $(document).ready(function () {
 library(GGally)</code></pre>
 <div id="section" class="section level3">
 <h3>1.1</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/Qo3Yy2&quot;)
+
+df %&gt;%
+  ggplot(aes(mother, child))+
+  geom_point()+
+  geom_smooth(method = &quot;lm&quot;, se = FALSE)</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>df %&gt;%
+  ggplot(aes(mother, child))+
+  geom_point()+
+  geom_smooth(method = &quot;lm&quot;)+
+  geom_point(aes(mean(mother), mean(child)), color = &quot;tomato&quot;, size = 5)</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<pre class="r"><code>cor(df)</code></pre>
+<pre><code>##            child    mother
+## child  1.0000000 0.5761599
+## mother 0.5761599 1.0000000</code></pre>
+<pre class="r"><code>fit &lt;- lm(child~mother, data = df)
+summary(fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = child ~ mother, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.46058 -0.08925  0.01071  0.13333  0.22770 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.7038     0.2051   3.432  0.00132 ** 
+## mother        0.5452     0.1166   4.676 2.79e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1627 on 44 degrees of freedom
+## Multiple R-squared:  0.332,  Adjusted R-squared:  0.3168 
+## F-statistic: 21.86 on 1 and 44 DF,  p-value: 2.789e-05</code></pre>
+<pre class="r"><code>ggplot(data = fit, aes(fit$fitted.values, fit$residuals))+
+  geom_point()+
+  geom_line(aes(y = 0))+
+  labs(title = &quot;fitted values ~ residuals&quot;,
+       x = &quot;fitted values&quot;,
+       y = &quot;residuals&quot;)</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<pre class="r"><code>ggplot(data = fit, aes(sample = fit$residuals))+
+  geom_qq()+
+  labs(title = &quot;qqplot for residuals&quot;)</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<pre class="r"><code>predict(fit, data.frame(mother = 11:17/10))</code></pre>
+<pre><code>##        1        2        3        4        5        6        7 
+## 1.303490 1.358009 1.412528 1.467048 1.521567 1.576086 1.630605</code></pre>
 </div>
 <div id="section-1" class="section level3">
 <h3>2.</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;https://goo.gl/TcyiRc&quot;, sep = &quot;\t&quot;)
+
+df %&gt;% 
+  ggplot(aes(r.frequency,rus.freq.dict))+
+  geom_point(alpha = 0.2)+
+  labs(titles = &quot;relative frequencies from the short story and frequency dictionary&quot;,
+       x = &quot;relative frequencies from the short story&quot;,
+       y = &quot;relative frequencies from the frequency dictionary&quot;)</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>library(scales)
+df %&gt;% 
+  ggplot(aes(r.frequency,rus.freq.dict))+
+  geom_point(alpha = 0.2)+
+    labs(titles = &quot;relative frequencies from the short story and frequency dictionary&quot;,
+         subtitle = &quot;scales are with log transformation&quot;,
+       x = &quot;relative frequencies from the short story&quot;,
+       y = &quot;relative frequencies from the frequency dictionary&quot;)+
+  scale_x_log10(labels = comma)+
+  scale_y_log10(labels = comma)</code></pre>
+<p><img src="Lab_7_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 </div>
-<div id="section-2" class="section level3">
-<h3>3.</h3>
+<div id="remark-on-r-formula-syntax" class="section level3">
+<h3>Remark on R formula syntax</h3>
+<ul>
+<li><code>y~x</code> gives you <span class="math inline">\(y_i=\beta_0+\beta_1\times x_i\)</span></li>
+<li><code>y~x+z</code> gives you <span class="math inline">\(y_i=\beta_0+\beta_1\times x_i+\beta_2\times z_i\)</span></li>
+<li><code>y~.</code> gives you <span class="math inline">\(y_i=\beta_0+\beta_1\times x_i \dots \beta_k\times z_i\)</span> (it makes a regression from all <span class="math inline">\(k\)</span> predictors)</li>
+<li><code>y~1</code> gives you <span class="math inline">\(y_i=\beta_0\)</span></li>
+<li><code>y~x-1</code> gives you <span class="math inline">\(y_i=\beta_1\times x_i\)</span></li>
+<li><code>y~I(x-1)</code> gives you <span class="math inline">\(y_i=\beta_0+\beta_1\times (x_i-1)\)</span></li>
+<li><code>y~I(x^2)</code> gives you <span class="math inline">\(y_i=\beta_0+\beta_1\times x_i^2\)</span></li>
+</ul>
 </div>
 </div>
 
