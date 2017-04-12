@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -254,8 +254,38 @@ $(document).ready(function () {
 
 <div id="assignment-link" class="section level2">
 <h2><a href="https://goo.gl/forms/IgIy6Kw3EWVcTi8y1">Assignment link</a></h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
 <div id="section" class="section level3">
 <h3>1.</h3>
+</div>
+<div id="section-1" class="section level3">
+<h3>2.</h3>
+<p>All right. There is a statistically significant result, so we can reject H<span class="math inline">\(_0\)</span> (all groups are <em>not</em> simply random samples of the same population). But what the difference between them? There are a lot of different ways to understand it. We will use <a href="https://en.wikipedia.org/wiki/Tukey&#39;s_range_test">Tukey’s HSD</a> (honest significant difference) test.</p>
+<pre class="r"><code>tk &lt;- TukeyHSD(fit)
+tk</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = vowel.dur ~ place, data = df)
+## 
+## $place
+##                       diff        lwr       upr     p adj
+## labial-coronal -13.7344148 -18.193251 -9.275578 0.0000000
+## velar-coronal   -0.8073382  -7.309994  5.695318 0.9542360
+## velar-labial    12.9270766   5.971933 19.882221 0.0000429</code></pre>
+<pre class="r"><code># fast visualization
+plot(tk)</code></pre>
+<p><img src="Lab_8_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code># ggplot
+tk &lt;- data.frame(tk$place)
+tk$Comparison &lt;- row.names(tk)
+
+tk %&gt;% 
+  ggplot(aes(Comparison, y = diff, ymin = lwr, ymax = upr)) +
+  geom_pointrange() +
+  ylab(&quot;Difference in Mean vowel duration by place of articulation&quot;) +
+  coord_flip()</code></pre>
+<p><img src="Lab_8_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 </div>
 </div>
 

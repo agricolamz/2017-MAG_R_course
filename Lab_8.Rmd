@@ -3,10 +3,15 @@ title: "Lab 8. Dummy variables. Anova"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 ```
 
 ## [Assignment link](https://goo.gl/forms/IgIy6Kw3EWVcTi8y1)
+
+```{r}
+library(tidyverse)
+```
+
 
 ### 1. 
 ```{r, echo= FALSE, eval= FALSE}
@@ -28,3 +33,50 @@ summary(fit)
 
 fit$coefficients
 ```
+
+### 2.
+```{r, echo= FALSE, eval= FALSE}
+df <- read.csv("https://goo.gl/7gIjvK")
+
+df %>% 
+  ggplot(aes(place, vowel.dur))+
+  geom_boxplot(outlier.alpha = 0.2)+
+  geom_point(alpha = 0.2)+
+  labs(title = "Vowel duration by place of articulation",
+       caption = "Data from (Coretta 2017)",
+       x = "place of articulation",
+       y = "vowel duration")
+
+fit <- aov(vowel.dur~place, data = df)
+summary(fit)
+fit$coefficients
+
+df %>% 
+  group_by(place) %>% 
+  summarise(mean(vowel.dur))
+```
+All right. There is a statistically significant result, so we can reject H$_0$ (all groups are *not* simply random samples of the same population). But what the difference between them? There are a lot of different ways to understand it. We will use [Tukey's HSD](https://en.wikipedia.org/wiki/Tukey's_range_test) (honest significant difference) test.
+
+```{r, include=FALSE}
+df <- read.csv("https://goo.gl/7gIjvK")
+fit <- aov(vowel.dur~place, data = df)
+```
+
+
+```{r}
+tk <- TukeyHSD(fit)
+tk
+# fast visualization
+plot(tk)
+
+# ggplot
+tk <- data.frame(tk$place)
+tk$Comparison <- row.names(tk)
+
+tk %>% 
+  ggplot(aes(Comparison, y = diff, ymin = lwr, ymax = upr)) +
+  geom_pointrange() +
+  ylab("Difference in Mean vowel duration by place of articulation") +
+  coord_flip()
+```
+

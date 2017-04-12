@@ -36,18 +36,15 @@ title: "Linguistic data: quantitative analysis and visualisation"
 ### 5. χ². Exact Fisher test. Correlations																									
 * (16.03.2017) lecture
 * (16.03.2017) [Lab 6](https://agricolamz.github.io/2017-MAG_R_course/Lab_6.html), [Assignment](https://goo.gl/forms/mDNkVbNj29aLRCVf2)
-* HW-3. Deadline: 09.04.2017
 
 ### 6. Linear regressions															
 * (23.03.2017) lecture
 * (23.03.2017) [Lab 7](https://agricolamz.github.io/2017-MAG_R_course/Lab_7.html), [Assignment](https://goo.gl/forms/b2zXpiU6BGYo4zZe2)
 
 																									
-### 7. ANOVA, dummy variables																								
-
-* (..2017) lecture
-* (..2017) Lab 8:
-* HW-4. Deadline: 23.04.2017
+### 7. ANOVA, dummy variables																		
+* (13.04.2017) lecture
+* (13.04.2017) [Lab 8](https://agricolamz.github.io/2017-MAG_R_course/Lab_8.html), [Assignment](https://goo.gl/bCkuRV)
 
 ### 8. Logistic regressions
 
