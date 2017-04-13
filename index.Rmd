@@ -22,55 +22,55 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (16.02.2017) RMarkdown
 * [HW-2. Deadline: 12.03.2017](https://docs.google.com/forms/d/e/1FAIpQLSc2Z6snhSEZRVzHysYsUdKFkl4flE63AY4TFd-UrkmstV8s4g/viewform)
 
-### 3. Descriptive statistics A. Confidence intervals. T-tests. P-values. Normality tests
+### 3. 4. Descriptive statistics A. Confidence intervals. T-tests. P-values. Normality tests
 * (16.02.2017) [Lecture: Central limit theorem. Confidence intervals](https://agricolamz.github.io/2017-MAG_R_course/Lec_3_Descriptive_statistics._Measures_of_central_tendency._Confidence_intervals.html)
 * (02.03.2017) Lab 3 and 4: Descriptive statistics, Confidence intervals, T-tests. P-value. Boxplot, errorbar.
     * [Assignment](https://goo.gl/forms/6e4ncZf6QejGRjyW2)
     * Files from class: [Lab 3 and 4](https://agricolamz.github.io/2017-MAG_R_course/Lab_3-4.html)
 
-### 4. More about t-test: one-tailed, paired, test power, Coehn's d. Mann–Whitney U-test.
+### 5. More about t-test: one-tailed, paired, test power, Coehn's d. Mann–Whitney U-test.
 
 * (09.03.2017) lecture
 * (09.03.2017) [Lab 5](https://agricolamz.github.io/2017-MAG_R_course/Lab_5.html), [Assignment](https://goo.gl/forms/PUIzhEsFWuqVCksj1)
 
-### 5. χ². Exact Fisher test. Correlations																									
+### 6. χ². Exact Fisher test. Correlations																									
 * (16.03.2017) lecture
 * (16.03.2017) [Lab 6](https://agricolamz.github.io/2017-MAG_R_course/Lab_6.html), [Assignment](https://goo.gl/forms/mDNkVbNj29aLRCVf2)
 
-### 6. Linear regressions															
+### 7. Linear regressions															
 * (23.03.2017) lecture
 * (23.03.2017) [Lab 7](https://agricolamz.github.io/2017-MAG_R_course/Lab_7.html), [Assignment](https://goo.gl/forms/b2zXpiU6BGYo4zZe2)
 
 																									
-### 7. ANOVA, dummy variables																		
-* (13.04.2017) lecture
+### 8. ANOVA, dummy variables, Multiple linear regression																		
+* (13.04.2017) [lecture 8](https://agricolamz.github.io/2017-MAG_R_course/Lec_8_ANOVA_Dummy_variables_Multiple_linear_regression.html) 
 * (13.04.2017) [Lab 8](https://agricolamz.github.io/2017-MAG_R_course/Lab_8.html), [Assignment](https://goo.gl/bCkuRV)
 
-### 8. Logistic regressions
+### 9. Logistic regressions
 
 * (..2017) lecture
 * (..2017) Lab 9:
 * HW-5. Deadline: ..2017
 
-### 9. Mixed-effects models																						
+### 10. Mixed-effects models																						
 * (..2017) lecture
 * (..2017) Lab 10:
 * HW-6. Deadline: ..2017
 
-### 10. Decision trees. Decision forests															
+### 11. Decision trees. Decision forests															
 * (..2017) lecture
 * (..2017) Lab 11: Confidence intervals again. Bootstraping.
 * (..2017) Lab 12: Decision trees. Decision forests.
 * HW-7. Deadline: ..2017
 
-### 11. Clusterization
+### 12. Clusterization
 
 * (..2017) lecture
 * (..2017) Lab 13: Different types of distance matrices. K-means
 * (..2017) Lab 14: Hierarchical clusterization. DBSCAN.
 * HW-8. Deadline: ..2017
 
-### 12. MDS, PCA, CA, MCA
+### 13. MDS, PCA, CA, MCA
 
 * (..2017) lecture
 * (..2017) Lab 15:

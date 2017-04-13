@@ -1,0 +1,15 @@
+---
+title: "ANOVA. Dummy variables. Multiple lenear regression"
+date: 02.02.2017
+font-family: 'Brill'
+transition: none
+output:
+  slidy_presentation:
+    df_print: kable
+    footer: "Presentation link: https://goo.gl/l4jGHG"
+---
+
+### 1.1 Variable Types
+
+* numeric
+* categorical
