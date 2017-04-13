@@ -1,5 +1,5 @@
 ---
-title: "ANOVA. Multiple lenear regression. Dummy variables"
+title: "ANOVA. Multiple linear regression. Dummy variables"
 date: 02.02.2017
 font-family: 'Brill'
 transition: none
@@ -38,7 +38,7 @@ This summer I collected data during the fieldwork in Khodz (Koshekhablsky Distri
 
 Articulation rate was calculated as the number of syllables per second.
 
-Data are here
+Data is here
 ```{r}
 speech_rate <- read.csv("https://goo.gl/amxSxi")
 str(speech_rate)
@@ -125,7 +125,7 @@ summary(fit2)
 * numeric
 * categorical
 
-How to make numeric to categorical conversion?
+How to make numeric-to-categorical conversion?
 ```{r}
 a <- sin(1:100) # Create a random vector
 b <- c(-1, -0.5, 0, 0.5, 1) # Create a vector of boundaries
@@ -134,11 +134,11 @@ table(cut(a, breaks = b))
 table(cut(a, breaks = b, right = F))
 ```
 
-How to make categorical to numeric conversion? Dummy variables.
+How to make categorical-to-numeric conversion? Dummy variables!
 
 ### 4.2 Dummy variables
 
-Dummy variable it is a technique for creating a numeric variable from categorical. For each $n-1$ levels of a categorical variable it creates a dummy variable, which have value 1 for cirtain level of variable and 0 otherwise.
+Dummy variable it is a technique for creating a numeric variable from categorical. For each $n-1$ levels of a categorical variable it creates a dummy variable, which have value 1 for certain level of variable and 0 otherwise.
 
 sex variable with *2* levels can be replaced with *1* dummy variable sex_female:
 
