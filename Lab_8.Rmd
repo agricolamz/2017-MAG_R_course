@@ -14,15 +14,15 @@ library(tidyverse)
 
 
 ### 1. 
-```{r, echo= FALSE, eval= FALSE}
+```{r}
 df <- read.csv("http://goo.gl/0btfKa")
 
 df %>% 
   ggplot(aes(ejectives, n.cons.lapsyd, color = ejectives))+
   geom_jitter(width = 0.2)+
-  labs(title = "Number of syllables ~ presence of ejectives",
+  labs(title = "Number of consonants ~ presence of ejectives",
        x = "presence of ejectives",
-       y = "number of syllables")
+       y = "number of consonants")
 
 df %>% 
   group_by(ejectives) %>% 
@@ -35,7 +35,7 @@ fit$coefficients
 ```
 
 ### 2.
-```{r, echo= FALSE, eval= FALSE}
+```{r}
 df <- read.csv("https://goo.gl/7gIjvK")
 
 df %>% 
@@ -57,13 +57,8 @@ df %>%
 ```
 
 
-```{r, include=FALSE}
-df <- read.csv("https://goo.gl/7gIjvK")
-fit <- aov(vowel.dur~place, data = df)
-```
 
-
-```{r, echo= FALSE}
+```{r}
 tk <- TukeyHSD(fit)
 # fast visualization
 plot(tk)
@@ -79,7 +74,7 @@ tk %>%
   coord_flip()
 ```
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, eval = FALSE}
 m1 <- lm(cdi~tv.hours, data = tv)
 summary(m1)
 m2 <- lm(cdi~mot.education, data = tv)
@@ -90,7 +85,7 @@ m4 <- lm(cdi~., data = tv[,-1])
 summary(m4)
 ```
 
-```{r, echo = FALSE}
+```{r, eval = FALSE}
 tv %>% 
   ggplot(aes(tv.hours, cdi))+
   geom_smooth(method="lm")+
