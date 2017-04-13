@@ -51,7 +51,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">ANOVA. Multiple lenear regression. Dummy variables</h1>
+  <h1 class="title">ANOVA. Multiple linear regression. Dummy variables</h1>
   <p class="author">
 
   </p>
@@ -87,7 +87,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>read a verse</li>
 </ul>
 <p>Articulation rate was calculated as the number of syllables per second.</p>
-<p>Data are here</p>
+<p>Data isF here</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">speech_rate &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/amxSxi&quot;</span>)
 <span class="kw">str</span>(speech_rate)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    710 obs. of  3 variables:
@@ -203,7 +203,7 @@ tk %&gt;%<span class="st"> </span>
 <li>numeric</li>
 <li>categorical</li>
 </ul>
-<p>How to make numeric to categorical conversion?</p>
+<p>How to make numeric-to-categorical conversion?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">sin</span>(<span class="dv">1</span>:<span class="dv">100</span>) <span class="co"># Create a random vector</span>
 b &lt;-<span class="st"> </span><span class="kw">c</span>(-<span class="dv">1</span>, -<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>) <span class="co"># Create a vector of boundaries</span>
 <span class="kw">table</span>(<span class="kw">cut</span>(a, <span class="dt">breaks =</span> b))</code></pre></div>
@@ -215,11 +215,11 @@ b &lt;-<span class="st"> </span><span class="kw">c</span>(-<span class="dv">1</s
 <pre><code>## 
 ## [-1,-0.5)  [-0.5,0)   [0,0.5)   [0.5,1) 
 ##        35        15        16        34</code></pre>
-<p>How to make categorical to numeric conversion? Dummy variables.</p>
+<p>How to make categorical-to-numeric conversion? Dummy variables!</p>
 </div>
 <div id="dummy-variables" class="slide section level3">
 <h1>4.2 Dummy variables</h1>
-<p>Dummy variable it is a technique for creating a numeric variable from categorical. For each <span class="math inline">\(n-1\)</span> levels of a categorical variable it creates a dummy variable, which have value 1 for cirtain level of variable and 0 otherwise.</p>
+<p>Dummy variable it is a technique for creating a numeric variable from categorical. For each <span class="math inline">\(n-1\)</span> levels of a categorical variable it creates a dummy variable, which have value 1 for certain level of variable and 0 otherwise.</p>
 <p>sex variable with <em>2</em> levels can be replaced with <em>1</em> dummy variable sex_female:</p>
 <ul>
 <li>sex_female = 1, if an individual is a female</li>
