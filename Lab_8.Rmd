@@ -79,3 +79,22 @@ tk %>%
   coord_flip()
 ```
 
+```{r, echo = FALSE, eval = FALSE}
+m1 <- lm(cdi~tv.hours, data = tv)
+summary(m1)
+m2 <- lm(cdi~mot.education, data = tv)
+summary(m2)
+m3 <- lm(cdi~tv.hours+mot.education, data = tv)
+summary(m3)
+m4 <- lm(cdi~., data = tv[,-1])
+summary(m4)
+```
+
+```{r, echo = FALSE}
+tv %>% 
+  ggplot(aes(tv.hours, cdi))+
+  geom_smooth(method="lm")+
+  geom_point()+
+  facet_wrap(~tv$book.reading)
+```
+
