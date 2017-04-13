@@ -1,5 +1,5 @@
 ---
-title: "Lab 8. Dummy variables. Anova"
+title: "Lab 8. Dummy variables. ANOVA"
 ---
 
 ```{r setup, include=FALSE}

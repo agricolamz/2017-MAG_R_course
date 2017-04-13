@@ -78,8 +78,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Multiple linear regression with dummy variables (numeric by any variable)</li>
 </ul>
 </div>
-<div id="anova-problem" class="slide section level3">
-<h1>2.1 ANOVA: problem</h1>
+<div id="anova" class="slide section level3">
+<h1>2.1 ANOVA</h1>
 <p>This summer I collected data during the fieldwork in Khodz (Koshekhablsky District, Republic of Adygea, Russia). The participants (nine native speakers of Kuban dialect of Kabardian) were asked to solve several speech production tasks:</p>
 <ul>
 <li>tell a story based on the picture to other participant</li>
@@ -144,6 +144,58 @@ tk %&gt;%<span class="st"> </span>
 </div>
 <div id="multiple-linear-regression" class="slide section level3">
 <h1>3.1 Multiple linear regression</h1>
+<ul>
+<li>Simple linear regression: <span class="math inline">\(y_i = \beta_0+\beta_1\times predictor_1 + \epsilon_i\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mpg, wt))+
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Lec_8_ANOVA_Dummy_variables_Multiple_linear_regression_files/figure-slidy/unnamed-chunk-7-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg~wt, mtcars)
+<span class="kw">summary</span>(fit)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.5432 -2.3647 -0.1252  1.4096  6.8727 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***
+## wt           -5.3445     0.5591  -9.559 1.29e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.046 on 30 degrees of freedom
+## Multiple R-squared:  0.7528, Adjusted R-squared:  0.7446 
+## F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
+<ul>
+<li>Multiple linear regression: <span class="math inline">\(y_i = \beta_0+\beta_1\times predictor_1 + ... + \beta_k\times predictor_k + \epsilon_i\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg~wt+hp, mtcars)
+<span class="kw">summary</span>(fit2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt + hp, data = mtcars)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -3.941 -1.600 -0.182  1.050  5.854 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
+## wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+## hp          -0.03177    0.00903  -3.519  0.00145 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.593 on 29 degrees of freedom
+## Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 
+## F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div id="variable-types" class="slide section level3">
 <h1>4.1 Variable Types</h1>
@@ -221,6 +273,34 @@ b &lt;-<span class="st"> </span><span class="kw">c</span>(-<span class="dv">1</s
 </div>
 <div id="regression-example" class="slide section level3">
 <h1>4.3 Regression example</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cyl =</span> <span class="kw">factor</span>(cyl)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mpg, wt, <span class="dt">color =</span> cyl))+
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Lec_8_ANOVA_Dummy_variables_Multiple_linear_regression_files/figure-slidy/unnamed-chunk-12-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg~wt+<span class="kw">factor</span>(cyl), mtcars)
+<span class="kw">summary</span>(fit2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt + factor(cyl), data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.5890 -1.2357 -0.5159  1.3845  5.7915 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   33.9908     1.8878  18.006  &lt; 2e-16 ***
+## wt            -3.2056     0.7539  -4.252 0.000213 ***
+## factor(cyl)6  -4.2556     1.3861  -3.070 0.004718 ** 
+## factor(cyl)8  -6.0709     1.6523  -3.674 0.000999 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.557 on 28 degrees of freedom
+## Multiple R-squared:  0.8374, Adjusted R-squared:   0.82 
+## F-statistic: 48.08 on 3 and 28 DF,  p-value: 3.594e-11</code></pre>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

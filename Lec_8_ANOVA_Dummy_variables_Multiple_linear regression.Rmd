@@ -29,7 +29,7 @@ Today:
 * Multiple linear regression (numeric by several numeric variables)
 * Multiple linear regression with dummy variables (numeric by any variable)
 
-### 2.1 ANOVA: problem
+### 2.1 ANOVA
 This summer I collected data during the fieldwork in Khodz (Koshekhablsky District, Republic of Adygea, Russia). The participants (nine native speakers of Kuban dialect of Kabardian) were asked to solve several speech production tasks:
 
 * tell a story based on the picture to other participant
@@ -95,6 +95,31 @@ tk %>%
 
 
 ### 3.1 Multiple linear regression
+
+* Simple linear regression:
+$y_i = \beta_0+\beta_1\times predictor_1 + \epsilon_i$
+
+```{r}
+mtcars %>% 
+  ggplot(aes(mpg, wt))+
+  geom_smooth(method = "lm")+
+  geom_point()
+```
+
+```{r}
+fit <- lm(mpg~wt, mtcars)
+summary(fit)
+```
+
+
+* Multiple linear regression:
+$y_i = \beta_0+\beta_1\times predictor_1 + ... + \beta_k\times predictor_k + \epsilon_i$
+
+```{r}
+fit2 <- lm(mpg~wt+hp, mtcars)
+summary(fit2)
+```
+
 ### 4.1 Variable Types
 
 * numeric
@@ -136,6 +161,14 @@ data.frame(eye_color = c("blue", "brown", "gray", "green"),
 
 ### 4.3 Regression example
 ```{r}
-
+mtcars %>% 
+  mutate(cyl = factor(cyl)) %>% 
+  ggplot(aes(mpg, wt, color = cyl))+
+  geom_smooth(method = "lm")+
+  geom_point()
+```
+```{r}
+fit2 <- lm(mpg~wt+factor(cyl), mtcars)
+summary(fit2)
 ```
 
