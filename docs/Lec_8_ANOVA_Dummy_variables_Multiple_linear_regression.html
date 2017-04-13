@@ -7,25 +7,220 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="copyright" content="Presentation link: https://goo.gl/l4jGHG"/>
-  <title>ANOVA. Dummy variables. Multiple lenear regression</title>
+  <title>ANOVA. Multiple lenear regression. Dummy variables</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link href="site_libs/slidy-2/styles/slidy.css" rel="stylesheet" />
   <script src="site_libs/slidy-2/scripts/slidy.js"></script>
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">ANOVA. Dummy variables. Multiple lenear regression</h1>
+  <h1 class="title">ANOVA. Multiple lenear regression. Dummy variables</h1>
   <p class="author">
 
   </p>
   <p class="date">02.02.2017</p>
 </div>
-<div id="variable-types" class="slide section level3">
-<h1>1.1 Variable Types</h1>
+<div id="what-we-achieved" class="slide section level3">
+<h1>1.1 What we achieved?</h1>
+<p>Variable types</p>
 <ul>
 <li>numeric</li>
 <li>categorical</li>
 </ul>
+<p>What we achieved:</p>
+<ul>
+<li>Confidence intervals (numeric variable)</li>
+<li>t-tests, Mann–Whitney (means of numeric variable by one categorical variable with two levels)</li>
+<li>χ², Fisher test (categorical by categorical)</li>
+<li>Simple linear regression (numeric by one numeric variable)</li>
+</ul>
+<p>Today:</p>
+<ul>
+<li>ANOVA (means of numeric variable by categorical any variable)</li>
+<li>Multiple linear regression (numeric by several numeric variables)</li>
+<li>Multiple linear regression with dummy variables (numeric by any variable)</li>
+</ul>
+</div>
+<div id="anova-problem" class="slide section level3">
+<h1>2.1 ANOVA: problem</h1>
+<p>This summer I collected data during the fieldwork in Khodz (Koshekhablsky District, Republic of Adygea, Russia). The participants (nine native speakers of Kuban dialect of Kabardian) were asked to solve several speech production tasks:</p>
+<ul>
+<li>tell a story based on the picture to other participant</li>
+<li>read a prosaic text</li>
+<li>read a verse</li>
+</ul>
+<p>Articulation rate was calculated as the number of syllables per second.</p>
+<p>Data are here</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">speech_rate &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/amxSxi&quot;</span>)
+<span class="kw">str</span>(speech_rate)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    710 obs. of  3 variables:
+##  $ dictor: Factor w/ 10 levels &quot;all&quot;,&quot;D1&quot;,&quot;D2&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ type  : Factor w/ 3 levels &quot;narrative&quot;,&quot;prose&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ rate  : num  2.41 3.89 3.39 3.4 2.62 ...</code></pre>
+<p>How speech rate depends on speech activity?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+speech_rate %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(type, rate, <span class="dt">fill =</span> type))+
+<span class="st">  </span><span class="kw">geom_boxplot</span>()+
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Speech rate in narratives and during the reading tasks&quot;</span>,
+       <span class="dt">caption =</span> <span class="st">&quot;data collected by G. Moroz&quot;</span>,
+       <span class="dt">x =</span> <span class="st">&quot;type of discourse&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;number of syllables per second&quot;</span>)</code></pre></div>
+<p><img src="Lec_8_ANOVA_Dummy_variables_Multiple_linear_regression_files/figure-slidy/unnamed-chunk-2-1.png" width="768" /></p>
+<p>We can use pairwise comparison, but … there is a Multiple comparison problem.</p>
+<p>Anova’s H<span class="math inline">\(_0\)</span> is that μ<span class="math inline">\(_{narrative}\)</span> = μ<span class="math inline">\(_{prose}\)</span> = μ<span class="math inline">\(_{verse}\)</span></p>
+<p>Anova’s H<span class="math inline">\(_1\)</span> is that μ<span class="math inline">\(_{narrative}\)</span> ≠ μ<span class="math inline">\(_{prose}\)</span> or μ<span class="math inline">\(_{narrative}\)</span> ≠ μ<span class="math inline">\(_{verse}\)</span> or μ<span class="math inline">\(_{verse}\)</span> ≠ μ<span class="math inline">\(_{prose}\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">aov</span>(rate~type, <span class="dt">data =</span> speech_rate)
+<span class="kw">summary</span>(fit)</code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## type          2   41.4    20.7   25.88 1.42e-11 ***
+## Residuals   707  565.4     0.8                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>All right. There is a statistically significant result, so we can reject H<span class="math inline">\(_0\)</span> (all groups are <em>not</em> simply random samples of the same population). But what the difference between them? There are a lot of different ways to understand it. We will use <a href="https://en.wikipedia.org/wiki/Tukey&#39;s_range_test">Tukey’s HSD</a> (honest significant difference) test.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tk &lt;-<span class="st"> </span><span class="kw">TukeyHSD</span>(fit)
+tk</code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = rate ~ type, data = speech_rate)
+## 
+## $type
+##                       diff        lwr         upr     p adj
+## prose-narrative -0.1919299 -0.3998061  0.01594636 0.0773714
+## verse-narrative -0.5812460 -0.7827826 -0.37970950 0.0000000
+## verse-prose     -0.3893162 -0.5713164 -0.20731599 0.0000019</code></pre>
+<p>Fast visualization:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(tk)</code></pre></div>
+<p><img src="Lec_8_ANOVA_Dummy_variables_Multiple_linear_regression_files/figure-slidy/unnamed-chunk-5-1.png" width="768" /></p>
+<p>ggplot</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tk &lt;-<span class="st"> </span><span class="kw">data.frame</span>(tk$type)
+tk$Comparison &lt;-<span class="st"> </span><span class="kw">row.names</span>(tk)
+
+tk %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Comparison, <span class="dt">y =</span> diff, <span class="dt">ymin =</span> lwr, <span class="dt">ymax =</span> upr)) +
+<span class="st">  </span><span class="kw">geom_pointrange</span>() +
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;95% family-wise confidence level&quot;</span>,
+    <span class="dt">y =</span> <span class="st">&quot;Difference in mean levels of type of discourse&quot;</span>) +
+<span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="Lec_8_ANOVA_Dummy_variables_Multiple_linear_regression_files/figure-slidy/unnamed-chunk-6-1.png" width="768" /></p>
+</div>
+<div id="multiple-linear-regression" class="slide section level3">
+<h1>3.1 Multiple linear regression</h1>
+</div>
+<div id="variable-types" class="slide section level3">
+<h1>4.1 Variable Types</h1>
+<ul>
+<li>numeric</li>
+<li>categorical</li>
+</ul>
+<p>How to make numeric to categorical conversion?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">sin</span>(<span class="dv">1</span>:<span class="dv">100</span>) <span class="co"># Create a random vector</span>
+b &lt;-<span class="st"> </span><span class="kw">c</span>(-<span class="dv">1</span>, -<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>) <span class="co"># Create a vector of boundaries</span>
+<span class="kw">table</span>(<span class="kw">cut</span>(a, <span class="dt">breaks =</span> b))</code></pre></div>
+<pre><code>## 
+## (-1,-0.5]  (-0.5,0]   (0,0.5]   (0.5,1] 
+##        35        15        16        34</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if the intervals should be closed on the right</span>
+<span class="kw">table</span>(<span class="kw">cut</span>(a, <span class="dt">breaks =</span> b, <span class="dt">right =</span> F))</code></pre></div>
+<pre><code>## 
+## [-1,-0.5)  [-0.5,0)   [0,0.5)   [0.5,1) 
+##        35        15        16        34</code></pre>
+<p>How to make categorical to numeric conversion? Dummy variables.</p>
+</div>
+<div id="dummy-variables" class="slide section level3">
+<h1>4.2 Dummy variables</h1>
+<p>Dummy variable it is a technique for creating a numeric variable from categorical. For each <span class="math inline">\(n-1\)</span> levels of a categorical variable it creates a dummy variable, which have value 1 for cirtain level of variable and 0 otherwise.</p>
+<p>sex variable with <em>2</em> levels can be replaced with <em>1</em> dummy variable sex_female:</p>
+<ul>
+<li>sex_female = 1, if an individual is a female</li>
+<li>sex_female = 0, if an individual is a female, then</li>
+</ul>
+<p>Eye color variable with <em>4</em> levels (blue, brown, gray, green) can be replaced with <em>3</em> dummy variables</p>
+<ul>
+<li>eye_blue = 1, if an eye variable is blue; otherwise — 0</li>
+<li>eye_brown = 1, if an eye variable is brown; otherwise — 0</li>
+<li>eue_gray = 1, if an eye variable is gray; otherwise — 0</li>
+<li>green value of eye variable is coded as 0 value of all eye_blue, eye_brown and eye_grey variables.</li>
+</ul>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">eye_color</th>
+<th align="right">eye_blue</th>
+<th align="right">eye_brown</th>
+<th align="right">eye_gray</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">blue</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">brown</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">gray</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">green</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="regression-example" class="slide section level3">
+<h1>4.3 Regression example</h1>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

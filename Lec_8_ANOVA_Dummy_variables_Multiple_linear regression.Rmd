@@ -1,5 +1,5 @@
 ---
-title: "ANOVA. Dummy variables. Multiple lenear regression"
+title: "ANOVA. Multiple lenear regression. Dummy variables"
 date: 02.02.2017
 font-family: 'Brill'
 transition: none
@@ -9,7 +9,133 @@ output:
     footer: "Presentation link: https://goo.gl/l4jGHG"
 ---
 
-### 1.1 Variable Types
+### 1.1 What we achieved?
+
+Variable types
 
 * numeric
 * categorical
+
+What we achieved:
+
+* Confidence intervals (numeric variable)
+* t-tests, Mann–Whitney (means of numeric variable by one categorical variable with two levels)
+* χ², Fisher test (categorical by categorical)
+* Simple linear regression (numeric by one numeric variable)
+
+Today:
+
+* ANOVA (means of numeric variable by categorical any variable)
+* Multiple linear regression (numeric by several numeric variables)
+* Multiple linear regression with dummy variables (numeric by any variable)
+
+### 2.1 ANOVA: problem
+This summer I collected data during the fieldwork in Khodz (Koshekhablsky District, Republic of Adygea, Russia). The participants (nine native speakers of Kuban dialect of Kabardian) were asked to solve several speech production tasks:
+
+* tell a story based on the picture to other participant
+* read a prosaic text
+* read a verse
+
+Articulation rate was calculated as the number of syllables per second.
+
+Data are here
+```{r}
+speech_rate <- read.csv("https://goo.gl/amxSxi")
+str(speech_rate)
+```
+How speech rate depends on speech activity?
+
+```{r, message = FALSE}
+library(tidyverse)
+speech_rate %>%
+  ggplot(aes(type, rate, fill = type))+
+  geom_boxplot()+
+  labs(title = "Speech rate in narratives and during the reading tasks",
+       caption = "data collected by G. Moroz",
+       x = "type of discourse",
+       y = "number of syllables per second")
+```
+
+We can use pairwise comparison, but ... there is a Multiple comparison problem.
+
+Anova's H$_0$ is that μ$_{narrative}$ = μ$_{prose}$ = μ$_{verse}$
+
+Anova's H$_1$ is that μ$_{narrative}$ ≠ μ$_{prose}$ or μ$_{narrative}$ ≠ μ$_{verse}$ or μ$_{verse}$ ≠ μ$_{prose}$
+
+```{r}
+fit <- aov(rate~type, data = speech_rate)
+summary(fit)
+```
+
+All right. There is a statistically significant result, so we can reject H$_0$ (all groups are *not* simply random samples of the same population). But what the difference between them? There are a lot of different ways to understand it. We will use [Tukey's HSD](https://en.wikipedia.org/wiki/Tukey's_range_test) (honest significant difference) test.
+
+```{r}
+tk <- TukeyHSD(fit)
+tk
+```
+
+Fast visualization:
+```{r}
+plot(tk)
+```
+
+ggplot
+```{r}
+tk <- data.frame(tk$type)
+tk$Comparison <- row.names(tk)
+
+tk %>% 
+  ggplot(aes(Comparison, y = diff, ymin = lwr, ymax = upr)) +
+  geom_pointrange() +
+  labs(title = "95% family-wise confidence level",
+    y = "Difference in mean levels of type of discourse") +
+  coord_flip()
+```
+
+
+
+### 3.1 Multiple linear regression
+### 4.1 Variable Types
+
+* numeric
+* categorical
+
+How to make numeric to categorical conversion?
+```{r}
+a <- sin(1:100) # Create a random vector
+b <- c(-1, -0.5, 0, 0.5, 1) # Create a vector of boundaries
+table(cut(a, breaks = b))
+# if the intervals should be closed on the right
+table(cut(a, breaks = b, right = F))
+```
+
+How to make categorical to numeric conversion? Dummy variables.
+
+### 4.2 Dummy variables
+
+Dummy variable it is a technique for creating a numeric variable from categorical. For each $n-1$ levels of a categorical variable it creates a dummy variable, which have value 1 for cirtain level of variable and 0 otherwise.
+
+sex variable with *2* levels can be replaced with *1* dummy variable sex_female:
+
+* sex_female = 1, if an individual is a female
+* sex_female = 0, if an individual is a female, then 
+
+Eye color variable with *4* levels (blue, brown, gray, green) can be replaced with *3* dummy variables
+
+* eye_blue = 1, if an eye variable is blue; otherwise --- 0
+* eye_brown = 1, if an eye variable is brown; otherwise --- 0
+* eue_gray = 1, if an eye variable is gray; otherwise --- 0
+* green value of eye variable is coded as 0 value of all eye_blue, eye_brown and eye_grey variables.
+
+```{r, echo=FALSE}
+data.frame(eye_color = c("blue", "brown", "gray", "green"),
+           eye_blue = c(1, 0, 0, 0),
+           eye_brown = c(0, 1, 0, 0),
+           eye_gray = c(0, 0, 1, 0))
+```
+
+### 4.3 Regression example
+```{r}
+
+```
+
