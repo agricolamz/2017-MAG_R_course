@@ -1,8 +1,81 @@
 ---
-title: "Lab ..."
+title: "Lab 9. Logistic regression"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, message=F}
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+library(tidyverse)
+```
+
+## [Assignment link](https://goo.gl/2FoSQ9)
+
+# 2.
+```{r, eval = TRUE}
+v.elision <- read.csv("http://goo.gl/aE3yVg")
+v.elision %>%
+  count(word, group, position, v.elision) %>% 
+  ggplot(aes(x = group, y = n, fill = v.elision))+
+  geom_bar(stat="identity", position=position_dodge())+
+  facet_wrap(~word) +
+  labs(y = "number",
+       x = "word group",
+       title = "number of v elision by lexeme and word group")
+```
+
+```{r, eval = TRUE}
+v.elision <- read.csv("http://goo.gl/aE3yVg")
+v.elision %>%
+  count(word, group, position, v.elision) %>% 
+  ggplot(aes(x = position, y = n, fill = v.elision))+
+  geom_bar(stat="identity", position=position_dodge())+
+  facet_wrap(~word) +
+  labs(y = "number",
+       x = "word group",
+       title = "number of v elision by lexeme and phrase position")
+```
+```{r}
+fit <- glm(v.elision~group+position, data = v.elision, family = "binomial")
+summary(fit)
+fit$coefficients
+
+v.elision %>% 
+  count(word, position, group, v.elision) %>% 
+  select(-n, -v.elision) %>% 
+  unique() ->
+  new.df
+
+new.df %>% 
+  predict(fit, newdata = ., type = "response") -> 
+  new.df$prediction
+
+new.df %>% 
+  arrange(prediction)
+
+new.df %>% 
+  arrange(desc(prediction))
+```
+
+### 3. 
+```{r}
+icelandic <- read.csv("https://goo.gl/7gIjvK")
+fit <- glm(aspiration~vowel.dur, data = icelandic, family = "binomial")
+summary(fit)
+fit$coefficients
+```
+
+```{r, eval = TRUE}
+icelandic <- read.csv("https://goo.gl/7gIjvK")
+icelandic %>% 
+  mutate(`P(non-aspirated)` = as.numeric(aspiration) - 1) %>% 
+  ggplot(aes(x = vowel.dur, y = `P(non-aspirated)`))+
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE) +
+  geom_point()+
+  theme_bw()+
+  labs(title = "P(non-aspirated)~vowel duration",
+       caption = "data from (Coretta 2017)")
+```
+
+```{r}
+predict(fit, newdata = data.frame(vowel.dur = 175), type = "response")
 ```
 
