@@ -58,13 +58,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="date">20.04.2017</p>
 </div>
 <div id="what-we-achieved" class="slide section level3">
-<h1>1. What we achieved?</h1>
+<h1>1. What have we achieved?</h1>
 <p>Variable types</p>
 <ul>
 <li>numeric</li>
 <li>categorical</li>
 </ul>
-<p>What we achieved:</p>
+<p>What we have achieved:</p>
 <ul>
 <li>Confidence intervals (numeric variable)</li>
 <li>t-tests, Mann–Whitney (means of numeric variable by one categorical variable with two levels)</li>
@@ -82,7 +82,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="how-it-works" class="slide section level3">
 <h1>2.1 How it works</h1>
 <p>Logistic or logit regression was developed in [Cox 1958]. It is a regression model wich predicts binary dependent variable using any number of variables of any type.</p>
-<p>What we need?</p>
+<p>What do we need?</p>
 <p><span class="math display">\[\underbrace{y_i}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}\]</span></p>
 <p>But in our case <span class="math inline">\(y\)</span> is a binary variable.</p>
 <ul>
@@ -214,7 +214,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Formula for this sigmoid is the following:</p>
 <p><span class="math display">\[y = \frac{1}{1+e^{-(-x)}} = \frac{1}{1+e^{x}}\]</span></p>
 <p>Feeting our logistic regression we should be able to move center of our sigmoid to the left/right side:</p>
-<p><img src="Lec_9_Logistic_regression_files/figure-slidy/unnamed-chunk-6-1.png" width="768" /> Formula for this sigmoid is the following:</p>
+<p><img src="Lec_9_Logistic_regression_files/figure-slidy/unnamed-chunk-6-1.png" width="768" /></p>
+<p>Formula for this sigmoid is the following:</p>
 <p><span class="math display">\[y = \frac{1}{1+e^{-(x-2)}}\]</span></p>
 <p>Feeting our logistic regression we should be able to squeeze/stretch center of our sigmoid:</p>
 <p><img src="Lec_9_Logistic_regression_files/figure-slidy/unnamed-chunk-7-1.png" width="768" /></p>
@@ -229,7 +230,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="numeric-example" class="slide section level3">
 <h1>3.1 Numeric example</h1>
-<p>I was interesting, whether languages with ejective sounds have in average more consonants. So I collected data from phonological database LAPSyD: <a href="http://goo.gl/0btfKa" class="uri">http://goo.gl/0btfKa</a>.</p>
+<p>It was interesting, whether languages with ejective sounds have in average more consonants. So I collected data from phonological database LAPSyD: <a href="http://goo.gl/0btfKa" class="uri">http://goo.gl/0btfKa</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej_cons &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://goo.gl/0btfKa&quot;</span>)
 ej_cons %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ejectives, n.cons.lapsyd, <span class="dt">color =</span> ejectives))+
@@ -270,7 +271,7 @@ ej_cons %&gt;%<span class="st"> </span>
 ##  17  10</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">10</span>/<span class="dv">17</span>)</code></pre></div>
 <pre><code>## [1] -0.5306283</code></pre>
-<p>What does this model says? This model says that if we have no any predictors and take some language it have <span class="math inline">\(\frac{0.5306283}{(1+e^{-0.5306283})} = 0.3340993\)</span> probability to have an ejectives.</p>
+<p>What does this model say? This model says that if we have no predictors and take some language it has <span class="math inline">\(\frac{0.5306283}{(1+e^{-0.5306283})} = 0.3340993\)</span> probability to have ejectives.</p>
 <ul>
 <li>Model with numeric predictor</li>
 </ul>
@@ -299,7 +300,7 @@ ej_cons %&gt;%<span class="st"> </span>
 ## AIC: 20.202
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
-<p>What does this model says? This model says:</p>
+<p>What does this model say? This model says:</p>
 <p><span class="math display">\[\log(odds(ej)) = \beta_o + \beta_1 \times n.cons.lapsyd = 
 -9.9204 + 0.3797 \times n.cons.lapsyd\]</span></p>
 <p>Lets visualize our model:</p>
@@ -334,7 +335,7 @@ ej_cons %&gt;%<span class="st"> </span>
 ## 
 ## $residual.scale
 ## [1] 1</code></pre>
-<p>So we actually can create a plot with a confidense intervals.</p>
+<p>So we actually can create a plot with confidense intervals.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej_cons_ci &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(ej_cons, <span class="kw">predict</span>(fit2, ej_cons, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>, <span class="dt">se.fit =</span> <span class="ot">TRUE</span>)[<span class="dv">1</span>:<span class="dv">2</span>])
 ej_cons_ci</code></pre></div>
 <div class="kable-table">
