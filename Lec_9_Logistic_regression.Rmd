@@ -12,14 +12,14 @@ output:
 library(tidyverse)
 ```
 
-### 1. What we achieved?
+### 1. What have we achieved?
 
 Variable types
 
 * numeric
 * categorical
 
-What we achieved:
+What we have achieved:
 
 * Confidence intervals (numeric variable)
 * t-tests, Mann–Whitney (means of numeric variable by one categorical variable with two levels)
@@ -36,7 +36,7 @@ Today:
 ### 2.1 How it works
 Logistic or logit regression was developed in [Cox 1958]. It is a regression model wich predicts binary dependent variable using any number of variables of any type.
 
-What we need?
+What do we need?
 
 $$\underbrace{y_i}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}$$
 
@@ -125,6 +125,7 @@ data.frame(s = -60:60*0.1) %>%
   geom_point()+
   theme_bw()
 ```
+
 Formula for this sigmoid is the following:
 
 $$y = \frac{1}{1+e^{-(x-2)}}$$
@@ -152,7 +153,7 @@ where
 * $z$ is coefficient that indicates movement of the sigmoid center to the left or right side
 
 ### 3.1 Numeric example
-I was interesting, whether languages with ejective sounds have in average more consonants. So I collected data from phonological database LAPSyD: http://goo.gl/0btfKa.
+It was interesting, whether languages with ejective sounds have in average more consonants. So I collected data from phonological database LAPSyD: http://goo.gl/0btfKa.
 
 ```{r}
 ej_cons <- read.csv("http://goo.gl/0btfKa")
@@ -175,14 +176,14 @@ How we get this estimate value?
 table(ej_cons$ejectives)
 log(10/17)
 ```
-What does this model says? This model says that if we have no any predictors and take some language it have $\frac{0.5306283}{(1+e^{-0.5306283})} = 0.3340993$ probability to have an ejectives.
+What does this model say? This model says that if we have no predictors and take some language it has $\frac{0.5306283}{(1+e^{-0.5306283})} = 0.3340993$ probability to have ejectives.
 
 * Model with numeric predictor
 ```{r}
 fit2 <- glm(ejectives~n.cons.lapsyd, data = ej_cons, family = "binomial")
 summary(fit2)
 ```
-What does this model says? This model says:
+What does this model say? This model says:
 
 $$\log(odds(ej)) = \beta_o + \beta_1 \times n.cons.lapsyd = 
 -9.9204 + 0.3797 \times n.cons.lapsyd$$
@@ -211,7 +212,7 @@ predict(fit2, new.df, type = "response") # probabilities
 predict(fit2, new.df, type = "response", se.fit = TRUE) # probabilities and confidense interval
 ```
 
-So we actually can create a plot with a confidense intervals.
+So we actually can create a plot with confidense intervals.
 ```{r}
 ej_cons_ci <- cbind.data.frame(ej_cons, predict(fit2, ej_cons, type = "response", se.fit = TRUE)[1:2])
 ej_cons_ci
