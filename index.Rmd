@@ -49,7 +49,7 @@ title: "Linguistic data: quantitative analysis and visualisation"
 ### 9. Logistic regressions
 
 * (20.04.2017) [lecture 9](https://agricolamz.github.io/2017-MAG_R_course/Lec_9_Logistic_regression.html) 
-* (20.04.2017) [Lab 8](https://agricolamz.github.io/2017-MAG_R_course/Lab_9.html), [Assignment]()
+* (20.04.2017) [Lab 9](https://agricolamz.github.io/2017-MAG_R_course/Lab_9.html), [Assignment]()
 
 
 ### 10. Mixed-effects models																						
