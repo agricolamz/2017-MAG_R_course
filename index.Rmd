@@ -76,3 +76,15 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (..2017) Lab 15:
 * (..2017) Lab 16:
 * HW-9. Deadline: ..2017
+
+## Textbooks
+
+* Levshina, Natalia. 2015. How to do Linguistics with R. [Info](https://benjamins.com/#catalog/books/z.195/main) [Companion web site](https://benjamins.com/sites/z.195/). The e-book is available in HSE library.
+
+* Gries, Stefan Th. 2013. Statistics for Linguistics with R: A Practical Introduction. 2nd ed. Mouton de Gruyter. [Info](https://www.degruyter.com/view/product/203826)
+
+* Gries, Stefan Th. 2009 (2nd ed.: 2017). Quantitative Corpus Linguistics with R. Routledge. [Info](https://www.routledge.com/Quantitative-Corpus-Linguistics-with-R-A-Practical-Introduction/Gries/p/book/9780415962704) [2nd Edition](https://www.routledge.com/Quantitative-Corpus-Linguistics-with-R-A-Practical-Introduction-2nd-Edition/Gries/p/book/9781138816275) [Companion page](http://www.linguistics.ucsb.edu/faculty/stgries/research/qclwr/qclwr.html)
+
+* Baayen, Harald. 2008 (2nd ed.: 2014). Analyzing Linguistic Data: A Practical Introduction to Statistics using R. Cambridge University Press. [Info](http://www.cambridge.org/gb/academic/subjects/languages-linguistics/grammar-and-syntax/analyzing-linguistic-data-practical-introduction-statistics-using-r?format=AR) [Google books](https://books.google.ru/books?id=UvWkIg5E4foC&printsec=frontcover&source=gbs_ge_summary_r&cad=0#v=onepage&q&f=false)
+
+see also our [Course Program](https://www.hse.ru/data/2016/09/19/1117082144/program-1549532002-kSLnTng0SN.pdf)
