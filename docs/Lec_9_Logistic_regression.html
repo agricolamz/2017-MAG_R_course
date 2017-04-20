@@ -230,7 +230,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="numeric-example" class="slide section level3">
 <h1>3.1 Numeric example</h1>
-<p>It was interesting, whether languages with ejective sounds have in average more consonants. So I collected data from phonological database LAPSyD: <a href="http://goo.gl/0btfKa" class="uri">http://goo.gl/0btfKa</a>.</p>
+<p>It is interesting, whether languages with ejective sounds have in average more consonants. So I collected data from phonological database LAPSyD: <a href="http://goo.gl/0btfKa" class="uri">http://goo.gl/0btfKa</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej_cons &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://goo.gl/0btfKa&quot;</span>)
 ej_cons %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ejectives, n.cons.lapsyd, <span class="dt">color =</span> ejectives))+
