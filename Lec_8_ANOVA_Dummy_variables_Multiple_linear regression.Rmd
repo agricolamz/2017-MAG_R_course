@@ -1,6 +1,6 @@
 ---
 title: "ANOVA. Multiple linear regression. Dummy variables"
-date: 02.02.2017
+date: 13.04.2017
 font-family: 'Brill'
 transition: none
 output:

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="copyright" content="Presentation link: https://goo.gl/8pffGO"/>
+  <title>Logistic regression</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="site_libs/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="site_libs/slidy-2/scripts/slidy.js"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Logistic regression</h1>
+  <p class="author">
+
+  </p>
+  <p class="date">20.04.2017</p>
+</div>
+<div id="what-we-achieved" class="slide section level3">
+<h1>1. What we achieved?</h1>
+<p>Variable types</p>
+<ul>
+<li>numeric</li>
+<li>categorical</li>
+</ul>
+<p>What we achieved:</p>
+<ul>
+<li>Confidence intervals (numeric variable)</li>
+<li>t-tests, Mann–Whitney (means of numeric variable by one categorical variable with two levels)</li>
+<li>χ², Fisher test (categorical by categorical)</li>
+<li>Simple linear regression (numeric by one numeric variable)</li>
+<li>ANOVA (means of numeric variable by categorical any variable)</li>
+<li>Multiple linear regression (numeric by several numeric variables)</li>
+<li>Multiple linear regression with dummy variables (numeric by any variable)</li>
+</ul>
+<p>Today:</p>
+<ul>
+<li>Logistic (logit) regression (binary dependent variable by any number variables of any type)</li>
+</ul>
+</div>
+<div id="how-it-works" class="slide section level3">
+<h1>2.1 How it works</h1>
+<p>Logistic or logit regression was developed in [Cox 1958]. It is a regression model wich predicts binary dependent variable using any number of variables of any type.</p>
+<p>What we need?</p>
+<p><span class="math display">\[\underbrace{y_i}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}\]</span></p>
+<p>But in our case <span class="math inline">\(y\)</span> is a binary variable.</p>
+<ul>
+<li>Probability?</li>
+</ul>
+<p><span class="math display">\[P(y) = \frac{\mbox{# successes}}{\mbox{# failures} + \mbox{# successes}}; P(y) \in [0, 1]\]</span></p>
+<ul>
+<li>Odds?</li>
+</ul>
+<p><span class="math display">\[odds(y) = \frac{P(y)}{1-P(y)} = \frac{\mbox{P(successes)}}{\mbox{P(failures)}} = \frac{\mbox{# successes}}{\mbox{# failures}}; odds(y) \in [0, +\infty]\]</span></p>
+<ul>
+<li>Natural logarithm of odds</li>
+</ul>
+<p><span class="math display">\[log(odds(y)) \in [-\infty, +\infty]\]</span></p>
+</div>
+<div id="logarithms" class="slide section level3">
+<h1>2.2 Logarithms</h1>
+<p><img src="Lec_9_Logistic_regression_files/figure-slidy/unnamed-chunk-2-1.png" width="768" /></p>
+<ul>
+<li>if log(odds) are greater then 0, it means that we have more successes then failures;</li>
+<li>if log(odds) is equal to 0, it means that we have the same number of successes and failures;</li>
+<li>if log(odds) are less then 0, it means that we have less successes then failures;</li>
+</ul>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

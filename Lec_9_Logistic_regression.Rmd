@@ -1,0 +1,75 @@
+---
+title: "Logistic regression"
+date: 20.04.2017
+font-family: 'Brill'
+transition: none
+output:
+  slidy_presentation:
+    df_print: kable
+    footer: "Presentation link: https://goo.gl/8pffGO"
+---
+```{r, include=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+### 1. What we achieved?
+
+Variable types
+
+* numeric
+* categorical
+
+What we achieved:
+
+* Confidence intervals (numeric variable)
+* t-tests, Mann–Whitney (means of numeric variable by one categorical variable with two levels)
+* χ², Fisher test (categorical by categorical)
+* Simple linear regression (numeric by one numeric variable)
+* ANOVA (means of numeric variable by categorical any variable)
+* Multiple linear regression (numeric by several numeric variables)
+* Multiple linear regression with dummy variables (numeric by any variable)
+
+Today:
+
+* Logistic (logit) regression (binary dependent variable by any number variables of any type)
+
+### 2.1 How it works
+Logistic or logit regression was developed in [Cox 1958]. It is a regression model wich predicts binary dependent variable using any number of variables of any type.
+
+What we need?
+
+$$\underbrace{y_i}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}$$
+
+But in our case $y$ is a binary variable.
+
+* Probability?
+
+$$P(y) = \frac{\mbox{# successes}}{\mbox{# failures} + \mbox{# successes}}; P(y) \in [0, 1]$$
+
+* Odds?
+
+$$odds(y) = \frac{P(y)}{1-P(y)} = \frac{\mbox{P(successes)}}{\mbox{P(failures)}} = \frac{\mbox{# successes}}{\mbox{# failures}}; odds(y) \in [0, +\infty]$$
+
+* Natural logarithm of odds
+
+$$log(odds(y)) \in [-\infty, +\infty]$$
+
+### 2.2 Logarithms
+
+```{r, echo = FALSE}
+df <- data.frame(x = c(1:10*0.1, 1:10),
+                log = log(c(1:10*0.1, 1:10)))
+
+df %>%
+  mutate(zero = ifelse(x >= 1, "x ≥ 1", "x < 1")) %>% 
+  ggplot(aes(x, log, color = zero))+
+  geom_line()+
+  geom_point()+
+  labs(y = "log(x)")+
+  scale_x_continuous(breaks = c(1:10))+
+  theme_bw()
+```
+
+* if log(odds) are greater then 0, it means that we have more successes then failures;
+* if log(odds) is equal to 0, it means that we have the same number of successes and failures;
+* if log(odds) are less then 0, it means that we have less successes then failures;
