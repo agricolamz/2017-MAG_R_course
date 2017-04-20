@@ -65,7 +65,7 @@ fit$coefficients
 
 ```{r, eval = TRUE}
 icelandic <- read.csv("https://goo.gl/7gIjvK")
-icelandic %>% 
+icelandic %>%
   mutate(`P(non-aspirated)` = as.numeric(aspiration) - 1) %>% 
   ggplot(aes(x = vowel.dur, y = `P(non-aspirated)`))+
   geom_smooth(method = "glm", method.args = list(family = "binomial"), se = FALSE) +
