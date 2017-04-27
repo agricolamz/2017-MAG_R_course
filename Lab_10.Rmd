@@ -3,7 +3,7 @@ title: "Lab 10. Mixed effect models"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, include=FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## [Assignment link](https://goo.gl/forms/uY2wGxkZrAauIgzG2)
@@ -84,5 +84,9 @@ lapsyd %>%
   labs(x = "number of consonants",
        y = "number of vowels",
        caption = "data from LAPSyD")
+```
+
+```{r}
+anova(fit5, fit4, fit3, fit2, fit1)
 ```
 
