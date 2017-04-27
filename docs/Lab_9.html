@@ -257,11 +257,145 @@ $(document).ready(function () {
 </div>
 <div id="section" class="section level1">
 <h1>2.</h1>
+<pre class="r"><code>v.elision &lt;- read.csv(&quot;http://goo.gl/aE3yVg&quot;)
+v.elision %&gt;%
+  count(word, group, position, v.elision) %&gt;% 
+  ggplot(aes(x = group, y = n, fill = v.elision))+
+  geom_bar(stat=&quot;identity&quot;, position=position_dodge())+
+  facet_wrap(~word) +
+  labs(y = &quot;number&quot;,
+       x = &quot;word group&quot;,
+       title = &quot;number of v elision by lexeme and word group&quot;)</code></pre>
 <p><img src="Lab_9_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>v.elision &lt;- read.csv(&quot;http://goo.gl/aE3yVg&quot;)
+v.elision %&gt;%
+  count(word, group, position, v.elision) %&gt;% 
+  ggplot(aes(x = position, y = n, fill = v.elision))+
+  geom_bar(stat=&quot;identity&quot;, position=position_dodge())+
+  facet_wrap(~word) +
+  labs(y = &quot;number&quot;,
+       x = &quot;word group&quot;,
+       title = &quot;number of v elision by lexeme and phrase position&quot;)</code></pre>
 <p><img src="Lab_9_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>fit &lt;- glm(v.elision~group+position, data = v.elision, family = &quot;binomial&quot;)
+summary(fit)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = v.elision ~ group + position, family = &quot;binomial&quot;, 
+##     data = v.elision)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.8874   0.1111   0.1766   0.7231   1.1209  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)    4.1529     0.7139   5.817 5.98e-09 ***
+## groupsecond   -2.9450     0.7390  -3.985 6.74e-05 ***
+## groupthird    -4.0185     0.7252  -5.542 3.00e-08 ***
+## positionweak   0.9315     0.2419   3.851 0.000117 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 612.47  on 590  degrees of freedom
+## Residual deviance: 491.16  on 587  degrees of freedom
+## AIC: 499.16
+## 
+## Number of Fisher Scoring iterations: 7</code></pre>
+<pre class="r"><code>fit$coefficients</code></pre>
+<pre><code>##  (Intercept)  groupsecond   groupthird positionweak 
+##    4.1528886   -2.9450463   -4.0185130    0.9315409</code></pre>
+<pre class="r"><code>v.elision %&gt;% 
+  count(word, position, group, v.elision) %&gt;% 
+  select(-n, -v.elision) %&gt;% 
+  unique() -&gt;
+  new.df
+
+new.df %&gt;% 
+  predict(fit, newdata = ., type = &quot;response&quot;) -&gt; 
+  new.df$prediction
+
+new.df %&gt;% 
+  arrange(prediction)</code></pre>
+<pre><code>## Source: local data frame [32 x 4]
+## Groups: word, position, group [32]
+## 
+##      word position  group prediction
+##    &lt;fctr&gt;   &lt;fctr&gt; &lt;fctr&gt;      &lt;dbl&gt;
+## 1  бесчин   strong  third  0.5335434
+## 2    злор   strong  third  0.5335434
+## 3   попеч   strong  third  0.5335434
+## 4    чувс   strong  third  0.5335434
+## 5    шефс   strong  third  0.5335434
+## 6  бесчин     weak  third  0.7438196
+## 7    злор     weak  third  0.7438196
+## 8   попеч     weak  third  0.7438196
+## 9    чувс     weak  third  0.7438196
+## 10   шефс     weak  third  0.7438196
+## # ... with 22 more rows</code></pre>
+<pre class="r"><code>new.df %&gt;% 
+  arrange(desc(prediction))</code></pre>
+<pre><code>## Source: local data frame [32 x 4]
+## Groups: word, position, group [32]
+## 
+##      word position  group prediction
+##    &lt;fctr&gt;   &lt;fctr&gt; &lt;fctr&gt;      &lt;dbl&gt;
+## 1  бесчин     weak  first  0.9938457
+## 2    злор     weak  first  0.9938457
+## 3   попеч     weak  first  0.9938457
+## 4    чувс     weak  first  0.9938457
+## 5    шест     weak  first  0.9938457
+## 6    шефс     weak  first  0.9938457
+## 7  бесчин   strong  first  0.9845243
+## 8    злор   strong  first  0.9845243
+## 9   попеч   strong  first  0.9845243
+## 10   чувс   strong  first  0.9845243
+## # ... with 22 more rows</code></pre>
 <div id="section-1" class="section level3">
 <h3>3.</h3>
+<pre class="r"><code>icelandic &lt;- read.csv(&quot;https://goo.gl/7gIjvK&quot;)
+fit &lt;- glm(aspiration~vowel.dur, data = icelandic, family = &quot;binomial&quot;)
+summary(fit)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = aspiration ~ vowel.dur, family = &quot;binomial&quot;, data = icelandic)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.8521  -1.1025   0.5573   1.0645   2.2801  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  2.709936   0.325231   8.332   &lt;2e-16 ***
+## vowel.dur   -0.031413   0.003721  -8.442   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1117.3  on 805  degrees of freedom
+## Residual deviance: 1026.1  on 804  degrees of freedom
+## AIC: 1030.1
+## 
+## Number of Fisher Scoring iterations: 3</code></pre>
+<pre class="r"><code>fit$coefficients</code></pre>
+<pre><code>## (Intercept)   vowel.dur 
+##  2.70993575 -0.03141285</code></pre>
+<pre class="r"><code>icelandic &lt;- read.csv(&quot;https://goo.gl/7gIjvK&quot;)
+icelandic %&gt;%
+  mutate(`P(non-aspirated)` = as.numeric(aspiration) - 1) %&gt;% 
+  ggplot(aes(x = vowel.dur, y = `P(non-aspirated)`))+
+  geom_smooth(method = &quot;glm&quot;, method.args = list(family = &quot;binomial&quot;), se = FALSE) +
+  geom_point()+
+  theme_bw()+
+  labs(title = &quot;P(non-aspirated)~vowel duration&quot;,
+       caption = &quot;data from (Coretta 2017)&quot;)</code></pre>
 <p><img src="Lab_9_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>predict(fit, newdata = data.frame(vowel.dur = 175), type = &quot;response&quot;)</code></pre>
+<pre><code>##          1 
+## 0.05801361</code></pre>
 </div>
 </div>
 

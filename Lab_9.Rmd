@@ -3,14 +3,13 @@ title: "Lab 9. Logistic regression"
 ---
 
 ```{r setup, include=FALSE, message=F}
-knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
 library(tidyverse)
 ```
 
 ## [Assignment link](https://goo.gl/2FoSQ9)
 
 # 2.
-```{r, eval = TRUE}
+```{r}
 v.elision <- read.csv("http://goo.gl/aE3yVg")
 v.elision %>%
   count(word, group, position, v.elision) %>% 
@@ -22,7 +21,7 @@ v.elision %>%
        title = "number of v elision by lexeme and word group")
 ```
 
-```{r, eval = TRUE}
+```{r}
 v.elision <- read.csv("http://goo.gl/aE3yVg")
 v.elision %>%
   count(word, group, position, v.elision) %>% 
@@ -63,7 +62,7 @@ summary(fit)
 fit$coefficients
 ```
 
-```{r, eval = TRUE}
+```{r}
 icelandic <- read.csv("https://goo.gl/7gIjvK")
 icelandic %>%
   mutate(`P(non-aspirated)` = as.numeric(aspiration) - 1) %>% 

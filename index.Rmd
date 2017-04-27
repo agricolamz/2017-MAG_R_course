@@ -50,35 +50,31 @@ title: "Linguistic data: quantitative analysis and visualisation"
 ### 9. Binary logistic regressions
 
 * (20.04.2017) [lecture 9](https://agricolamz.github.io/2017-MAG_R_course/Lec_9_Logistic_regression.html) 
-* (20.04.2017) [Lab 9](https://agricolamz.github.io/2017-MAG_R_course/Lab_9.html), [Assignment]()
+* (20.04.2017) [Lab 9](https://agricolamz.github.io/2017-MAG_R_course/Lab_9.html), [Assignment](https://goo.gl/2FoSQ9)
 
 
-### 10. Mixed-effects models																						
-* (..2017) lecture
-* (..2017) Lab 10:
-* HW-6. Deadline: ..2017
+### 10. Linear Mixed-effects models																						
+* (27.04.2017) lecture
+* (27.04.2017) [Lab 10](https://agricolamz.github.io/2017-MAG_R_course/Lab_10.html), [Assignment](https://goo.gl/forms/uY2wGxkZrAauIgzG2)
 
 ### 11. Decision trees. Decision forests															
 * (..2017) lecture
 * (..2017) Lab 11: Confidence intervals again. Bootstraping.
 * (..2017) Lab 12: Decision trees. Decision forests.
-* HW-7. Deadline: ..2017
 
 ### 12. Clusterization
 
 * (..2017) lecture
 * (..2017) Lab 13: Different types of distance matrices. K-means
 * (..2017) Lab 14: Hierarchical clusterization. DBSCAN.
-* HW-8. Deadline: ..2017
 
 ### 13. MDS, PCA, CA, MCA
 
 * (..2017) lecture
 * (..2017) Lab 15:
 * (..2017) Lab 16:
-* HW-9. Deadline: ..2017
 
-## Textbooks
+### Textbooks
 
 * Levshina, Natalia. 2015. How to do Linguistics with R. [Info](https://benjamins.com/#catalog/books/z.195/main) [Companion web site](https://benjamins.com/sites/z.195/). The e-book is available in HSE library. 
 * Gries, Stefan Th. 2013. Statistics for Linguistics with R: A Practical Introduction. 2nd ed. Mouton de Gruyter. [Info](https://www.degruyter.com/view/product/203826) 
