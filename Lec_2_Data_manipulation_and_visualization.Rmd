@@ -355,48 +355,66 @@ df.short
 ```
 
 
-### 5. Anscombe's quartet
+### 5.1 Anscombe's quartet
 In Anscombe, F. J. (1973). "Graphs in Statistical Analysis" was presented the next sets of data:
 
 ```{r}
-quartet <- read.csv("https://goo.gl/KHQLZI")
-head(quartet)
+quartet <- read.csv("https://goo.gl/KuuzYy")
+quartet
 ```
 
 ```{r}
-sapply(quartet[, 1:4*2-1], mean)
-sapply(quartet[, 1:4*2], mean)
-sapply(quartet[, 1:4*2-1], sd)
-sapply(quartet[, 1:4*2], sd)
-mapply(cor, quartet[, 1:4*2-1], quartet[, 1:4*2])
-mapply(function(x, y){
-  lm(y~x)$coefficients},
-  quartet[, 1:4*2-1],
-  quartet[, 1:4*2])
+quartet %>% 
+  group_by(dataset) %>% 
+  summarise(mean_X = mean(x),
+            mean_Y = mean(y),
+            sd_X = sd(x),
+            sd_Y = sd(y),
+            cor = cor(x, y),
+            n_obs = n()) %>% 
+  select(-dataset) %>% 
+  round(., 2)
 ```
 
 ```{r, echo=FALSE, message= FALSE}
-library(ggplot2); library(grid); library(gridExtra)
-p1 <- ggplot(quartet, aes(X1, Y1)) +
-  geom_smooth(method = "lm") +
+library(ggplot2)
+quartet %>% 
+  ggplot(aes(x, y))+
   geom_point()+
+  geom_smooth(method = "lm", se = F)+
+  facet_wrap(~dataset)+
   theme_bw()
-p2 <- ggplot(quartet, aes(X2, Y2)) +
-  geom_smooth(method = "lm") +
-  geom_point()+
-  theme_bw()
-p3 <- ggplot(quartet, aes(X3, Y3)) +
-  geom_smooth(method = "lm") +
-  geom_point()+
-  theme_bw()
-p4 <- ggplot(quartet, aes(X4, Y4)) +
-  geom_smooth(method = "lm") +
-  geom_point()+
-  theme_bw()
-
-grid.arrange(p1, p2, p3, p4, ncol = 2, top = "Anscombe's quartet")
-
 ```
+
+### 5.2 Datasaurus
+In [Matejka and Fitzmaurice (2017) "Same Stats, Different Graphs"](https://www.autodeskresearch.com/sites/default/files/SameStats-DifferentGraphs.pdf) was presented the next sets of data:
+
+```{r, message= FALSE}
+datasaurus <- read_tsv("https://goo.gl/gtaunr")
+head(datasaurus)
+```
+
+```{r, echo=FALSE, message= FALSE}
+datasaurus %>% 
+  ggplot(aes(x, y))+
+  geom_point()+
+  facet_wrap(~dataset)+
+  theme_bw()
+```
+
+```{r}
+datasaurus %>% 
+  group_by(dataset) %>% 
+  summarise(mean_X = mean(x),
+            mean_Y = mean(y),
+            sd_X = sd(x),
+            sd_Y = sd(y),
+            cor = cor(x, y),
+            n_obs = n()) %>% 
+  select(-dataset) %>% 
+  round(., 1)
+```
+
 
 ### 6.1 Scaterplot
 
