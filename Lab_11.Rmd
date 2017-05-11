@@ -1,5 +1,5 @@
 ---
-title: "Lab  Classification and Regression Tree"
+title: "Decision Trees and Forests"
 ---
 
 ```{r setup, include=FALSE}
