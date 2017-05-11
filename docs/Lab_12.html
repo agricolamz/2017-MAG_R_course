@@ -4,14 +4,14 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 
 
 
-<title>Lab …</title>
+<title>Lab 12. Statistics for Hackers</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -192,10 +192,7 @@ $(document).ready(function () {
       <a href="Lab_2.html">Lab 2</a>
     </li>
     <li>
-      <a href="Lab_3.html">Lab 3</a>
-    </li>
-    <li>
-      <a href="Lab_4.html">Lab 4</a>
+      <a href="Lab_3-4.html">Lab 3 and 4</a>
     </li>
     <li>
       <a href="Lab_5.html">Lab 5</a>
@@ -250,12 +247,176 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Lab …</h1>
+<h1 class="title toc-ignore">Lab 12. Statistics for Hackers</h1>
 
 </div>
 
 
-
+<div id="shafling" class="section level2">
+<h2>1. Shafling</h2>
+<div id="-" class="section level3">
+<h3>1.0 Данные, пакеты</h3>
+<p>Качаем данные.</p>
+<pre class="r"><code>icelandic &lt;- read.csv(&quot;https://goo.gl/7gIjvK&quot;)</code></pre>
+<pre class="r"><code>library(tidyverse); library(mosaic)</code></pre>
+<p>Ты скрестил всех носителей вместе, однако физиологические различия между спикерами могут все невелировать, так что я хочу выяснять является ли разница статистически значима для каждого носителя по отдельности.</p>
+<pre class="r"><code>icelandic %&gt;% 
+  ggplot(aes(vowel.dur, fill = aspiration, color = aspiration))+
+  geom_density(alpha = 0.4)+
+  geom_rug()+
+  facet_wrap(~speaker)+
+  labs(title = &quot;Vowel duration density plot&quot;,
+       caption = &quot;Data from (Coretta 2017)&quot;,
+       x = &quot;vowel duration&quot;)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>icelandic %&gt;% 
+  ggplot(aes(sample = vowel.dur, color = aspiration))+
+  geom_qq()+
+  facet_wrap(~speaker)+
+  labs(title = &quot;Vowel duration density plot&quot;,
+       caption = &quot;Data from (Coretta 2017)&quot;)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+</div>
+<div class="section level3">
+<h3>1.1 Сравниваем</h3>
+<p>Мы наблюдаем следуещее:</p>
+<pre class="r"><code>icelandic %&gt;%
+  group_by(speaker, aspiration) %&gt;% 
+  summarise(mean.dur = mean(vowel.dur),
+            sd.dur = sd(vowel.dur),
+            number = n())</code></pre>
+<pre><code>## Source: local data frame [10 x 5]
+## Groups: speaker [?]
+## 
+##    speaker aspiration  mean.dur   sd.dur number
+##     &lt;fctr&gt;     &lt;fctr&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;int&gt;
+## 1    brs02         no  95.27593 19.81246     78
+## 2    brs02        yes  72.87988 18.85812     85
+## 3    bte03         no 102.75791 29.38451     81
+## 4    bte03        yes  95.40109 20.03149     76
+## 5     jj04         no  95.72652 25.13620     79
+## 6     jj04        yes  86.80463 20.06335     72
+## 7    shg05         no  77.65635 18.86992     76
+## 8    shg05        yes  63.27287 15.72727     84
+## 9     tt01         no 100.59767 26.77305     87
+## 10    tt01        yes  78.25853 16.74632     88</code></pre>
+<p>В каждом боксплоте от 72 до 85 наблюдений (интересно, а чего это их разное количество?). А еще вообще-то нужно подумать, одинаковая ли у них дисперсия? А то это же тоже одно из предположений t-test.</p>
+<p>Мы будем говорить о следующей разнице:</p>
+<pre class="r"><code>icelandic %&gt;%
+  group_by(speaker, aspiration) %&gt;% 
+  summarise(mean.dur = mean(vowel.dur)) %&gt;%
+  summarize(diff.mean = diff(mean.dur)) -&gt;
+  obs.diff; obs.diff</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   speaker  diff.mean
+##    &lt;fctr&gt;      &lt;dbl&gt;
+## 1   brs02 -22.396051
+## 2   bte03  -7.356828
+## 3    jj04  -8.921885
+## 4   shg05 -14.383484
+## 5    tt01 -22.339140</code></pre>
+<pre class="r"><code>icelandic %&gt;%
+  left_join(., obs.diff) %&gt;% 
+  ggplot(aes(aspiration, vowel.dur, label = paste(&quot;observed effect\n&quot;, round(diff.mean, 3))))+
+  geom_text(aes(x = &quot;yes&quot;, y = 200))+
+  geom_boxplot()+
+  facet_wrap(~speaker)+
+  labs(title = &quot;Vowel duration boxplots and observed mean difference&quot;,
+       caption = &quot;Data from (Coretta 2017)&quot;,
+       y = &quot;vowel duration&quot;)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div class="section level3">
+<h3>1.2 Симуляции</h3>
+<p>Я буду шафлить (<span class="math inline">\(10^{4}\)</span> раз) и считать среднее. Для тех кто не помнит философию: у нас есть две группы, и мы хотим узнать значимо ли различаются средние. Для этого берем и перемешиваем эти группы. Если при куче перемешиваний разница средних сильно отличаются от наблюдаемой разницы, значит, мы не можем утверждать, что разница между средними групп равна нулю.</p>
+<pre class="r"><code>set.seed(42)
+do(10000) *
+  (icelandic %&gt;%
+     group_by(speaker) %&gt;% 
+     mutate(vowel.dur = shuffle(vowel.dur)) %&gt;%
+     group_by(speaker, aspiration) %&gt;%
+     summarize(mean = mean(vowel.dur))) -&gt;  
+  many.shuffles; tail(many.shuffles)</code></pre>
+<pre><code>## Source: local data frame [6 x 5]
+## Groups: speaker [3]
+## 
+##   speaker aspiration     mean  .row .index
+##    &lt;fctr&gt;     &lt;fctr&gt;    &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;
+## 1    jj04         no 92.65877     1  10000
+## 2    jj04        yes 90.17064     2  10000
+## 3   shg05         no 69.21821     1  10000
+## 4   shg05        yes 70.90738     2  10000
+## 5    tt01         no 90.81308     1  10000
+## 6    tt01        yes 87.93193     2  10000</code></pre>
+<p>Посчитаем разницу в каждой симуляции:</p>
+<pre class="r"><code>many.shuffles %&gt;% 
+  group_by(.index, speaker) %&gt;%
+  summarize(diff.mean.shuffle = diff(mean)) -&gt;
+  shuffle.diff; tail(shuffle.diff)</code></pre>
+<pre><code>## Source: local data frame [6 x 3]
+## Groups: .index [2]
+## 
+##   .index speaker diff.mean.shuffle
+##    &lt;dbl&gt;  &lt;fctr&gt;             &lt;dbl&gt;
+## 1   9999    tt01          1.768817
+## 2  10000   brs02          2.206953
+## 3  10000   bte03          4.183192
+## 4  10000    jj04         -2.488128
+## 5  10000   shg05          1.689177
+## 6  10000    tt01         -2.881153</code></pre>
+<p>И рисуем</p>
+<pre class="r"><code>shuffle.diff %&gt;% 
+  ggplot(aes(x = diff.mean.shuffle)) +
+    geom_density(fill = &quot;lightblue&quot;)+
+    geom_rug()+
+    geom_vline(data = obs.diff, aes(xintercept = diff.mean), color = &quot;red&quot;) +
+    geom_vline(data = obs.diff, aes(xintercept = -diff.mean), color = &quot;red&quot;) +
+    facet_wrap(~speaker)+
+    labs(title = paste(&quot;Mean difference of&quot;, 10000, &quot;shufflings and observed values (in red)&quot;))</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Мы видим, что у трех носителей <code>brs02</code>, <code>shg05</code> и <code>tt01</code> наблюдаемая разница выходит далеко за пределы результатов перемешивания, а у носителей <code>bte03</code> и <code>jj04</code> они достаточно сильно заходят. Сколько из полученных разниц средних выходит за границы, поставленные нашими данными?</p>
+<pre class="r"><code>shuffle.diff%&gt;% 
+  left_join(., obs.diff) %&gt;% 
+  mutate(outside = diff.mean.shuffle &gt; abs(diff.mean) | diff.mean.shuffle &lt; diff.mean) %&gt;% 
+  group_by(speaker, outside) %&gt;% 
+  summarise(number = n()) %&gt;% 
+  ggplot(aes(speaker, number, fill = outside))+
+  geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Давайте забьюм на Стьюдента и посчитаем тест Уэлча. Тогда не надо бороться с предположением t-test об одинаковой дисперсии и одинаковом количестве наблюдений. Чтобы получить t-статистику нужно полученную в симуляциях разницу разделить на <span class="math inline">\(\sqrt{\frac{sd_1}{n_1}+\frac{sd_2}{n_2}}\)</span>.</p>
+<pre class="r"><code>icelandic %&gt;%
+  group_by(speaker, aspiration) %&gt;% 
+  summarise(under.sqrt = sd(vowel.dur)/n()) %&gt;% 
+  spread(aspiration, under.sqrt) %&gt;% 
+  mutate(t.denominator = sqrt(no+yes)) %&gt;% 
+  select(speaker, t.denominator) -&gt;
+  t.denominator; t.denominator</code></pre>
+<pre><code>## Source: local data frame [5 x 2]
+## Groups: speaker [5]
+## 
+##   speaker t.denominator
+##    &lt;fctr&gt;         &lt;dbl&gt;
+## 1   brs02     0.6898305
+## 2   bte03     0.7914189
+## 3    jj04     0.7725525
+## 4   shg05     0.6599378
+## 5    tt01     0.7057161</code></pre>
+<pre class="r"><code>shuffle.diff %&gt;% 
+  left_join(., t.denominator) %&gt;% 
+  left_join(., obs.diff) %&gt;% 
+  ggplot(aes(diff.mean.shuffle/t.denominator))+
+  geom_density(fill = &quot;lightblue&quot;)+
+  geom_vline(aes(xintercept = diff.mean/t.denominator), color = &quot;red&quot;)+
+    geom_vline(aes(xintercept = -diff.mean/t.denominator), color = &quot;red&quot;)+
+  facet_wrap(~speaker)+
+  labs(x = &quot;t statistic&quot;)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Ну и осталось посчитать p-value, но мне лень.</p>
+</div>
+</div>
+<div id="bootstrap" class="section level2">
+<h2>2. Bootstrap</h2>
+</div>
 
 
 
@@ -280,7 +441,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
