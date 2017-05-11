@@ -258,31 +258,9 @@ $(document).ready(function () {
 </div>
 <div id="section" class="section level3">
 <h3>1.</h3>
-<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/aE3yVg&quot;)
-fit &lt;- ctree(v.elision~., data = df)
-plot(fit)</code></pre>
-<p><img src="Lab_11_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code>print(fit)</code></pre>
-<pre><code>## 
-##   Conditional inference tree with 4 terminal nodes
-## 
-## Response:  v.elision 
-## Inputs:  group, word, position 
-## Number of observations:  591 
-## 
-## 1) group == {third}; criterion = 1, statistic = 87.011
-##   2) position == {strong}; criterion = 0.999, statistic = 14.01
-##     3)*  weights = 150 
-##   2) position == {weak}
-##     4)*  weights = 86 
-## 1) group == {first, second}
-##   5) group == {first}; criterion = 1, statistic = 27.204
-##     6)*  weights = 172 
-##   5) group == {second}
-##     7)*  weights = 183</code></pre>
-<pre class="r"><code>predict(fit, df[45,-1], response = TRUE)</code></pre>
-<pre><code>## [1] yes
-## Levels: no yes</code></pre>
+</div>
+<div id="section-1" class="section level3">
+<h3>2.</h3>
 </div>
 
 
