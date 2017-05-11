@@ -4,14 +4,14 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 
 
 
-<title>Lab …</title>
+<title>Lab Classification and Regression Tree</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -192,10 +192,7 @@ $(document).ready(function () {
       <a href="Lab_2.html">Lab 2</a>
     </li>
     <li>
-      <a href="Lab_3.html">Lab 3</a>
-    </li>
-    <li>
-      <a href="Lab_4.html">Lab 4</a>
+      <a href="Lab_3-4.html">Lab 3 and 4</a>
     </li>
     <li>
       <a href="Lab_5.html">Lab 5</a>
@@ -250,12 +247,43 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Lab …</h1>
+<h1 class="title toc-ignore">Lab Classification and Regression Tree</h1>
 
 </div>
 
 
-
+<div id="assignment-link" class="section level3">
+<h3><a href="https://goo.gl/FsdBEF">Assignment link</a></h3>
+<pre class="r"><code>library(party)</code></pre>
+</div>
+<div id="section" class="section level3">
+<h3>1.</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/aE3yVg&quot;)
+fit &lt;- ctree(v.elision~., data = df)
+plot(fit)</code></pre>
+<p><img src="Lab_11_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>print(fit)</code></pre>
+<pre><code>## 
+##   Conditional inference tree with 4 terminal nodes
+## 
+## Response:  v.elision 
+## Inputs:  group, word, position 
+## Number of observations:  591 
+## 
+## 1) group == {third}; criterion = 1, statistic = 87.011
+##   2) position == {strong}; criterion = 0.999, statistic = 14.01
+##     3)*  weights = 150 
+##   2) position == {weak}
+##     4)*  weights = 86 
+## 1) group == {first, second}
+##   5) group == {first}; criterion = 1, statistic = 27.204
+##     6)*  weights = 172 
+##   5) group == {second}
+##     7)*  weights = 183</code></pre>
+<pre class="r"><code>predict(fit, df[45,-1], response = TRUE)</code></pre>
+<pre><code>## [1] yes
+## Levels: no yes</code></pre>
+</div>
 
 
 
@@ -280,7 +308,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

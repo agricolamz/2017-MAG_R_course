@@ -1,8 +1,23 @@
 ---
-title: "Lab ..."
+title: "Lab  Classification and Regression Tree"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+### [Assignment link](https://goo.gl/FsdBEF)
+
+```{r, message=FALSE}
+library(party)
+```
+
+### 1.
+```{r}
+df <- read.csv("http://goo.gl/aE3yVg")
+fit <- ctree(v.elision~., data = df)
+plot(fit)
+print(fit)
+predict(fit, df[45,-1], response = TRUE)
 ```
 
