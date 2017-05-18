@@ -13,16 +13,17 @@ library(tidyverse)
 ```
 
 ### 1.
-```{r, include= FALSE}
+```{r}
 df <- read.csv("http://goo.gl/nLkHLq")
 d <- dist(t(df[,3:6]))
+set.seed(42)
 kmeans(d, 3)
 hc <- hclust(d)
 plot(hc)
 ```
 
 ### 2.
-```{r, include= FALSE}
+```{r}
 df <- read.csv("http://goo.gl/Zjr9aF")
 row.names(df) <- df$speaker
 d <- dist((df[,-c(6:9, 1)]))
@@ -41,5 +42,13 @@ df %>%
 
 hc <- hclust(d)
 plot(hc)
+```
+
+### 3.
+
+```{r}
+library(stringdist)
+stringdist("Antidisestablishmentarianism", "computer", method = "lv")
+stringdist("Antidisestablishmentarianism", "computer", method = "jaccard")
 ```
 

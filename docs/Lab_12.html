@@ -258,9 +258,79 @@ $(document).ready(function () {
 </div>
 <div id="section" class="section level3">
 <h3>1.</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/nLkHLq&quot;)
+d &lt;- dist(t(df[,3:6]))
+set.seed(42)
+kmeans(d, 3)</code></pre>
+<pre><code>## K-means clustering with 3 clusters of sizes 1, 2, 1
+## 
+## Cluster means:
+##   Old.Prussian   Latvian Lithuanian   outlier
+## 1     6.403124 10.295630  11.000000  0.000000
+## 2    10.318490  4.974937   4.974937 10.647815
+## 3     0.000000 10.148892  10.488088  6.403124
+## 
+## Clustering vector:
+## Old.Prussian      Latvian   Lithuanian      outlier 
+##            3            2            2            1 
+## 
+## Within cluster sum of squares by cluster:
+## [1]  0.0000 99.3056  0.0000
+##  (between_SS / total_SS =  67.7 %)
+## 
+## Available components:
+## 
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;    
+## [5] &quot;tot.withinss&quot; &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;        
+## [9] &quot;ifault&quot;</code></pre>
+<pre class="r"><code>hc &lt;- hclust(d)
+plot(hc)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="section-1" class="section level3">
 <h3>2.</h3>
+<pre class="r"><code>df &lt;- read.csv(&quot;http://goo.gl/Zjr9aF&quot;)
+row.names(df) &lt;- df$speaker
+d &lt;- dist((df[,-c(6:9, 1)]))
+min(d)</code></pre>
+<pre><code>## [1] 15.79903</code></pre>
+<pre class="r"><code>set.seed(42)
+km &lt;- kmeans(d, 2)
+cbind.data.frame(cluster = km$cluster, orientation = df$orientation) %&gt;% 
+  count(cluster, orientation)</code></pre>
+<pre><code>## Source: local data frame [4 x 3]
+## Groups: cluster [?]
+## 
+## # A tibble: 4 x 3
+##   cluster orientation     n
+##     &lt;int&gt;      &lt;fctr&gt; &lt;int&gt;
+## 1       1      hetero     3
+## 2       1        homo     4
+## 3       2      hetero     4
+## 4       2        homo     3</code></pre>
+<pre class="r"><code>plot(df[,-c(6:9, 1)], col = km$cluster, pch = c(16, 1)[df$orientation])</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>df %&gt;% 
+  mutate(cluster = km$cluster) %&gt;%
+  group_by(cluster) %&gt;% 
+  summarise(mean = mean(perceived.as.homo.percent),
+            sd = sd(perceived.as.homo.percent))</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##   cluster      mean        sd
+##     &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1       1 0.6114286 0.2484236
+## 2       2 0.4685714 0.2440921</code></pre>
+<pre class="r"><code>hc &lt;- hclust(d)
+plot(hc)</code></pre>
+<p><img src="Lab_12_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+</div>
+<div id="section-2" class="section level3">
+<h3>3.</h3>
+<pre class="r"><code>library(stringdist)
+stringdist(&quot;Antidisestablishmentarianism&quot;, &quot;computer&quot;, method = &quot;lv&quot;)</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre class="r"><code>stringdist(&quot;Antidisestablishmentarianism&quot;, &quot;computer&quot;, method = &quot;jaccard&quot;)</code></pre>
+<pre><code>## [1] 0.7647059</code></pre>
 </div>
 
 
