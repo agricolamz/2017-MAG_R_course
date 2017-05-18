@@ -13,7 +13,7 @@ library(party)
 ```
 
 ### 1.
-```{r, include= FALSE}
+```{r}
 df <- read.csv("http://goo.gl/aE3yVg")
 fit <- ctree(v.elision~., data = df)
 plot(fit)
@@ -21,17 +21,19 @@ print(fit)
 predict(fit, df[45,-1], response = TRUE)
 fit2 <- cforest(v.elision~., data = df, controls=cforest_unbiased(ntree=1000, mtry=2))
 predict(fit2, df[45,-1],OOB=TRUE)
+varimp(fit2)
 ```
 
 
 ### 2.
-```{r, include= FALSE}
+```{r}
 df <- read.csv("https://goo.gl/F9m4O2")
 fit <- ctree(s.deletion~phon.cont+social, data = df)
 plot(fit)
 print(fit)
 predict(fit, df[1,-c(1:2)], response = TRUE)
 fit2 <- cforest(s.deletion~phon.cont+social, data = df, controls=cforest_unbiased(ntree=100, mtry=2))
+varimp(fit2)
 predict(fit2, df[45,-1],OOB=TRUE)
 
 ```

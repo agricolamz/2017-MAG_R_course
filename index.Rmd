@@ -57,21 +57,22 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (27.04.2017) lecture
 * (27.04.2017) [Lab 10](https://agricolamz.github.io/2017-MAG_R_course/Lab_10.html), [Assignment](https://goo.gl/forms/uY2wGxkZrAauIgzG2)
 
-### 11. Decision trees. Decision forests															
+### 11. Decision trees. Decision forests											
+* (11.05.2017) lecture
 * (11.05.2017) [Lab 11 (CART)](https://agricolamz.github.io/2017-MAG_R_course/Lab_11.html), [Assignment](https://goo.gl/FsdBEF)
-* (11.05.2017) [Lab 12 (Shafling, Bootstrap)](https://agricolamz.github.io/2017-MAG_R_course/Lab_12.html).
 
 ### 12. Clusterization
 
-* (..2017) lecture
-* (..2017) Lab 13: Different types of distance matrices. K-means
-* (..2017) Lab 14: Hierarchical clusterization. DBSCAN.
+* (18.05.2017) lecture
+* (18.05.2017) [Lab 12: Clusterization.](https://agricolamz.github.io/2017-MAG_R_course/Lab_12.html) [Assignment link](https://goo.gl/uFsyfd)
 
 ### 13. MDS, PCA, CA, MCA
 
 * (..2017) lecture
 * (..2017) Lab 15:
 * (..2017) Lab 16:
+* (..2017) [Lab ... (Shafling, Bootstrap)](https://agricolamz.github.io/2017-MAG_R_course/Lab_13.html).
+
 
 ### Textbooks
 
