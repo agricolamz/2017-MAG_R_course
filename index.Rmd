@@ -66,11 +66,12 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (18.05.2017) lecture
 * (18.05.2017) [Lab 12: Clusterization.](https://agricolamz.github.io/2017-MAG_R_course/Lab_12.html) [Assignment link](https://goo.gl/uFsyfd)
 
-### 13. MDS, PCA, CA, MCA
+### 13. PCA, MCA
 
-* (..2017) lecture
-* (..2017) Lab 15:
-* (..2017) Lab 16:
+* (25.05.2017) lecture
+* (25.05.2017) [Lab 13: PCA, MCA](https://goo.gl/forms/YwGQRaIxYffhdpLW2)
+* (27.05.2017) lecture
+* (27.05.2017) Lab 13:
 * (..2017) [Lab ... (Shafling, Bootstrap)](https://agricolamz.github.io/2017-MAG_R_course/Lab_13.html).
 
 

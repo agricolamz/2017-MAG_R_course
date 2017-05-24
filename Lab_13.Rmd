@@ -1,141 +1,46 @@
 ---
-title: "Lab 12. Statistics for Hackers"
+title: "Lab 13. PCA and MCA"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, include = FALSE)
 ```
-
-## 1. Shafling
-### 1.0 Данные, пакеты
-Качаем данные.
-```{r}
-icelandic <- read.csv("https://goo.gl/7gIjvK")
-```
-```{r, message= F}
-library(tidyverse); library(mosaic)
-```
-
-Ты скрестил всех носителей вместе, однако физиологические различия между спикерами могут все невелировать, так что я хочу выяснять является ли разница статистически значима для каждого носителя по отдельности.
 
 ```{r}
-icelandic %>% 
-  ggplot(aes(vowel.dur, fill = aspiration, color = aspiration))+
-  geom_density(alpha = 0.4)+
-  geom_rug()+
-  facet_wrap(~speaker)+
-  labs(title = "Vowel duration density plot",
-       caption = "Data from (Coretta 2017)",
-       x = "vowel duration")
-icelandic %>% 
-  ggplot(aes(sample = vowel.dur, color = aspiration))+
-  geom_qq()+
-  facet_wrap(~speaker)+
-  labs(title = "Vowel duration density plot",
-       caption = "Data from (Coretta 2017)")
+library(tidyverse)
+library(ggfortify)
+library(MASS)
 ```
 
-### 1.1 Сравниваем
-Мы наблюдаем следуещее:
+### [Assignment link](https://goo.gl/forms/YwGQRaIxYffhdpLW2)
+
+### 1
 ```{r}
-icelandic %>%
-  group_by(speaker, aspiration) %>% 
-  summarise(mean.dur = mean(vowel.dur),
-            sd.dur = sd(vowel.dur),
-            number = n())
-```
-В каждом боксплоте от 72 до 85 наблюдений (интересно, а чего это их разное количество?). А еще вообще-то нужно подумать, одинаковая ли у них дисперсия? А то это же тоже одно из предположений t-test.
+gospels <- read.csv("https://goo.gl/mdBVVe")
+row.names(gospels) <- gospels$word
+PCA <- prcomp(gospels[,2:5])
 
-Мы будем говорить о следующей разнице:
-```{r, message= FALSE}
-icelandic %>%
-  group_by(speaker, aspiration) %>% 
-  summarise(mean.dur = mean(vowel.dur)) %>%
-  summarize(diff.mean = diff(mean.dur)) ->
-  obs.diff; obs.diff
+summary(PCA)
+autoplot(PCA,
+         shape = FALSE,
+         loadings = TRUE,
+         label = TRUE,
+         loadings.label = TRUE)+
+  theme_bw()
 
-icelandic %>%
-  left_join(., obs.diff) %>% 
-  ggplot(aes(aspiration, vowel.dur, label = paste("observed effect\n", round(diff.mean, 3))))+
-  geom_text(aes(x = "yes", y = 200))+
-  geom_boxplot()+
-  facet_wrap(~speaker)+
-  labs(title = "Vowel duration boxplots and observed mean difference",
-       caption = "Data from (Coretta 2017)",
-       y = "vowel duration")
+predict(PCA, data.frame(John = 0.05, Luke = 0.01, Mark = 0.02, Matthew = 0.02))
 ```
 
 
-### 1.2 Симуляции
-
-Я буду шафлить ($`r 10000`$ раз) и считать среднее. Для тех кто не помнит философию: у нас есть две группы, и мы хотим узнать значимо ли различаются средние. Для этого берем и перемешиваем эти группы. Если при куче перемешиваний разница средних сильно отличаются от наблюдаемой разницы, значит, мы не можем утверждать, что разница между средними групп равна нулю.
-```{r, cache= TRUE}
-set.seed(42)
-do(10000) *
-  (icelandic %>%
-     group_by(speaker) %>% 
-     mutate(vowel.dur = shuffle(vowel.dur)) %>%
-     group_by(speaker, aspiration) %>%
-     summarize(mean = mean(vowel.dur))) ->  
-  many.shuffles; tail(many.shuffles)
-```
-Посчитаем разницу в каждой симуляции:
+### 2.
 ```{r}
-many.shuffles %>% 
-  group_by(.index, speaker) %>%
-  summarize(diff.mean.shuffle = diff(mean)) ->
-  shuffle.diff; tail(shuffle.diff)
+lev <- read.csv("http://hsequantling.wikispaces.com/file/view/Levshina_DutchCausCx.txt/567799791/Levshina_DutchCausCx.txt", sep = "\t")
+MCA <- mca(lev[,-c(1)])
+lev <- cbind(lev, MCA$rs)
+lev %>% 
+  ggplot(aes(`1`, `2`, color = Aux))+
+  geom_point()+
+  stat_ellipse()+
+  theme_bw()
 ```
-
-И рисуем
-```{r}
-shuffle.diff %>% 
-  ggplot(aes(x = diff.mean.shuffle)) +
-    geom_density(fill = "lightblue")+
-    geom_rug()+
-    geom_vline(data = obs.diff, aes(xintercept = diff.mean), color = "red") +
-    geom_vline(data = obs.diff, aes(xintercept = -diff.mean), color = "red") +
-    facet_wrap(~speaker)+
-    labs(title = paste("Mean difference of", 10000, "shufflings and observed values (in red)"))
-```
-
-Мы видим, что у трех носителей `brs02`, `shg05` и `tt01` наблюдаемая разница выходит далеко за пределы результатов перемешивания, а у носителей `bte03` и `jj04` они достаточно сильно заходят. Сколько из полученных разниц средних выходит за границы, поставленные нашими данными?
- 
-```{r, message = FALSE}
-shuffle.diff%>% 
-  left_join(., obs.diff) %>% 
-  mutate(outside = diff.mean.shuffle > abs(diff.mean) | diff.mean.shuffle < diff.mean) %>% 
-  group_by(speaker, outside) %>% 
-  summarise(number = n()) %>% 
-  ggplot(aes(speaker, number, fill = outside))+
-  geom_bar(stat = "identity", position = "dodge")
-```
-
-Давайте забьюм на Стьюдента и посчитаем тест Уэлча. Тогда не надо бороться с предположением t-test об одинаковой дисперсии и одинаковом количестве наблюдений. Чтобы получить t-статистику нужно полученную в симуляциях разницу разделить на $\sqrt{\frac{sd_1}{n_1}+\frac{sd_2}{n_2}}$.
-
-```{r}
-icelandic %>%
-  group_by(speaker, aspiration) %>% 
-  summarise(under.sqrt = sd(vowel.dur)/n()) %>% 
-  spread(aspiration, under.sqrt) %>% 
-  mutate(t.denominator = sqrt(no+yes)) %>% 
-  select(speaker, t.denominator) ->
-  t.denominator; t.denominator
-```
-
-```{r, message= FALSE}
-shuffle.diff %>% 
-  left_join(., t.denominator) %>% 
-  left_join(., obs.diff) %>% 
-  ggplot(aes(diff.mean.shuffle/t.denominator))+
-  geom_density(fill = "lightblue")+
-  geom_vline(aes(xintercept = diff.mean/t.denominator), color = "red")+
-    geom_vline(aes(xintercept = -diff.mean/t.denominator), color = "red")+
-  facet_wrap(~speaker)+
-  labs(x = "t statistic")
-```
-
-Ну и осталось посчитать p-value, но мне лень.
-
-## 2. Bootstrap
 
