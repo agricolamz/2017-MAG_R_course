@@ -6,7 +6,7 @@ transition: none
 output:
   slidy_presentation:
     df_print: kable
-    footer: "Presentation link: https://goo.gl/8pffGO"
+    footer: "Presentation link: https://goo.gl/hEL1Hh"
 ---
 
 ```{r setup, include=FALSE}

@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="copyright" content="Presentation link: https://goo.gl/8pffGO"/>
+  <meta name="copyright" content="Presentation link: https://goo.gl/hEL1Hh"/>
   <title>Component analysis</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -59,7 +59,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="main-problem" class="slide section level3">
 <h1>1. Main problem</h1>
-<p>Sometimes you have a huge amount of variables. So, to make some your data profitable you need to reduce number of variables without losing the precious information.</p>
+<p>Sometimes you have a huge amount of variables. So, to make your data profitable you need to reduce number of variables saving without losing the precious information.</p>
 <ul>
 <li>Principal component analysis (PCA)</li>
 <li>Linear discriminant analysis (LDA)</li>
@@ -79,9 +79,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-4-1.png" width="768" /></p>
 <p>In PCA we change coordinate system and start predicting variables’ values using less variables.</p>
 <p><img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-5-1.png" width="768" /></p>
-<p>So, the blue line is <em>the first Princple Component</em> (and it is NOT a regression line). The number of the PCs is always equal to the number of variables. So we can draw the second PC:</p>
+<p>So the blue line is <em>the first Princple Component</em> (and it is NOT a regression line). The number of the PCs is always equal to the number of variables. So we can draw the second PC:</p>
 <p><img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-6-1.png" width="768" /></p>
-<p>So, the main point of PCA is that if cumulative proportion of explained variance is high we can drop some PCs. So we need know the following things:</p>
+<p>So the main point of PCA is that if cumulative proportion of explained variance is high we can drop some PCs. So, we need know the following things:</p>
 <ul>
 <li>What is the cumulative proportion of explained variance?</li>
 </ul>
@@ -104,7 +104,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##              PC1        PC2
 ## child  0.6724959 -0.7401009
 ## mother 0.7401009  0.6724959</code></pre>
-<p>So, the formula for the first component rotation is <span class="math display">\[PC1 = 0.6724959 \times child + 0.7401009  \times mother\]</span> The formula for the second component rotation is <span class="math display">\[PC2 = -0.7401009 \times child + 0.6724959  \times mother\]</span></p>
+<p>So the formula for the first component rotation is <span class="math display">\[PC1 = 0.6724959 \times child + 0.7401009  \times mother\]</span> The formula for the second component rotation is <span class="math display">\[PC2 = -0.7401009 \times child + 0.6724959  \times mother\]</span></p>
 <p>From now we can change the axes:</p>
 <p><img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-9-1.png" width="768" /></p>
 <p>The <code>autoplot()</code> function from <code>ggfortify</code> package produces nearly the same graph: <img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-10-1.png" width="768" /></p>
