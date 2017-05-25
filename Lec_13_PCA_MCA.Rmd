@@ -19,7 +19,7 @@ library(ggfortify)
 ```
 
 ### 1. Main problem
-Sometimes you have a huge amount of variables. So to make some profits from your data you need to reduce number of variables saving the information that in our data. 
+Sometimes you have a huge amount of variables. So, to make your data profitable you need to reduce number of variables saving without losing the precious information. 
 
 * Principal component analysis (PCA)
 * Linear discriminant analysis (LDA)
@@ -27,7 +27,7 @@ Sometimes you have a huge amount of variables. So to make some profits from your
 * ...
 
 ### 2. Data
-I will use a dataset from [Huttenlocher, Vasilyeva, Cymerman, Levine 2002]. Authors analysed 46 pairs of mothers and children (aged from 47 to 59 months, mean age -- 54). They recorded and trinscribed 2 hours from each child day. During the study they collected number of noun phrases per utterance in mother speech to the number of noun phrases per utterance in child speech.
+I will use a dataset from [Huttenlocher, Vasilyeva, Cymerman, Levine 2002]. Authors analysed 46 pairs of mothers and children (aged from 47 to 59 months, mean age -- 54). They recorded and trinscribed 2 hours from each child per day. During the study they collected number of noun phrases per utterance in mother speech to the number of noun phrases per utterance in child speech.
 ```{r}
 df <- read.csv("http://goo.gl/Qo3Yy2")
 
@@ -118,14 +118,14 @@ df %>%
   annotate("text", x = 1.39, y = 2.15, label = "PC2")
 ```
 
-So the main point of PCA is that if cumulative proportion of explained variance is high we can drop some PCs. So we need know the following things:
+So the main point of PCA is that if cumulative proportion of explained variance is high we can drop some PCs. So, we need know the following things:
 
 * What is the cumulative proportion of explained variance?
 ```{r, echo = TRUE}
 summary(prcomp(df))
 ```
 
-So PC1 explains only 78.9% of the variance in our data.
+So, PC1 explains only 78.9% of the variance in our data.
 
 * How PCs are rotated comparing to the old axes?
 ```{r, echo = TRUE}
