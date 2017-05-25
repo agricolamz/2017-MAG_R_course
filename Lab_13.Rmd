@@ -3,7 +3,7 @@ title: "Lab 13. PCA and MCA"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, include = FALSE)
+knitr::opts_chunk$set(message = FALSE)
 ```
 
 ```{r}
@@ -35,7 +35,7 @@ predict(PCA, data.frame(John = 0.05, Luke = 0.01, Mark = 0.02, Matthew = 0.02))
 ### 2.
 ```{r}
 lev <- read.csv("http://hsequantling.wikispaces.com/file/view/Levshina_DutchCausCx.txt/567799791/Levshina_DutchCausCx.txt", sep = "\t")
-MCA <- mca(lev[,-c(1)])
+MCA <- mca(lev[,-1])
 lev <- cbind(lev, MCA$rs)
 lev %>% 
   ggplot(aes(`1`, `2`, color = Aux))+
