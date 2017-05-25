@@ -68,7 +68,7 @@ title: "Linguistic data: quantitative analysis and visualisation"
 
 ### 13. PCA, MCA
 
-* (25.05.2017) [lecture 9](https://agricolamz.github.io/2017-MAG_R_course/Lec_13_PCA_MCA.html) 
+* (25.05.2017) [lecture 13](https://agricolamz.github.io/2017-MAG_R_course/Lec_13_PCA_MCA.html) 
 * (25.05.2017) [Lab 13: PCA, MCA](https://goo.gl/forms/YwGQRaIxYffhdpLW2)
 * (27.05.2017) lecture
 * (27.05.2017) Lab 13:
