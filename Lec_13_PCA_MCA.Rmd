@@ -182,3 +182,22 @@ Summary:
 
 * If the cumulative proportion of explained variance for some PCs is high, we can change coordinate system and start predicting variables' values using less variables.
 * We can even make a regresion or clusterisation model.
+* PCA for categorical variables is called Multiple correspondence analysis (MCA)
+
+### R functions
+
+There are several functions for PCA, MCA and their visualisation.
+
+* PCA: prcomp()
+* PCA: princomp()
+* PCA: FactoMineR::PCA()
+* PCA: ade4::dudi.pca()
+* PCA: amap::acp()
+* PCA visualisation: ggfortify::autoplot
+* MCA: FactoMineR::MCA()
+* MCA: MASS::mca()
+* MCA: ade::dudi.acm()
+* MCA: ca::mjca()
+* MCA: homals::homals()
+
+
