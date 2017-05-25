@@ -105,7 +105,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## child  0.6724959 -0.7401009
 ## mother 0.7401009  0.6724959</code></pre>
 <p>So the formula for the first component rotation is <span class="math display">\[PC1 = 0.6724959 \times child + 0.7401009  \times mother\]</span> The formula for the second component rotation is <span class="math display">\[PC2 = -0.7401009 \times child + 0.6724959  \times mother\]</span></p>
-<p>So from now we can change the axes: <img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-9-1.png" width="768" /></p>
+<p>From now we can change the axes:</p>
+<p><img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-9-1.png" width="768" /></p>
+<p>The <code>autoplot()</code> function from <code>ggfortify</code> package produces nearly the same graph: <img src="Lec_13_PCA_MCA_files/figure-slidy/unnamed-chunk-10-1.png" width="768" /></p>
+<p>Summary:</p>
+<ul>
+<li>If the cumulative proportion of explained variance for some PCs is high, we can change coordinate system and start predicting variables’ values using less variables.</li>
+<li>We can even make a regresion or clusterisation model.</li>
+</ul>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
