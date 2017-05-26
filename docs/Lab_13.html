@@ -252,46 +252,14 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(tidyverse)
-library(ggfortify)
-library(MASS)</code></pre>
 <div id="assignment-link" class="section level3">
 <h3><a href="https://goo.gl/forms/YwGQRaIxYffhdpLW2">Assignment link</a></h3>
 </div>
 <div id="section" class="section level3">
 <h3>1</h3>
-<pre class="r"><code>gospels &lt;- read.csv(&quot;https://goo.gl/mdBVVe&quot;)
-row.names(gospels) &lt;- gospels$word
-PCA &lt;- prcomp(gospels[,2:5])
-
-summary(PCA)</code></pre>
-<pre><code>## Importance of components%s:
-##                             PC1      PC2       PC3       PC4
-## Standard deviation     0.003482 0.001599 0.0008725 0.0007001
-## Proportion of Variance 0.761020 0.160420 0.0477900 0.0307700
-## Cumulative Proportion  0.761020 0.921440 0.9692300 1.0000000</code></pre>
-<pre class="r"><code>autoplot(PCA,
-         shape = FALSE,
-         loadings = TRUE,
-         label = TRUE,
-         loadings.label = TRUE)+
-  theme_bw()</code></pre>
-<p><img src="Lab_13_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre class="r"><code>predict(PCA, data.frame(John = 0.05, Luke = 0.01, Mark = 0.02, Matthew = 0.02))</code></pre>
-<pre><code>##              PC1         PC2         PC3         PC4
-## [1,] -0.05281351 -0.01686337 0.006094607 0.002708408</code></pre>
 </div>
 <div id="section-1" class="section level3">
 <h3>2.</h3>
-<pre class="r"><code>lev &lt;- read.csv(&quot;http://hsequantling.wikispaces.com/file/view/Levshina_DutchCausCx.txt/567799791/Levshina_DutchCausCx.txt&quot;, sep = &quot;\t&quot;)
-MCA &lt;- mca(lev[,-1])
-lev &lt;- cbind(lev, MCA$rs)
-lev %&gt;% 
-  ggplot(aes(`1`, `2`, color = Aux))+
-  geom_point()+
-  stat_ellipse()+
-  theme_bw()</code></pre>
-<p><img src="Lab_13_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 
 
