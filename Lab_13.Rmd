@@ -3,7 +3,7 @@ title: "Lab 13. PCA and MCA"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE, include = FALSE)
+knitr::opts_chunk$set(message = FALSE)
 ```
 
 ```{r}
