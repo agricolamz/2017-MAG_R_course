@@ -281,56 +281,34 @@ rbind(df_1, df_2) %&gt;%
   theme_bw()</code></pre>
 <p><img src="Lab_14_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="ustja-data" class="section level3">
-<h3>2. Ustja data</h3>
-<pre class="r"><code>ustja &lt;- read.csv(&quot;https://goo.gl/aQ7rbM&quot;, sep = &quot;\t&quot;)
-ustja %&gt;% 
-  mutate(average = cons/total) %&gt;% 
-  ggplot(aes(average))+
-  geom_histogram()</code></pre>
-<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<pre class="r"><code>ustja %&gt;% 
-  mutate(average = cons/total,
-         updated = (cons +1)/(total + 2)) %&gt;% 
-  ggplot(aes(average, updated, color = total, label = speaker))+
-  geom_text()+
-  theme_bw()</code></pre>
-<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
-<pre class="r"><code>data.frame()</code></pre>
-<pre><code>## data frame with 0 columns and 0 rows</code></pre>
-<pre class="r"><code>ustja %&gt;% 
-  mutate(average = cons/total,
-         updated = (cons +9415)/(total + 9415+10052)) %&gt;% 
-  ggplot(aes(average, updated, color = total, label = speaker))+
-  geom_text()+
-  theme_bw()</code></pre>
-<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<div id="chechov-data" class="section level3">
+<h3>2. Chechov data</h3>
 <pre class="r"><code>chekhov &lt;- read.csv(&quot;https://goo.gl/KqwWTB&quot;)
+
 chekhov %&gt;% 
   mutate(average = n_i/(n_i+n_V)) %&gt;% 
+  ggplot(aes(average))+
+  geom_histogram(bins = 9)</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>chekhov %&gt;% 
+  mutate(average = n_i/(n_i+n_V)) %&gt;% 
   summarise(mu = mean(average),
-            sd = sd(average))</code></pre>
-<pre><code>##          mu         sd
-## 1 0.1678954 0.01203008</code></pre>
+            var = var(average)) -&gt;
+  mu_var</code></pre>
 <p>Use <a href="https://stats.stackexchange.com/a/12239">mean and variance</a> for fitting data.</p>
 <pre class="r"><code># function from https://stats.stackexchange.com/a/12239
 estBetaParams &lt;- function(mu, var) {
   alpha &lt;- ((1 - mu) / var - 1 / mu) * mu ^ 2
   beta &lt;- alpha * (1 / mu - 1)
-  return(params = list(alpha = alpha, beta = beta))
-}
+  return(params = list(alpha = alpha, beta = beta))}
 
-estBetaParams(0.1678954, 0.01203008)</code></pre>
-<pre><code>## $alpha
-## [1] 1.781891
-## 
-## $beta
-## [1] 8.83121</code></pre>
-<pre class="r"><code>x &lt;- seq(0, 1, 0.01)
-alpha &lt;- 1.781891
-beta &lt;- 8.83121
-alpha_2 &lt;- 1.781891+184
-beta_2 &lt;- 8.83121+882
+prior &lt;- estBetaParams(mu_var$mu, mu_var$var)
+
+x &lt;- seq(0, 1, 0.01)
+alpha &lt;- prior$alpha
+beta &lt;- prior$beta
+alpha_2 &lt;- 161.9079+prior$alpha
+beta_2 &lt;- 802.4302+prior$beta
 df_1 &lt;- data.frame(x, y = dbeta(x, alpha, beta), destribution = &quot;prior&quot;)
 df_2 &lt;- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = &quot;posterior&quot;)
 
@@ -338,9 +316,9 @@ rbind(df_1, df_2) %&gt;%
   ggplot(aes(x, y, color = destribution))+
   geom_line()+
   theme_bw()</code></pre>
-<p><img src="Lab_14_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<pre class="r"><code>alpha_2 &lt;- 1.781891+108
-beta_2 &lt;- 8.83121+514
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>alpha_2 &lt;- 161.9079+108
+beta_2 &lt;- 802.4302+514
 df_1 &lt;- data.frame(x, y = dbeta(x, alpha, beta), destribution = &quot;prior&quot;)
 df_2 &lt;- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = &quot;posterior&quot;)
 
@@ -353,7 +331,38 @@ rbind(df_1, df_2) %&gt;%
   geom_vline(xintercept = qbeta(0.025, alpha_2, beta_2), linetype = 2)+
   geom_vline(xintercept = qbeta(0.975, alpha_2, beta_2), linetype = 2)+
   theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+</div>
+<div id="ustja-data" class="section level3">
+<h3>3. Ustja data</h3>
+<pre class="r"><code>ustja &lt;- read.csv(&quot;https://goo.gl/aQ7rbM&quot;, sep = &quot;\t&quot;)
+ustja %&gt;% 
+  mutate(average = cons/total) %&gt;% 
+  ggplot(aes(average))+
+  geom_histogram(bins = 9)</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>ustja %&gt;% 
+  mutate(average = cons/total) %&gt;% 
+  summarise(mu = mean(average),
+            var = var(average)) -&gt;
+  mu_var
+
+prior &lt;- estBetaParams(mu_var$mu, mu_var$var)
+
+ustja %&gt;% 
+  mutate(average = cons/total,
+         updated = (cons + prior$alpha)/(total + prior$beta)) %&gt;% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()</code></pre>
 <p><img src="Lab_14_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre class="r"><code>ustja %&gt;% 
+  mutate(average = cons/total,
+         updated = (cons +9415)/(total + 9415+10052)) %&gt;% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
 </div>
 
 

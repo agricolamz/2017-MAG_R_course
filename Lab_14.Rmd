@@ -39,38 +39,20 @@ rbind(df_1, df_2) %>%
   theme_bw()
 ```
 
-### 2. Ustja data
-
-```{r}
-ustja <- read.csv("https://goo.gl/aQ7rbM", sep = "\t")
-ustja %>% 
-  mutate(average = cons/total) %>% 
-  ggplot(aes(average))+
-  geom_histogram()
-
-ustja %>% 
-  mutate(average = cons/total,
-         updated = (cons +1)/(total + 2)) %>% 
-  ggplot(aes(average, updated, color = total, label = speaker))+
-  geom_text()+
-  theme_bw()
-
-data.frame()
-
-ustja %>% 
-  mutate(average = cons/total,
-         updated = (cons +9415)/(total + 9415+10052)) %>% 
-  ggplot(aes(average, updated, color = total, label = speaker))+
-  geom_text()+
-  theme_bw()
-```
-
+### 2. Chechov data
 ```{r}
 chekhov <- read.csv("https://goo.gl/KqwWTB")
+
+chekhov %>% 
+  mutate(average = n_i/(n_i+n_V)) %>% 
+  ggplot(aes(average))+
+  geom_histogram(bins = 9)
+
 chekhov %>% 
   mutate(average = n_i/(n_i+n_V)) %>% 
   summarise(mu = mean(average),
-            sd = sd(average))
+            var = var(average)) ->
+  mu_var
 ```
 
 Use [mean and variance](https://stats.stackexchange.com/a/12239) for fitting data.
@@ -80,16 +62,15 @@ Use [mean and variance](https://stats.stackexchange.com/a/12239) for fitting dat
 estBetaParams <- function(mu, var) {
   alpha <- ((1 - mu) / var - 1 / mu) * mu ^ 2
   beta <- alpha * (1 / mu - 1)
-  return(params = list(alpha = alpha, beta = beta))
-}
+  return(params = list(alpha = alpha, beta = beta))}
 
-estBetaParams(0.1678954, 0.01203008)
+prior <- estBetaParams(mu_var$mu, mu_var$var)
 
 x <- seq(0, 1, 0.01)
-alpha <- 1.781891
-beta <- 8.83121
-alpha_2 <- 1.781891+184
-beta_2 <- 8.83121+882
+alpha <- prior$alpha
+beta <- prior$beta
+alpha_2 <- 161.9079+prior$alpha
+beta_2 <- 802.4302+prior$beta
 df_1 <- data.frame(x, y = dbeta(x, alpha, beta), destribution = "prior")
 df_2 <- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = "posterior")
 
@@ -98,9 +79,8 @@ rbind(df_1, df_2) %>%
   geom_line()+
   theme_bw()
 
-
-alpha_2 <- 1.781891+108
-beta_2 <- 8.83121+514
+alpha_2 <- 161.9079+108
+beta_2 <- 802.4302+514
 df_1 <- data.frame(x, y = dbeta(x, alpha, beta), destribution = "prior")
 df_2 <- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = "posterior")
 
@@ -113,6 +93,36 @@ rbind(df_1, df_2) %>%
   geom_vline(xintercept = qbeta(0.025, alpha_2, beta_2), linetype = 2)+
   geom_vline(xintercept = qbeta(0.975, alpha_2, beta_2), linetype = 2)+
   theme_bw()
-
 ```
 
+### 3. Ustja data
+
+```{r}
+ustja <- read.csv("https://goo.gl/aQ7rbM", sep = "\t")
+ustja %>% 
+  mutate(average = cons/total) %>% 
+  ggplot(aes(average))+
+  geom_histogram(bins = 9)
+
+ustja %>% 
+  mutate(average = cons/total) %>% 
+  summarise(mu = mean(average),
+            var = var(average)) ->
+  mu_var
+
+prior <- estBetaParams(mu_var$mu, mu_var$var)
+
+ustja %>% 
+  mutate(average = cons/total,
+         updated = (cons + prior$alpha)/(total + prior$beta)) %>% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()
+
+ustja %>% 
+  mutate(average = cons/total,
+         updated = (cons +9415)/(total + 9415+10052)) %>% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()
+```
