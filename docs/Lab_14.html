@@ -4,14 +4,14 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 
 
 
-<title>Lab …</title>
+<title>Lab 14. Empirical Bayes</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -192,10 +192,7 @@ $(document).ready(function () {
       <a href="Lab_2.html">Lab 2</a>
     </li>
     <li>
-      <a href="Lab_3.html">Lab 3</a>
-    </li>
-    <li>
-      <a href="Lab_4.html">Lab 4</a>
+      <a href="Lab_3-4.html">Lab 3 and 4</a>
     </li>
     <li>
       <a href="Lab_5.html">Lab 5</a>
@@ -250,12 +247,114 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Lab …</h1>
+<h1 class="title toc-ignore">Lab 14. Empirical Bayes</h1>
 
 </div>
 
 
+<div id="assignment-link" class="section level3">
+<h3><a href="https://goo.gl/QwjvZn">Assignment link</a></h3>
+<pre class="r"><code>library(tidyverse)</code></pre>
+</div>
+<div id="working-with-beta-destriution" class="section level3">
+<h3>1. Working with beta destriution</h3>
+<pre class="r"><code>x &lt;- seq(0, 1, 0.01)
+alpha &lt;- 20
+beta &lt;- 40
+data.frame(x, y = dbeta(x, alpha, beta)) %&gt;% 
+  ggplot(aes(x, y))+
+  geom_line()+
+  geom_vline(xintercept = qbeta(0.95, alpha, beta), linetype = 2)+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>x &lt;- seq(0, 1, 0.01)
+alpha_1 &lt;- 20
+beta_1 &lt;- 40
+alpha_2 &lt;- 38
+beta_2 &lt;- 43
+df_1 &lt;- data.frame(x, y = dbeta(x, alpha_1, beta_1), name = &quot;first&quot;)
+df_2 &lt;- data.frame(x, y = dbeta(x, alpha_2, beta_2), name = &quot;second&quot;)
 
+rbind(df_1, df_2) %&gt;% 
+  ggplot(aes(x, y, color = name))+
+  geom_line()+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="ustja-data" class="section level3">
+<h3>2. Ustja data</h3>
+<pre class="r"><code>ustja &lt;- read.csv(&quot;https://goo.gl/aQ7rbM&quot;, sep = &quot;\t&quot;)
+ustja %&gt;% 
+  mutate(average = cons/total) %&gt;% 
+  ggplot(aes(average))+
+  geom_histogram()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ustja %&gt;% 
+  mutate(average = cons/total,
+         updated = (cons +1)/(total + 2)) %&gt;% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code>data.frame()</code></pre>
+<pre><code>## data frame with 0 columns and 0 rows</code></pre>
+<pre class="r"><code>ustja %&gt;% 
+  mutate(average = cons/total,
+         updated = (cons +9415)/(total + 9415+10052)) %&gt;% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<pre class="r"><code>chekhov &lt;- read.csv(&quot;https://goo.gl/KqwWTB&quot;)
+chekhov %&gt;% 
+  mutate(average = n_i/(n_i+n_V)) %&gt;% 
+  summarise(mu = mean(average),
+            sd = sd(average))</code></pre>
+<pre><code>##          mu         sd
+## 1 0.1678954 0.01203008</code></pre>
+<p>Use <a href="https://stats.stackexchange.com/a/12239">mean and variance</a> for fitting data.</p>
+<pre class="r"><code># function from https://stats.stackexchange.com/a/12239
+estBetaParams &lt;- function(mu, var) {
+  alpha &lt;- ((1 - mu) / var - 1 / mu) * mu ^ 2
+  beta &lt;- alpha * (1 / mu - 1)
+  return(params = list(alpha = alpha, beta = beta))
+}
+
+estBetaParams(0.1678954, 0.01203008)</code></pre>
+<pre><code>## $alpha
+## [1] 1.781891
+## 
+## $beta
+## [1] 8.83121</code></pre>
+<pre class="r"><code>x &lt;- seq(0, 1, 0.01)
+alpha &lt;- 1.781891
+beta &lt;- 8.83121
+alpha_2 &lt;- 1.781891+184
+beta_2 &lt;- 8.83121+882
+df_1 &lt;- data.frame(x, y = dbeta(x, alpha, beta), destribution = &quot;prior&quot;)
+df_2 &lt;- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = &quot;posterior&quot;)
+
+rbind(df_1, df_2) %&gt;% 
+  ggplot(aes(x, y, color = destribution))+
+  geom_line()+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>alpha_2 &lt;- 1.781891+108
+beta_2 &lt;- 8.83121+514
+df_1 &lt;- data.frame(x, y = dbeta(x, alpha, beta), destribution = &quot;prior&quot;)
+df_2 &lt;- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = &quot;posterior&quot;)
+
+q_025 &lt;- qbeta(0.025, alpha_2, beta_2)
+q_975 &lt;- qbeta(0.975, alpha_2, beta_2)
+
+rbind(df_1, df_2) %&gt;% 
+  ggplot(aes(x, y, color = destribution))+
+  geom_line()+
+  geom_vline(xintercept = qbeta(0.025, alpha_2, beta_2), linetype = 2)+
+  geom_vline(xintercept = qbeta(0.975, alpha_2, beta_2), linetype = 2)+
+  theme_bw()</code></pre>
+<p><img src="Lab_14_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+</div>
 
 
 
@@ -280,7 +379,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

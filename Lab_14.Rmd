@@ -1,141 +1,118 @@
 ---
-title: "Lab 12. Statistics for Hackers"
+title: "Lab 14. Empirical Bayes"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, include = TRUE)
 ```
 
-## 1. Shafling
-### 1.0 Данные, пакеты
-Качаем данные.
-```{r}
-icelandic <- read.csv("https://goo.gl/7gIjvK")
-```
-```{r, message= F}
-library(tidyverse); library(mosaic)
-```
-
-Ты скрестил всех носителей вместе, однако физиологические различия между спикерами могут все невелировать, так что я хочу выяснять является ли разница статистически значима для каждого носителя по отдельности.
+### [Assignment link](https://goo.gl/QwjvZn)
 
 ```{r}
-icelandic %>% 
-  ggplot(aes(vowel.dur, fill = aspiration, color = aspiration))+
-  geom_density(alpha = 0.4)+
-  geom_rug()+
-  facet_wrap(~speaker)+
-  labs(title = "Vowel duration density plot",
-       caption = "Data from (Coretta 2017)",
-       x = "vowel duration")
-icelandic %>% 
-  ggplot(aes(sample = vowel.dur, color = aspiration))+
-  geom_qq()+
-  facet_wrap(~speaker)+
-  labs(title = "Vowel duration density plot",
-       caption = "Data from (Coretta 2017)")
+library(tidyverse)
 ```
 
-### 1.1 Сравниваем
-Мы наблюдаем следуещее:
+### 1. Working with beta destriution
 ```{r}
-icelandic %>%
-  group_by(speaker, aspiration) %>% 
-  summarise(mean.dur = mean(vowel.dur),
-            sd.dur = sd(vowel.dur),
-            number = n())
+x <- seq(0, 1, 0.01)
+alpha <- 20
+beta <- 40
+data.frame(x, y = dbeta(x, alpha, beta)) %>% 
+  ggplot(aes(x, y))+
+  geom_line()+
+  geom_vline(xintercept = qbeta(0.95, alpha, beta), linetype = 2)+
+  theme_bw()
 ```
-В каждом боксплоте от 72 до 85 наблюдений (интересно, а чего это их разное количество?). А еще вообще-то нужно подумать, одинаковая ли у них дисперсия? А то это же тоже одно из предположений t-test.
-
-Мы будем говорить о следующей разнице:
-```{r, message= FALSE}
-icelandic %>%
-  group_by(speaker, aspiration) %>% 
-  summarise(mean.dur = mean(vowel.dur)) %>%
-  summarize(diff.mean = diff(mean.dur)) ->
-  obs.diff; obs.diff
-
-icelandic %>%
-  left_join(., obs.diff) %>% 
-  ggplot(aes(aspiration, vowel.dur, label = paste("observed effect\n", round(diff.mean, 3))))+
-  geom_text(aes(x = "yes", y = 200))+
-  geom_boxplot()+
-  facet_wrap(~speaker)+
-  labs(title = "Vowel duration boxplots and observed mean difference",
-       caption = "Data from (Coretta 2017)",
-       y = "vowel duration")
-```
-
-
-### 1.2 Симуляции
-
-Я буду шафлить ($`r 10000`$ раз) и считать среднее. Для тех кто не помнит философию: у нас есть две группы, и мы хотим узнать значимо ли различаются средние. Для этого берем и перемешиваем эти группы. Если при куче перемешиваний разница средних сильно отличаются от наблюдаемой разницы, значит, мы не можем утверждать, что разница между средними групп равна нулю.
-```{r, cache= TRUE}
-set.seed(42)
-do(10000) *
-  (icelandic %>%
-     group_by(speaker) %>% 
-     mutate(vowel.dur = shuffle(vowel.dur)) %>%
-     group_by(speaker, aspiration) %>%
-     summarize(mean = mean(vowel.dur))) ->  
-  many.shuffles; tail(many.shuffles)
-```
-Посчитаем разницу в каждой симуляции:
-```{r}
-many.shuffles %>% 
-  group_by(.index, speaker) %>%
-  summarize(diff.mean.shuffle = diff(mean)) ->
-  shuffle.diff; tail(shuffle.diff)
-```
-
-И рисуем
-```{r}
-shuffle.diff %>% 
-  ggplot(aes(x = diff.mean.shuffle)) +
-    geom_density(fill = "lightblue")+
-    geom_rug()+
-    geom_vline(data = obs.diff, aes(xintercept = diff.mean), color = "red") +
-    geom_vline(data = obs.diff, aes(xintercept = -diff.mean), color = "red") +
-    facet_wrap(~speaker)+
-    labs(title = paste("Mean difference of", 10000, "shufflings and observed values (in red)"))
-```
-
-Мы видим, что у трех носителей `brs02`, `shg05` и `tt01` наблюдаемая разница выходит далеко за пределы результатов перемешивания, а у носителей `bte03` и `jj04` они достаточно сильно заходят. Сколько из полученных разниц средних выходит за границы, поставленные нашими данными?
- 
-```{r, message = FALSE}
-shuffle.diff%>% 
-  left_join(., obs.diff) %>% 
-  mutate(outside = diff.mean.shuffle > abs(diff.mean) | diff.mean.shuffle < diff.mean) %>% 
-  group_by(speaker, outside) %>% 
-  summarise(number = n()) %>% 
-  ggplot(aes(speaker, number, fill = outside))+
-  geom_bar(stat = "identity", position = "dodge")
-```
-
-Давайте забьюм на Стьюдента и посчитаем тест Уэлча. Тогда не надо бороться с предположением t-test об одинаковой дисперсии и одинаковом количестве наблюдений. Чтобы получить t-статистику нужно полученную в симуляциях разницу разделить на $\sqrt{\frac{sd_1}{n_1}+\frac{sd_2}{n_2}}$.
 
 ```{r}
-icelandic %>%
-  group_by(speaker, aspiration) %>% 
-  summarise(under.sqrt = sd(vowel.dur)/n()) %>% 
-  spread(aspiration, under.sqrt) %>% 
-  mutate(t.denominator = sqrt(no+yes)) %>% 
-  select(speaker, t.denominator) ->
-  t.denominator; t.denominator
+x <- seq(0, 1, 0.01)
+alpha_1 <- 20
+beta_1 <- 40
+alpha_2 <- 38
+beta_2 <- 43
+df_1 <- data.frame(x, y = dbeta(x, alpha_1, beta_1), name = "first")
+df_2 <- data.frame(x, y = dbeta(x, alpha_2, beta_2), name = "second")
+
+rbind(df_1, df_2) %>% 
+  ggplot(aes(x, y, color = name))+
+  geom_line()+
+  theme_bw()
 ```
 
-```{r, message= FALSE}
-shuffle.diff %>% 
-  left_join(., t.denominator) %>% 
-  left_join(., obs.diff) %>% 
-  ggplot(aes(diff.mean.shuffle/t.denominator))+
-  geom_density(fill = "lightblue")+
-  geom_vline(aes(xintercept = diff.mean/t.denominator), color = "red")+
-    geom_vline(aes(xintercept = -diff.mean/t.denominator), color = "red")+
-  facet_wrap(~speaker)+
-  labs(x = "t statistic")
+### 2. Ustja data
+
+```{r}
+ustja <- read.csv("https://goo.gl/aQ7rbM", sep = "\t")
+ustja %>% 
+  mutate(average = cons/total) %>% 
+  ggplot(aes(average))+
+  geom_histogram()
+
+ustja %>% 
+  mutate(average = cons/total,
+         updated = (cons +1)/(total + 2)) %>% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()
+
+data.frame()
+
+ustja %>% 
+  mutate(average = cons/total,
+         updated = (cons +9415)/(total + 9415+10052)) %>% 
+  ggplot(aes(average, updated, color = total, label = speaker))+
+  geom_text()+
+  theme_bw()
 ```
 
-Ну и осталось посчитать p-value, но мне лень.
+```{r}
+chekhov <- read.csv("https://goo.gl/KqwWTB")
+chekhov %>% 
+  mutate(average = n_i/(n_i+n_V)) %>% 
+  summarise(mu = mean(average),
+            sd = sd(average))
+```
 
-## 2. Bootstrap
+Use [mean and variance](https://stats.stackexchange.com/a/12239) for fitting data.
+
+```{r}
+# function from https://stats.stackexchange.com/a/12239
+estBetaParams <- function(mu, var) {
+  alpha <- ((1 - mu) / var - 1 / mu) * mu ^ 2
+  beta <- alpha * (1 / mu - 1)
+  return(params = list(alpha = alpha, beta = beta))
+}
+
+estBetaParams(0.1678954, 0.01203008)
+
+x <- seq(0, 1, 0.01)
+alpha <- 1.781891
+beta <- 8.83121
+alpha_2 <- 1.781891+184
+beta_2 <- 8.83121+882
+df_1 <- data.frame(x, y = dbeta(x, alpha, beta), destribution = "prior")
+df_2 <- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = "posterior")
+
+rbind(df_1, df_2) %>% 
+  ggplot(aes(x, y, color = destribution))+
+  geom_line()+
+  theme_bw()
+
+
+alpha_2 <- 1.781891+108
+beta_2 <- 8.83121+514
+df_1 <- data.frame(x, y = dbeta(x, alpha, beta), destribution = "prior")
+df_2 <- data.frame(x, y = dbeta(x, alpha_2, beta_2), destribution = "posterior")
+
+q_025 <- qbeta(0.025, alpha_2, beta_2)
+q_975 <- qbeta(0.975, alpha_2, beta_2)
+
+rbind(df_1, df_2) %>% 
+  ggplot(aes(x, y, color = destribution))+
+  geom_line()+
+  geom_vline(xintercept = qbeta(0.025, alpha_2, beta_2), linetype = 2)+
+  geom_vline(xintercept = qbeta(0.975, alpha_2, beta_2), linetype = 2)+
+  theme_bw()
+
+```
 
