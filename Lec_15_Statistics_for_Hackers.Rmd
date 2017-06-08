@@ -193,7 +193,7 @@ shuffle.diff %>%
 
 Calculate 95% confidence interval for mean [s] duration variable for heterosexual speakers from our orientation set.
 
-95% CI formula again: $mean \pm 1.96\frac{standard\ deviation}{number\ of\ observation}$
+95% CI formula again: $mean \pm 1.96\frac{standard\ deviation}{\sqrt{number\ of\ observation}}$
 
 ```{r}
 homo <- read.csv("http://goo.gl/Zjr9aF")

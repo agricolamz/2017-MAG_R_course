@@ -337,7 +337,7 @@ df</code></pre></div>
 <div id="bootstrapping" class="slide section level3">
 <h1>4. bootstrapping</h1>
 <p>Calculate 95% confidence interval for mean [s] duration variable for heterosexual speakers from our orientation set.</p>
-<p>95% CI formula again: <span class="math inline">\(mean \pm 1.96\frac{standard\ deviation}{number\ of\ observation}\)</span></p>
+<p>95% CI formula again: <span class="math inline">\(mean \pm 1.96\frac{standard\ deviation}{\sqrt{number\ of\ observation}}\)</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://goo.gl/Zjr9aF&quot;</span>)
 homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(orientation) %&gt;%
