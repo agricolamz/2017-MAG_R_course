@@ -205,5 +205,24 @@ homo %>%
 
 Simulate the distribution by drawing samples with replacement.
 
+```{r, cache=TRUE}
+library(bootstrap)
+
+data <- homo[homo$orientation == "homo", "s.duration.ms"]
+
+set.seed(42)
+boot_mean <- bootstrap(data, nboot = 1000, theta = mean)
+boot_mean$thetastar %>% 
+  data.frame(data = .) %>% 
+  ggplot(aes(data))+
+  geom_density(fill = "lightblue")+
+  geom_vline(xintercept = mean(data), linetype = 2)+
+  theme_bw()
+
+boot_mean$thetastar %>% 
+  data.frame(data = .) %>% 
+  summarise(mean = mean(data),
+            CI = 1.96*sd(data)/sqrt(length(data)))
+```
 
 

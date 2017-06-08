@@ -367,6 +367,39 @@ homo %&gt;%<span class="st"> </span>
 </table>
 </div>
 <p>Simulate the distribution by drawing samples with replacement.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(bootstrap)
+
+data &lt;-<span class="st"> </span>homo[homo$orientation ==<span class="st"> &quot;homo&quot;</span>, <span class="st">&quot;s.duration.ms&quot;</span>]
+
+<span class="kw">set.seed</span>(<span class="dv">42</span>)
+boot_mean &lt;-<span class="st"> </span><span class="kw">bootstrap</span>(data, <span class="dt">nboot =</span> <span class="dv">1000</span>, <span class="dt">theta =</span> mean)
+boot_mean$thetastar %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">data =</span> .) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(data))+
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">mean</span>(data), <span class="dt">linetype =</span> <span class="dv">2</span>)+
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="Lec_15_Statistics_for_Hackers_files/figure-slidy/unnamed-chunk-12-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">boot_mean$thetastar %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">data =</span> .) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(data),
+            <span class="dt">CI =</span> <span class="fl">1.96</span>*<span class="kw">sd</span>(data)/<span class="kw">sqrt</span>(<span class="kw">length</span>(data)))</code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">mean</th>
+<th align="right">CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">63.86911</td>
+<td align="right">0.1552162</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
