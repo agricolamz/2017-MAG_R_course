@@ -34,9 +34,5 @@ navbar:
         text: "Lab 14"
       - href: Lab_15.html
         text: "Lab 15"
-      - href: Lab_16.html
-        text: "Lab 16"
-      - href: Lab_17.html
-        text: "Lab 17"
   title: ""
 output_dir: docs

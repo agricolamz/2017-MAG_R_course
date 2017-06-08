@@ -4,7 +4,6 @@ title: "Data manipulation and visualization"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
-library(tidyverse)
 ```
 
 ### dplyr
@@ -12,7 +11,8 @@ library(tidyverse)
 Data frame "flights"
 ```{r}
 # install.packages("nycflights13")
-library(nycflights13, tidyverse)
+library(nycflights13)
+library(tidyverse)
 head(flights)
 dim(flights)
 ```

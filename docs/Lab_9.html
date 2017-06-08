@@ -227,12 +227,6 @@ $(document).ready(function () {
     <li>
       <a href="Lab_15.html">Lab 15</a>
     </li>
-    <li>
-      <a href="Lab_16.html">Lab 16</a>
-    </li>
-    <li>
-      <a href="Lab_17.html">Lab 17</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -322,17 +316,18 @@ new.df %&gt;%
 <pre><code>## Source: local data frame [32 x 4]
 ## Groups: word, position, group [32]
 ## 
+## # A tibble: 32 x 4
 ##      word position  group prediction
 ##    &lt;fctr&gt;   &lt;fctr&gt; &lt;fctr&gt;      &lt;dbl&gt;
-## 1  бесчин   strong  third  0.5335434
-## 2    злор   strong  third  0.5335434
-## 3   попеч   strong  third  0.5335434
-## 4    чувс   strong  third  0.5335434
-## 5    шефс   strong  third  0.5335434
-## 6  бесчин     weak  third  0.7438196
-## 7    злор     weak  third  0.7438196
-## 8   попеч     weak  third  0.7438196
-## 9    чувс     weak  third  0.7438196
+##  1 бесчин   strong  third  0.5335434
+##  2   злор   strong  third  0.5335434
+##  3  попеч   strong  third  0.5335434
+##  4   чувс   strong  third  0.5335434
+##  5   шефс   strong  third  0.5335434
+##  6 бесчин     weak  third  0.7438196
+##  7   злор     weak  third  0.7438196
+##  8  попеч     weak  third  0.7438196
+##  9   чувс     weak  third  0.7438196
 ## 10   шефс     weak  third  0.7438196
 ## # ... with 22 more rows</code></pre>
 <pre class="r"><code>new.df %&gt;% 
@@ -340,17 +335,18 @@ new.df %&gt;%
 <pre><code>## Source: local data frame [32 x 4]
 ## Groups: word, position, group [32]
 ## 
+## # A tibble: 32 x 4
 ##      word position  group prediction
 ##    &lt;fctr&gt;   &lt;fctr&gt; &lt;fctr&gt;      &lt;dbl&gt;
-## 1  бесчин     weak  first  0.9938457
-## 2    злор     weak  first  0.9938457
-## 3   попеч     weak  first  0.9938457
-## 4    чувс     weak  first  0.9938457
-## 5    шест     weak  first  0.9938457
-## 6    шефс     weak  first  0.9938457
-## 7  бесчин   strong  first  0.9845243
-## 8    злор   strong  first  0.9845243
-## 9   попеч   strong  first  0.9845243
+##  1 бесчин     weak  first  0.9938457
+##  2   злор     weak  first  0.9938457
+##  3  попеч     weak  first  0.9938457
+##  4   чувс     weak  first  0.9938457
+##  5   шест     weak  first  0.9938457
+##  6   шефс     weak  first  0.9938457
+##  7 бесчин   strong  first  0.9845243
+##  8   злор   strong  first  0.9845243
+##  9  попеч   strong  first  0.9845243
 ## 10   чувс   strong  first  0.9845243
 ## # ... with 22 more rows</code></pre>
 <div id="section-1" class="section level3">
@@ -422,7 +418,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

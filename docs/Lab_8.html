@@ -227,12 +227,6 @@ $(document).ready(function () {
     <li>
       <a href="Lab_15.html">Lab 15</a>
     </li>
-    <li>
-      <a href="Lab_16.html">Lab 16</a>
-    </li>
-    <li>
-      <a href="Lab_17.html">Lab 17</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -269,7 +263,7 @@ df %&gt;%
 <pre class="r"><code>df %&gt;% 
   group_by(ejectives) %&gt;% 
   summarise(mean(n.cons.lapsyd))</code></pre>
-<pre><code>## # A tibble: 2 × 2
+<pre><code>## # A tibble: 2 x 2
 ##   ejectives `mean(n.cons.lapsyd)`
 ##      &lt;fctr&gt;                 &lt;dbl&gt;
 ## 1        no              19.05882
@@ -324,7 +318,7 @@ summary(fit)</code></pre>
 <pre class="r"><code>df %&gt;% 
   group_by(place) %&gt;% 
   summarise(mean(vowel.dur))</code></pre>
-<pre><code>## # A tibble: 3 × 2
+<pre><code>## # A tibble: 3 x 2
 ##     place `mean(vowel.dur)`
 ##    &lt;fctr&gt;             &lt;dbl&gt;
 ## 1 coronal          91.00207
@@ -383,7 +377,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -227,12 +227,6 @@ $(document).ready(function () {
     <li>
       <a href="Lab_15.html">Lab 15</a>
     </li>
-    <li>
-      <a href="Lab_16.html">Lab 16</a>
-    </li>
-    <li>
-      <a href="Lab_17.html">Lab 17</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -252,7 +246,9 @@ $(document).ready(function () {
 </div>
 
 
-<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&amp;w=1">Link to tasks</a></p>
+<div id="assignment-link" class="section level3">
+<h3><a href="https://docs.google.com/forms/d/e/1FAIpQLSdoAvNkatvJbMR2srszxKo66vMKLxVcu3EmAYXDr7XEUo4URQ/viewform?c=0&amp;w=1">Assignment link</a></h3>
+</div>
 <div id="and-1.2" class="section level3">
 <h3>1.1 and 1.2</h3>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
@@ -262,7 +258,7 @@ homo %&gt;%
   group_by(orientation) %&gt;%
   summarise(mean = mean(s.duration.ms),
             CI = 1.96*sd(s.duration.ms)/sqrt(length(s.duration.ms)))</code></pre>
-<pre><code>## # A tibble: 2 × 3
+<pre><code>## # A tibble: 2 x 3
 ##   orientation     mean       CI
 ##        &lt;fctr&gt;    &lt;dbl&gt;    &lt;dbl&gt;
 ## 1      hetero 58.46571 5.299922
@@ -384,7 +380,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
