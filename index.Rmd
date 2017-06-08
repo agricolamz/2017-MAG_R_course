@@ -72,7 +72,6 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (25.05.2017) [Lab 13: PCA, MCA](https://goo.gl/forms/YwGQRaIxYffhdpLW2), [Assignment link](https://goo.gl/forms/YwGQRaIxYffhdpLW2)
 * (27.05.2017) lecture
 * (27.05.2017) [Lab 13: PCA, MCA](https://goo.gl/forms/YwGQRaIxYffhdpLW2), [Assignment link](https://goo.gl/forms/YwGQRaIxYffhdpLW2)
-* (..2017) [Lab ... (Shafling, Bootstrap)](https://agricolamz.github.io/2017-MAG_R_course/Lab_13.html).
 
 ### 14. Empirical Bayes
 
@@ -82,7 +81,7 @@ title: "Linguistic data: quantitative analysis and visualisation"
 ### 15. Statistics for Hackers
 
 * (8.06.2017) [lecture](https://goo.gl/Uf5BYc)
-* (8.06.2017) [Lab 15](https://agricolamz.github.io/2017-MAG_R_course/Lab_15.html), [Assignment link]()
+* (8.06.2017) [Lab 15](https://agricolamz.github.io/2017-MAG_R_course/Lab_15.html), [Assignment link](https://goo.gl/yYXc72)
 
 
 ### Textbooks

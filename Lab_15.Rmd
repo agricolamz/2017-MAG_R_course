@@ -6,7 +6,7 @@ title: "Lab 15"
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, include = FALSE)
 ```
 
-### [Assignment link](https://goo.gl/QwjvZn)
+### [Assignment link](https://goo.gl/yYXc72)
 
 ```{r}
 library(tidyverse)
