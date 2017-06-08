@@ -1,5 +1,6 @@
 ---
 title: "Statistics for Hackers"
+subtitle: "(after Jake VanderPlas 2016)"
 date: 08.06.2017
 font-family: 'Brill'
 transition: none
@@ -10,194 +11,199 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
 ```
 
 ```{r, include=FALSE}
 library(tidyverse)
-library(ggfortify)
 ```
 
-### 1. Main problem
-Sometimes you have a huge amount of variables. So, to make your data profitable you need to reduce number of variables saving without losing the precious information. 
+### 1. Types of statistics
 
-* Principal component analysis (PCA)
-* Linear discriminant analysis (LDA)
-* Multidimensional scaling (MDS)
-* ...
+Saying popularized by Mark Twain:
 
-### 2. Data
-I will use a dataset from [Huttenlocher, Vasilyeva, Cymerman, Levine 2002]. Authors analysed 46 pairs of mothers and children (aged from 47 to 59 months, mean age -- 54). They recorded and trinscribed 2 hours from each child per day. During the study they collected number of noun phrases per utterance in mother speech to the number of noun phrases per utterance in child speech.
-```{r}
-df <- read.csv("http://goo.gl/Qo3Yy2")
+> There are three kinds of lies: lies, damned lies, and statistics.
 
-df %>%
-  ggplot(aes(mother, child))+
-  geom_point(color = "darkgreen", size = 3)+
-  stat_ellipse(linetype=2)+
+* Frequentism
+* Bayesianism
+* Hackers' approach
+
+### 2. Simulation
+
+Whether a coin is fair: 27 heads and 13 tails
+
+The probability of obtaining h heads in n tosses of a coin with a probability of heads equal to p is given by the binomial distribution:
+
+$$P(H = h|p, n) = \binom{n}{h}\times p^h\times(1-p)^{1-h}$$
+
+*Frequentist*: binomial test
+
+* H$_0$ coin is fair
+* α = 0.05
+
+```{r, echo = FALSE}
+h <- 1:40
+data.frame(h = h, 
+           p = dbinom(x = h, size = 40, prob = 0.5)) %>% 
+  ggplot(aes(h, p))+
+  geom_line()+
+  geom_area(aes(x = ifelse(h>=qbinom(0.025, 40, 0.5) &
+                           h<=qbinom(0.975, 40, 0.5), h, NA)), fill = "lightblue")+
+  geom_vline(xintercept = 27, linetype = 2)+
+  scale_x_continuous(breaks = c(0:4*10, 27))+
   theme_bw()
 ```
 
-### 3. PCA
-PCA is essentially a rotation of the coordinate axes, chosen such that each successful axis captures as much variance as possible. We can reduce 2 dementions to one using a regression:
+So we can reject H$_0$ on p < 0.05.
+
+*Hacker*: simulation
+
+* Just simulate it!
+
+```{r, cache= TRUE}
+library(mosaic)
+set.seed(42)
+do(1000)*
+  sum(sample(0:1, 40, replace = T)) ->
+  simulations
+```
 
 ```{r}
-fit <- lm(child~mother, data = df)
-df$model <- predict(fit)
+simulations %>% 
+  mutate(greater = sum >= 27) %>% 
+  group_by(greater) %>% 
+  summarise(number = n())
 
-df %>%
-  ggplot(aes(mother, child))+
-  geom_line(aes(mother, model), color = "blue")+
-  geom_point(color = "darkgreen", size = 3)+
-  stat_ellipse(linetype=2)+
+simulations %>% 
+  ggplot(aes(sum))+
+  geom_density()+
+  geom_vline(xintercept = 27, linetype = 2)+
   theme_bw()
 ```
 
-We used regression for predicting value of one variable by another variable.
+So we can reject H$_0$ on p < 0.03.
+
+### 3. Shuffling
 
 ```{r}
+rus_est <- read.csv("https://goo.gl/11qut0")
 
-df %>%
- ggplot(aes(mother, child))+
-stat_ellipse(linetype=2)+
-geom_segment(aes(x=min(mother), y=1.8, xend=2, yend=1.8), size=0.5, color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-geom_segment(aes(x=2, y=min(child), xend=2, yend=1.8), size=0.5, color = "red", arrow =  arrow(angle = 10, type = "closed"))+
-geom_line(aes(mother, model), color = "blue")+
-geom_point(color = "darkgreen", size = 3)+
-scale_y_continuous(breaks = c(1.2, 1.4, 1.6, 1.8, 2.0))+
- theme_bw()+
-theme(axis.text.x = element_text(color=c("black", "black", "black", "red", "black"), size=c(9, 9, 9, 14, 9)),
-      axis.text.y = element_text(color=c("black", "black", "black", "red", "black", "black"), size=c(9, 9, 9, 14, 9, 9)))
+rus_est %>% 
+  group_by(language) %>% 
+  summarise(mean = mean(speech_rate))
+
+rus_est %>% 
+  ggplot(aes(speech_rate, fill = language, color = language))+
+  geom_density(alpha = 0.4)+
+  geom_rug()+
+  theme_bw()
 ```
 
-In PCA we change coordinate system and start predicting variables' values using less variables.
+Is this difference of 0.549683 statistically significant?
+
+* mean speech rate for russians: 5.382458
+* mean speech rate for estonians: 4.826735
+* difference: 0.555723
+
+*Frequentist*: Two-sample t-test
+
+* H$_0$ Difference is not statistically significant.
+* α = 0.05
+* Welch's t-statistics
+
+$$t = \frac{\mu_A - \mu_B}{\sqrt{\frac{var_A}{n_A}+\frac{var_B}{n_B}}}$$
+
+$\mu$ -- mean of each group
+
+$var$ -- variance estimation
+
+$n$ -- number of observation in each group
 
 ```{r}
-df <- read.csv("http://goo.gl/Qo3Yy2")
-pca <- prcomp(df)
-PC1 <- data.frame(t(t(matrix(c(seq(-1, 1, by = 0.1), rep(0, 41)), ncol = 2) %*% t(pca$rotation)) + pca$center))
- 
-df %>%
-  ggplot(aes(mother, child))+
-  stat_ellipse(linetype=2)+
-  geom_segment(aes(x=1, y=1.9, xend=2, yend=1.9), size=0.5, color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_segment(aes(x=2, y=1, xend=2, yend=1.9), size=0.5, color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_line(data = PC1, aes(mother, child), color = "blue", arrow =  arrow(angle = 10, type = "closed"))+
-  geom_point(color = "darkgreen", size = 3)+
-  scale_y_continuous(breaks = c(1.2, 1.6, 1.9, 2.0))+
-  theme_bw()+
-  theme(axis.text.x = element_text(
-    color=c("black", "black", "red", "black"),
-    size=c(9, 9, 14, 9)),
-    axis.text.y = element_text(
-      color=c("black", "black", "red", "black"),
-      size=c(9, 9, 14, 9)))+
-  annotate("text", x = 2.38, y = 2.3, label = "PC1")
+t <- t.test(rus_est[rus_est$language == "russian", ]$speech_rate,
+       rus_est[rus_est$language == "estonian", ]$speech_rate)
+
+t.value <- t$statistic
+t.value
 ```
 
-So the blue line is *the first Princple Component* (and it is NOT a regression line). The number of the PCs is always equal to the number of variables. So we can draw the second PC:
+
+* find the degrees of freedom
+
+$$d.f. = \frac{(var_A/n_A+var_B/n_B)^2}{\frac{var_A/n_A^2}{n_A-1}+\frac{var_B/n_B^2}{n_B-1}}$$
 
 ```{r}
-PC2 <- data.frame(t(t(matrix(c(rep(0, 41), seq(-0.7, 0.7, by = 0.1)), ncol = 2) %*% t(pca$rotation)) + pca$center))
+t <- t.test(rus_est[rus_est$language == "russian", ]$speech_rate,
+       rus_est[rus_est$language == "estonian", ]$speech_rate)
 
-df %>%
-  ggplot(aes(mother, child))+
-  stat_ellipse(linetype=2)+
-  geom_line(data = PC1, aes(mother, child), color = "blue", arrow =  arrow(angle = 10, type = "closed"))+
-  geom_line(data = PC2, aes(mother, child), color = "blue", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_segment(aes(x=1, y=1.9, xend=2, yend=1.9), size=0.5, color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_segment(aes(x=2, y=1, xend=2, yend=1.9), size=0.5, color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_point(color = "darkgreen", size = 3)+
-  scale_y_continuous(breaks = c(1.2, 1.6, 1.9, 2.0))+
-  theme_bw()+
-  theme(axis.text.x = element_text(color=c("black", "black", "red", "black"), 
-    size=c(9, 9, 14, 9)),
-    axis.text.y = element_text(color=c("black", "black", "red", "black"),
-      size=c(9, 9, 14, 9)))+
-  annotate("text", x = 2.38, y = 2.3, label = "PC1")+
-  annotate("text", x = 1.39, y = 2.15, label = "PC2")
+df <- t$parameter
+df
 ```
-
-So the main point of PCA is that if cumulative proportion of explained variance is high we can drop some PCs. So, we need know the following things:
-
-* What is the cumulative proportion of explained variance?
-```{r, echo = TRUE}
-summary(prcomp(df))
-```
-
-So, PC1 explains only 78.9% of the variance in our data.
-
-* How PCs are rotated comparing to the old axes?
-```{r, echo = TRUE}
-df <- read.csv("http://goo.gl/Qo3Yy2")
-prcomp(df)
-```
-
-So the formula for the first component rotation is
-$$PC1 = 0.6724959 \times child + 0.7401009  \times mother$$
-The formula for the second component rotation is
-$$PC2 = -0.7401009 \times child + 0.6724959  \times mother$$
-
-From now we can change the axes:
 
 ```{r}
-df.scaled <- scale(df, center = TRUE, scale = TRUE)
-res.cor <- cor(df.scaled)
-res.eig <- eigen(res.cor)
-eigenvectors.t <- t(res.eig$vectors)
-df.scaled.t <- t(df.scaled)
-df.new <- eigenvectors.t %*% df.scaled.t
-df.new <- t(df.new)
-colnames(df.new) <- c("PC1", "PC2")
-df.new <- data.frame(df.new)
-horisontal_line <- data.frame(predict(pca, data.frame(mother = seq(1, 2, by = 0.1), child = rep(1.9, 11))))
-vertical_line <- data.frame(predict(pca, data.frame(mother = rep(2.0, 10), child = seq(1, 1.9, by = 0.1))))
-x_line <- data.frame(predict(pca, data.frame(mother = seq(0, 2, by = 0.1), child = rep(0, 21))))
-y_line <- data.frame(predict(pca, data.frame(mother = rep(0, 21), child = seq(0, 2, by = 0.1))))
+x <- seq(0, 5, 0.1)
 
-df.new %>% 
-  ggplot(aes(PC1, PC2))+
-  geom_point()+
-  stat_ellipse(linetype=2)+
-  geom_line(data = horisontal_line, aes(PC1, PC2), color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_line(data = vertical_line, aes(PC1, PC2), color = "red", arrow =  arrow(angle = 10, type = "closed", ends = "first"))+
-  geom_line(data = x_line, aes(PC1, PC2), color = "blue", arrow =  arrow(angle = 10, type = "closed"))+
-  geom_line(data = y_line, aes(PC1, PC2), color = "blue", arrow =  arrow(angle = 10, type = "closed"))+
-  theme_bw()+
-  annotate("text", x = -1.1, y = -1.15, label = "child")+
-  annotate("text", x = -1.3, y = 1.4, label = "mother")
+data.frame(x, y = dt(x = x, df = df)) %>% 
+  ggplot(aes(x, y))+
+  geom_line()+
+  geom_area(aes(x = ifelse(x>=qt(0.975, df), x, NA)), fill = "lightblue")+
+  geom_vline(xintercept = t.value, linetype = 2)+
+  theme_bw()
 ```
 
-The `autoplot()` function from `ggfortify` package produces nearly the same graph:
+So there is `r 1 - pt(t.value, df)` probability to see this or more extreme result giving H$_0$ is true.
+
+*Hacker*: shuffling
+
+If the language really don’t matter, then switching them shouldn’t change the result.
+
+```{r, cache=TRUE}
+set.seed(42)
+do(1000) *
+  (rus_est %>%
+     mutate(speech_rate = shuffle(speech_rate)) %>%
+     group_by(language) %>%
+     summarize(mean_value = mean(speech_rate))) ->  
+  many.shuffles
+tail(many.shuffles)
+```
+
+Calculate the difference:
 ```{r}
-autoplot(pca,
-         loadings = TRUE,
-         loadings.label = TRUE)+
-  theme_bw()+
-  stat_ellipse(linetype=2)
-  
+many.shuffles %>% 
+  group_by(.index) %>% 
+  summarise(diff = diff(mean_value)) ->
+  shuffle.diff
+tail(shuffle.diff)
+
+shuffle.diff %>% 
+  mutate(greater = diff >= 0.555723) %>% 
+  group_by(greater) %>% 
+  summarise(number = n())
+
+shuffle.diff %>% 
+  ggplot(aes(x = diff)) +
+    geom_density(fill = "lightblue")+
+    geom_rug()+
+  geom_vline(xintercept = 0.555723, linetype = 2)+
+  theme_bw()
 ```
 
-Summary:
+### 4. Bootstraping
 
-* If the cumulative proportion of explained variance for some PCs is high, we can change coordinate system and start predicting variables' values using less variables.
-* We can even make a regresion or clusterisation model.
-* PCA for categorical variables is called Multiple correspondence analysis (MCA)
+Calculate 95% confidence interval for mean [s] duration variable for heterosexual speakers from our orientation set.
 
-### R functions
+95% CI formula again: $mean \pm 1.96\frac{standard\ deviation}{number\ of\ observation}$
 
-There are several functions for PCA, MCA and their visualisation.
+```{r}
+homo <- read.csv("http://goo.gl/Zjr9aF")
+homo %>% 
+  group_by(orientation) %>%
+  summarise(mean = mean(s.duration.ms),
+            CI = 1.96*sd(s.duration.ms)/sqrt(length(s.duration.ms)))
+```
 
-* PCA: prcomp()
-* PCA: princomp()
-* PCA: FactoMineR::PCA()
-* PCA: ade4::dudi.pca()
-* PCA: amap::acp()
-* PCA visualisation: ggfortify::autoplot
-* MCA: FactoMineR::MCA()
-* MCA: MASS::mca()
-* MCA: ade::dudi.acm()
-* MCA: ca::mjca()
-* MCA: homals::homals()
+Simulate the distribution by drawing samples with replacement.
+
 
 
