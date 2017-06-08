@@ -48,7 +48,7 @@ data.frame(h = h,
   ggplot(aes(h, p))+
   geom_line()+
   geom_area(aes(x = ifelse(h>=qbinom(0.025, 40, 0.5) &
-                           h<=qbinom(0.975, 40, 0.5), h, NA)), fill = "lightblue")+
+                           h<=qbinom(0.975, 40, 0.5), h, NA)), fill = "darkgreen")+
   geom_vline(xintercept = 27, linetype = 2)+
   scale_x_continuous(breaks = c(0:4*10, 27))+
   theme_bw()
@@ -81,8 +81,6 @@ simulations %>%
   theme_bw()
 ```
 
-So we can reject H$_0$ on p < 0.03.
-
 ### 3. Shuffling
 
 ```{r}
@@ -94,7 +92,7 @@ rus_est %>%
 
 rus_est %>% 
   ggplot(aes(speech_rate, fill = language, color = language))+
-  geom_density(alpha = 0.4)+
+  geom_density(alpha = 0.9)+
   geom_rug()+
   theme_bw()
 ```
@@ -146,7 +144,7 @@ x <- seq(0, 5, 0.1)
 data.frame(x, y = dt(x = x, df = df)) %>% 
   ggplot(aes(x, y))+
   geom_line()+
-  geom_area(aes(x = ifelse(x>=qt(0.975, df), x, NA)), fill = "lightblue")+
+  geom_area(aes(x = ifelse(x>=qt(0.975, df), x, NA)), fill = "darkgreen")+
   geom_vline(xintercept = t.value, linetype = 2)+
   theme_bw()
 ```
@@ -183,7 +181,7 @@ shuffle.diff %>%
 
 shuffle.diff %>% 
   ggplot(aes(x = diff)) +
-    geom_density(fill = "lightblue")+
+    geom_density(fill = "darkgreen")+
     geom_rug()+
   geom_vline(xintercept = 0.555723, linetype = 2)+
   theme_bw()
@@ -215,7 +213,7 @@ boot_mean <- bootstrap(data, nboot = 1000, theta = mean)
 boot_mean$thetastar %>% 
   data.frame(data = .) %>% 
   ggplot(aes(data))+
-  geom_density(fill = "lightblue")+
+  geom_density(fill = "darkgreen")+
   geom_vline(xintercept = mean(data), linetype = 2)+
   theme_bw()
 

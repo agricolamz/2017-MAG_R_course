@@ -121,7 +121,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">27</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="Lec_15_Statistics_for_Hackers_files/figure-slidy/unnamed-chunk-4-1.png" width="768" /></p>
-<p>So we can reject H<span class="math inline">\(_0\)</span> on p &lt; 0.03.</p>
 </div>
 <div id="shuffling" class="slide section level3">
 <h1>3. Shuffling</h1>
@@ -152,7 +151,7 @@ rus_est %&gt;%<span class="st"> </span>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rus_est %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speech_rate, <span class="dt">fill =</span> language, <span class="dt">color =</span> language))+
-<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.4</span>)+
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.9</span>)+
 <span class="st">  </span><span class="kw">geom_rug</span>()+
 <span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="Lec_15_Statistics_for_Hackers_files/figure-slidy/unnamed-chunk-5-1.png" width="768" /></p>
@@ -195,7 +194,7 @@ df</code></pre></div>
 <span class="kw">data.frame</span>(x, <span class="dt">y =</span> <span class="kw">dt</span>(<span class="dt">x =</span> x, <span class="dt">df =</span> df)) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, y))+
 <span class="st">  </span><span class="kw">geom_line</span>()+
-<span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">ifelse</span>(x&gt;=<span class="kw">qt</span>(<span class="fl">0.975</span>, df), x, <span class="ot">NA</span>)), <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">ifelse</span>(x&gt;=<span class="kw">qt</span>(<span class="fl">0.975</span>, df), x, <span class="ot">NA</span>)), <span class="dt">fill =</span> <span class="st">&quot;darkgreen&quot;</span>)+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> t.value, <span class="dt">linetype =</span> <span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="Lec_15_Statistics_for_Hackers_files/figure-slidy/unnamed-chunk-8-1.png" width="768" /></p>
@@ -328,7 +327,7 @@ df</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shuffle.diff %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> diff)) +
-<span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)+
+<span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;darkgreen&quot;</span>)+
 <span class="st">    </span><span class="kw">geom_rug</span>()+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="fl">0.555723</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
@@ -376,7 +375,7 @@ boot_mean &lt;-<span class="st"> </span><span class="kw">bootstrap</span>(data, 
 boot_mean$thetastar %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">data.frame</span>(<span class="dt">data =</span> .) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(data))+
-<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;darkgreen&quot;</span>)+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">mean</span>(data), <span class="dt">linetype =</span> <span class="dv">2</span>)+
 <span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="Lec_15_Statistics_for_Hackers_files/figure-slidy/unnamed-chunk-12-1.png" width="768" /></p>

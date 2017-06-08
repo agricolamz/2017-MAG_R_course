@@ -248,6 +248,86 @@ $(document).ready(function () {
 
 <div id="assignment-link" class="section level3">
 <h3><a href="https://goo.gl/yYXc72">Assignment link</a></h3>
+<pre class="r"><code>library(tidyverse)
+df &lt;- read.csv(&quot;https://goo.gl/7gIjvK&quot;)
+
+df %&gt;%
+filter(aspiration == &quot;yes&quot;,speaker == &quot;tt01&quot;) %&gt;%
+select(vowel.dur) -&gt;
+asp_vowel_duration
+
+library(bootstrap)
+set.seed(42)
+bootsraped_1 &lt;- bootstrap(asp_vowel_duration$vowel.dur,
+                          nboot = 1000,
+                          theta = mean)
+str(bootsraped_1)</code></pre>
+<pre><code>## List of 5
+##  $ thetastar     : num [1:1000] 77.8 81.3 79.9 75.5 77.5 ...
+##  $ func.thetastar: NULL
+##  $ jack.boot.val : NULL
+##  $ jack.boot.se  : NULL
+##  $ call          : language bootstrap(x = asp_vowel_duration$vowel.dur, nboot = 1000, theta = mean)</code></pre>
+<pre class="r"><code>bootsraped_2 &lt;- bootstrap(asp_vowel_duration$vowel.dur,
+                          nboot = 1000,
+                          theta = sd)
+str(bootsraped_2)</code></pre>
+<pre><code>## List of 5
+##  $ thetastar     : num [1:1000] 16.9 15.3 14.6 17.2 21.1 ...
+##  $ func.thetastar: NULL
+##  $ jack.boot.val : NULL
+##  $ jack.boot.se  : NULL
+##  $ call          : language bootstrap(x = asp_vowel_duration$vowel.dur, nboot = 1000, theta = sd)</code></pre>
+<pre class="r"><code>trimed_mean &lt;- function(x){
+  q &lt;- quantile(x, probs = c(0.05, 0.95))
+  x &lt;- x[x &gt; q[1] &amp; x &lt; q[2]]
+  mean(x)
+}
+
+set.seed(42)
+bootsraped_3 &lt;- bootstrap(asp_vowel_duration$vowel.dur,
+nboot = 1000,
+theta = trimed_mean)
+str(bootsraped_3)</code></pre>
+<pre><code>## List of 5
+##  $ thetastar     : num [1:1000] 77 80.9 80.5 75.4 77.4 ...
+##  $ func.thetastar: NULL
+##  $ jack.boot.val : NULL
+##  $ jack.boot.se  : NULL
+##  $ call          : language bootstrap(x = asp_vowel_duration$vowel.dur, nboot = 1000, theta = trimed_mean)</code></pre>
+<pre class="r"><code>df %&gt;%
+  filter(speaker == &quot;tt01&quot;) %&gt;%
+  select(vowel.dur, aspiration) -&gt;
+  vowel_duration
+
+library(mosaic)
+
+set.seed(42)
+do(1000) * (
+  vowel_duration %&gt;%
+    mutate(vowel.dur = shuffle(vowel.dur)) %&gt;%
+    group_by(aspiration) %&gt;%
+    summarise(mean_value = mean(vowel.dur))) -&gt;
+  many.shuffles
+
+tail(many.shuffles)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   aspiration mean_value  .row .index
+##       &lt;fctr&gt;      &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;
+## 1         no   91.08676     1    998
+## 2        yes   87.66137     2    998
+## 3         no   88.88635     1    999
+## 4        yes   89.83677     2    999
+## 5         no   90.55649     1   1000
+## 6        yes   88.18561     2   1000</code></pre>
+<pre class="r"><code>many.shuffles %&gt;%
+  ggplot(aes(mean_value, color = aspiration))+
+  geom_density(alpha = 0.5)</code></pre>
+<p><img src="Lab_15_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>many.shuffles %&gt;%
+  ggplot(aes(mean_value))+
+  geom_histogram()</code></pre>
+<p><img src="Lab_15_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
 </div>
 
 
