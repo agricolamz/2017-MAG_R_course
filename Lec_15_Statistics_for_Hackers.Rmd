@@ -189,7 +189,7 @@ shuffle.diff %>%
   theme_bw()
 ```
 
-### 4. Bootstraping
+### 4. bootstrapping
 
 Calculate 95% confidence interval for mean [s] duration variable for heterosexual speakers from our orientation set.
 
