@@ -83,6 +83,7 @@ title: "Linguistic data: quantitative analysis and visualisation"
 * (8.06.2017) [lecture](https://goo.gl/Uf5BYc)
 * (8.06.2017) [Lab 15](https://agricolamz.github.io/2017-MAG_R_course/Lab_15.html), [Assignment link](https://goo.gl/yYXc72)
 
+### [Project presentation schedule](https://agricolamz.github.io/2017-MAG_R_course/Projects)
 
 ### Textbooks
 

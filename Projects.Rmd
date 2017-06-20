@@ -1,0 +1,36 @@
+---
+title: Schedule
+---
+
+### 1. Group (Room 517)
+
+* 16:00	Angelina Prisyazhnaya Тенденции выбора падежной формы в конструкциях типа "Фермер продал три овцы / трех овец"
+* 16:15 Михаил Садов, Сергей Михайлов Интерферирующее влияние итальянского языка на категорию рода заимствованных из него слов в русском языке
+* 16:30 Татьяна Шаврина Fake Account Detection on VKontakte
+* 16:45 Иван Левин Usage and semantics of seven Russian polysemic words (sociolinguistic and semantic aspects)
+* 17:00 Maria Grabovskaya The order of acquisition of spatial prepositions in Russian
+* 17:15 Анастасия Лопухина Generic - nongeneric utterances interpretation in healthy population and in population with aphasia
+* Break
+* 17:45 Sunigel Menes, Maxim Bode Regional Variability of the Stress: an Experimental Research
+* 18:00 Георгий Моисеев, Александр Наседкин Social Network writing style analysis
+* 18:15 Maria Sapozhnikova
+* 18:30 Ekaterina Gridneva, Ivan Sarkisov "Age differences in the using of English borrowings in German"
+* 18:45 Evgeniya Murzinova, Maria Yaroslavtseva Expressing Plurality in West Circassian
+* 19:00 Elizaveta Kuzmenko Attributive participial clauses in English and learner English
+* 19:15	Pablo Ramirez Rodriguez A Quantitative Analysis of Rival Forms
+
+### 2. Group (Room 509)
+
+* 16:30 Alexey Shelepov, Daria Lapenkova Мигнуть / подмигнуть usage
+* 16:45 Natalia Akutina. Russian multiverb constructions
+* 17:00 Vasilisa Zhigulskaya. Initial [n] in the third person pronouns in prepositional constructions in the dialect of Mikhalevskaya village
+* 17:15 Ira Pavlova. Drama Analysis
+* 17:30 Denis Arsentyev. The variability of number in Latin borrowings in the English language
+* 18:15 Ilya Chechuro, Polina Kasyanova. NO TITLE (Udi data)
+* 18:30 Соня Никифорова, Яна Курмачева. Распределение предлогов ПРО и О/ОБ в речи
+* 18:45 Daria Shershneva, Varvara Gutz. Pronunciation of the word “что” in Russian dialects.
+* 19:15 Kristina Bagdasaryan. NO TITLE (Russian Sentence corpus data)
+* 19:30 Kirill Milinzevich, Ivan Rodin. Barbarisms in the Russian web-discourse
+* 19:45 Вероника Данилова, Мария Пономарева. Партитивное использование формы генитива с местоимениями
+* 20:00 Matvey Kolbasov. Clustering genres of personal diaries
+* 20:15 Daria Bikina. Irregular gaps in the systems of indefinite pronouns based on interrogatives.
