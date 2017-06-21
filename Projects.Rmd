@@ -18,6 +18,7 @@ title: Schedule
 * 18:45 Evgeniya Murzinova, Maria Yaroslavtseva Expressing Plurality in West Circassian
 * 19:00 Elizaveta Kuzmenko Attributive participial clauses in English and learner English
 * 19:15	Pablo Ramirez Rodriguez A Quantitative Analysis of Rival Forms
+* 19:30 Айгуль Закирова The debitive nominalization in Moksha: a case of differential object marking
 
 ### 2. Group (Room 509)
 
@@ -34,3 +35,4 @@ title: Schedule
 * 19:45 Вероника Данилова, Мария Пономарева. Партитивное использование формы генитива с местоимениями
 * 20:00 Matvey Kolbasov. Clustering genres of personal diaries
 * 20:15 Daria Bikina. Irregular gaps in the systems of indefinite pronouns based on interrogatives.
+* 20:30 О. Шаповалова, А. Липунова.  "Гендерное распределение частот частей речи на материале устного корпуса НКРЯ"
