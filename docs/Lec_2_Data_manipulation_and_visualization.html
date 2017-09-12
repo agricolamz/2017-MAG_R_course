@@ -607,7 +607,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
 <pre><code>## [1] &#39;1.1.1&#39;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
-<pre><code>## [1] &#39;0.5.0&#39;</code></pre>
+<pre><code>## [1] &#39;0.7.2&#39;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">packageVersion</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
 <pre><code>## [1] &#39;2.2.1&#39;</code></pre>
 </div>
@@ -699,8 +699,8 @@ country_population</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inner_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
-<pre><code>## Warning in inner_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
-## factors with different levels, coercing to character vector</code></pre>
+<pre><code>## Warning: Column `countries` joining factors with different levels, coercing
+## to character vector</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -735,8 +735,8 @@ country_population</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">left_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
-<pre><code>## Warning in left_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
-## factors with different levels, coercing to character vector</code></pre>
+<pre><code>## Warning: Column `countries` joining factors with different levels, coercing
+## to character vector</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -777,8 +777,8 @@ country_population</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
-<pre><code>## Warning in right_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
-## factors with different levels, coercing to character vector</code></pre>
+<pre><code>## Warning: Column `countries` joining factors with different levels, coercing
+## to character vector</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -819,6 +819,8 @@ country_population</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>(languages, country_population)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning: Column `countries` joining factors with different levels, coercing
+## to character vector</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -839,6 +841,8 @@ country_population</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anti_join</span>(country_population, languages)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
+<pre><code>## Warning: Column `countries` joining factors with different levels, coercing
+## to character vector</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -857,8 +861,8 @@ country_population</code></pre></div>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(country_population, languages)</code></pre></div>
 <pre><code>## Joining, by = &quot;countries&quot;</code></pre>
-<pre><code>## Warning in full_join_impl(x, y, by$x, by$y, suffix$x, suffix$y): joining
-## factors with different levels, coercing to character vector</code></pre>
+<pre><code>## Warning: Column `countries` joining factors with different levels, coercing
+## to character vector</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -2667,62 +2671,62 @@ homo</code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="left">orientation</th>
 <th align="right">perceived.as.homo</th>
+<th align="left">orientation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">hetero</td>
 <td align="right">7</td>
+<td align="left">hetero</td>
 </tr>
 <tr class="even">
-<td align="left">hetero</td>
 <td align="right">20</td>
+<td align="left">hetero</td>
 </tr>
 <tr class="odd">
-<td align="left">homo</td>
 <td align="right">9</td>
+<td align="left">homo</td>
 </tr>
 <tr class="even">
-<td align="left">homo</td>
 <td align="right">15</td>
+<td align="left">homo</td>
 </tr>
 <tr class="odd">
-<td align="left">homo</td>
 <td align="right">10</td>
+<td align="left">homo</td>
 </tr>
 <tr class="even">
-<td align="left">homo</td>
 <td align="right">17</td>
+<td align="left">homo</td>
 </tr>
 <tr class="odd">
-<td align="left">hetero</td>
 <td align="right">21</td>
+<td align="left">hetero</td>
 </tr>
 <tr class="even">
-<td align="left">homo</td>
 <td align="right">20</td>
+<td align="left">homo</td>
 </tr>
 <tr class="odd">
-<td align="left">homo</td>
 <td align="right">8</td>
+<td align="left">homo</td>
 </tr>
 <tr class="even">
-<td align="left">homo</td>
 <td align="right">21</td>
+<td align="left">homo</td>
 </tr>
 <tr class="odd">
-<td align="left">hetero</td>
 <td align="right">8</td>
+<td align="left">hetero</td>
 </tr>
 <tr class="even">
-<td align="left">hetero</td>
 <td align="right">9</td>
+<td align="left">hetero</td>
 </tr>
 <tr class="odd">
-<td align="left">hetero</td>
 <td align="right">4</td>
+<td align="left">hetero</td>
 </tr>
 </tbody>
 </table>
@@ -4105,6 +4109,18 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">60</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
 <p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-75-1.png" width="768" /></p>
 </div>
+<div id="scaterplot-annotate" class="slide section level3">
+<h1>6.1.10 Scaterplot: annotate</h1>
+<p>The function <code>annotate</code> adds geoms to a plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms, vowel.duration.ms)) +
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;rect&quot;</span>, <span class="dt">xmin =</span> <span class="dv">77</span>, <span class="dt">xmax =</span> <span class="dv">79</span>,
+             <span class="dt">ymin =</span> <span class="dv">117</span>, <span class="dt">ymax =</span> <span class="dv">122</span>, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">78</span>, <span class="dt">y =</span> <span class="dv">125</span>,
+             <span class="dt">label =</span> <span class="st">&quot;Who is that?</span><span class="ch">\n</span><span class="st"> Outlier?&quot;</span>)</code></pre></div>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-76-1.png" width="768" /></p>
+</div>
 <div id="barplots-basics" class="slide section level3">
 <h1>6.2.1 Barplots: basics</h1>
 <p>There are two possible situations:</p>
@@ -4193,27 +4209,27 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(homo$orientation))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-78-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-79-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation)) +
 <span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-79-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
 <h4 id="aggregate-data">Aggregate data</h4>
 <ul>
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(homo$age, <span class="dt">names.arg =</span> homo$speaker)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-80-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-81-1.png" width="768" /></p>
 <ul>
 <li>dplyr, ggplot2</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, age)) +
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-81-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /></p>
 </div>
 <div id="barplots-color" class="slide section level3">
 <h1>6.2.2 Barplots: color</h1>
@@ -4222,11 +4238,11 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(homo$age, <span class="dt">names.arg =</span> homo$speaker,
   <span class="dt">col =</span> homo$orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-82-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, age, <span class="dt">fill =</span> orientation)) +
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-83-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /></p>
 </div>
 <div id="boxplots-basics" class="slide section level3">
 <h1>6.3.1 Boxplots: basics</h1>
@@ -4234,11 +4250,11 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-84-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-85-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /></p>
 </div>
 <div id="boxplots-points" class="slide section level3">
 <h1>6.3.2 Boxplots: points</h1>
@@ -4248,12 +4264,12 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)
 <span class="kw">stripchart</span>(homo$s.duration.ms ~<span class="st"> </span>homo$orientation,
   <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">vertical =</span> T, <span class="dt">add =</span> T)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-86-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>()+
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-87-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter" class="slide section level3">
 <h1>6.3.3 Boxplots: jitter</h1>
@@ -4263,12 +4279,12 @@ freq %&gt;%
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(homo$s.duration.ms~homo$orientation)
 <span class="kw">stripchart</span>(homo$s.duration.ms~homo$orientation,
   <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">vertical =</span> T, <span class="dt">add =</span> T, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-88-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-89-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_boxplot</span>() +
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-89-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-90-1.png" width="768" /></p>
 </div>
 <div id="boxplots-jitter-1" class="slide section level3">
 <h1>6.3.3 Boxplots: jitter</h1>
@@ -4280,7 +4296,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(orientation, s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_violin</span>() +
 <span class="st">  </span><span class="kw">geom_jitter</span>()</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-90-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-91-1.png" width="768" /></p>
 </div>
 <div id="preliminary-summary-two-variables" class="slide section level3">
 <h1>6. Preliminary summary: two variables</h1>
@@ -4295,7 +4311,7 @@ freq %&gt;%
          <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(newvr, newvar, <span class="dt">color =</span> newvar))+
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-91-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-92-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">newvar =</span> mpg &gt;<span class="st"> </span><span class="dv">22</span>,
          <span class="dt">newvr =</span> mpg &lt;<span class="st"> </span><span class="dv">17</span>) %&gt;%<span class="st"> </span>
@@ -4306,7 +4322,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_text</span>()+
 <span class="st">  </span><span class="kw">scale_size</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">30</span>))+
 <span class="st">  </span><span class="kw">guides</span>(<span class="dt">size =</span> F)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-91-2.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-92-2.png" width="768" /></p>
 </div>
 <div id="histogram-basics" class="slide section level3">
 <h1>6.6.1 Histogram: basics</h1>
@@ -4314,12 +4330,12 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-92-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-93-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-93-1.png" width="768" /> How many histogram bins do we need?</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-94-1.png" width="768" /> How many histogram bins do we need?</p>
 <ul>
 <li>[Sturgers 1926] <em>nclass.Sturges(adyghe$F1)</em></li>
 <li>[Scott 1979] <em>nclass.scott(adyghe$F1)</em></li>
@@ -4328,11 +4344,11 @@ freq %&gt;%
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms,
      <span class="dt">breaks =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-94-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-95-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="kw">nclass.FD</span>(homo$s.duration.ms))</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-95-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-96-1.png" width="768" /></p>
 </div>
 <div id="histogram-color" class="slide section level3">
 <h1>6.6.2 Histogram: color</h1>
@@ -4340,12 +4356,12 @@ freq %&gt;%
 <li>base R</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(homo$s.duration.ms, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-96-1.png" width="768" /> * dplyr, ggplot2</p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-97-1.png" width="768" /> * dplyr, ggplot2</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(s.duration.ms)) +
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-97-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-98-1.png" width="768" /></p>
 </div>
 <div id="facets" class="slide section level3">
 <h1>6.7 Facets</h1>
@@ -4355,19 +4371,19 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-98-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png" width="768" /></p>
 <p>You can see that there are all speakers on both graph, but only certain speakers have dot value. It is because by default scales of facets are equal.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-99-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-100-1.png" width="768" /></p>
 <p>It is possible to make only one scale “free”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-100-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-101-1.png" width="768" /></p>
 <h4 id="facet_grid"><code>facet_grid()</code></h4>
 <p>It is possible to facet using more then one variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
@@ -4375,20 +4391,20 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-101-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-102-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-102-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-103-1.png" width="768" /></p>
 <p>There is a nice argument <code>margins</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">older_then_28 =</span> <span class="kw">ifelse</span>(age &gt;<span class="st"> </span><span class="dv">28</span>, <span class="st">&quot;older&quot;</span>, <span class="st">&quot;younger&quot;</span>)) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_grid</span>(older_then_28~orientation, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>, <span class="dt">margins =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-103-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-104-1.png" width="768" /></p>
 <p>Sometimes it is nice to put your data in all facets:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">homo %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(speaker, s.duration.ms))+
@@ -4396,7 +4412,7 @@ freq %&gt;%
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> homo[,-<span class="dv">9</span>], <span class="kw">aes</span>(speaker, s.duration.ms), <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(~orientation)</code></pre></div>
-<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-104-1.png" width="768" /></p>
+<p><img src="Lec_2_Data_manipulation_and_visualization_files/figure-slidy/unnamed-chunk-105-1.png" width="768" /></p>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
@@ -4404,7 +4420,7 @@ freq %&gt;%
     (function () {
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
       document.getElementsByTagName("head")[0].appendChild(script);
     })();
   </script>

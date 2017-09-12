@@ -648,6 +648,19 @@ homo %>%
   geom_vline(xintercept = 60, color = "blue")
 ```
 
+### 6.1.10 Scaterplot: annotate
+The function `annotate` adds geoms to a plot.
+```{r}
+homo %>%
+  ggplot(aes(s.duration.ms, vowel.duration.ms)) +
+  geom_point()+
+  annotate(geom = "rect", xmin = 77, xmax = 79,
+             ymin = 117, ymax = 122, fill = "red", alpha = 0.2) + 
+  annotate(geom = "text", x = 78, y = 125,
+             label = "Who is that?\n Outlier?")
+```
+
+
 ### 6.2.1 Barplots: basics
 
 There are two possible situations:
@@ -829,7 +842,6 @@ homo %>%
 Facetization is the most powerful `ggplot2` tool that allow to split up your data by one or more variables and plot the subsets of data together.
 
 #### `facet_wrap()`
-
 ```{r}
 homo %>% 
   ggplot(aes(speaker, s.duration.ms))+
